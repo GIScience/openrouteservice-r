@@ -1,7 +1,7 @@
 # openrouteservice R package
 
 The *openrouteservice* package provides easy access to the
-[openrouteservice](https://go.openrouteservice.org) (ORS) API from R. It
+[openrouteservice](https://openrouteservice.org) (ORS) API from R. It
 allows you to painlessly consume the following services:
 
 -   [directions](https://openrouteservice.org/documentation/#/reference/directions/directions)
@@ -13,14 +13,14 @@ allows you to painlessly consume the following services:
 
 For further details, please visit:
 
--   [openrouteservice.org](https://go.openrouteservice.org)
+-   [openrouteservice.org](https://openrouteservice.org)
 -   [ORS API
-    documentation](https://go.openrouteservice.org/documentation/)
+    documentation](https://openrouteservice.org/documentation/)
 -   [openrouteservice-r
     documentation](http://GIScience.github.io/openrouteservice-r/)
 
 By using this package, you agree to the ORS [terms and
-conditions](https://go.openrouteservice.org/terms-of-service/).
+conditions](https://openrouteservice.org/terms-of-service/).
 
 ## Installation
 
