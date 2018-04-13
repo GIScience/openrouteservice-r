@@ -20,7 +20,7 @@ knitr::opts_chunk$set(eval=TRUE, out.width='100%', out.height='560px')
 doc <- openrouteservice:::doc_link
 ```
 
-## Gettig started
+## Getting started
 
 The *openrouteservice* package provides easy access to the
 [openrouteservice](https://go.openrouteservice.org) (ORS) API from R. 
@@ -68,7 +68,7 @@ This will save the key in the default keyring of your system credential store. O
 
 ## Directions
 
-`ors_directions` interfacces the ORS directions service to compute routes between given `coordinates`. 
+`ors_directions()` interfaces the ORS directions service to compute routes between given `coordinates`. 
 
 ```{r directions, eval=TRUE}
 library(openrouteservice)
@@ -117,7 +117,7 @@ plot(c(0, cumsum(dists)), coords[, "Height"], type = "l", main = "Elevation prof
 
 ## Isochrones
 
-Reachability has become a crucial component for many businesses from all different kinds of domains. `ors_isochrones` helps you to determine which areas can be reached from certain location(s) in a given time or travel distance. The reachability areas are returned as contours of polygons. Next to the `range` provided in seconds or meters you may as well specify the corresponding `interval`s. If the input entails a list of points the service will return an intersections of the computed isochrones if any exist. `ors_isochrones` accepts identical arguments as `ors_directions`.
+Reachability has become a crucial component for many businesses from all different kinds of domains. `ors_isochrones()` helps you to determine which areas can be reached from certain location(s) in a given time or travel distance. The reachability areas are returned as contours of polygons. Next to the `range` provided in seconds or meters you may as well specify the corresponding `interval`s. If the input entails a list of points the service will return an intersections of the computed isochrones if any exist. `ors_isochrones()` accepts identical arguments as `ors_directions()`.
 
 ```{r isochrones}
 coordinates = list(c(8.34234, 48.23424), c(8.34234, 47.23424))
@@ -152,7 +152,7 @@ leaflet() %>%
 
 ## Matrix
 
-One to many, many to many or many to one. `ors_matrix` allows you to obtain aggregated time and distance information between a set of locations (origins and destinations). Unlike `ors_directions` it does not return detailed route information. But you may still specify the transportation mode and compute routes which adhere to certain restrictions, such as avoiding specific road types or object characteristics.
+One to many, many to many or many to one. `ors_matrix()` allows you to obtain aggregated time and distance information between a set of locations (origins and destinations). Unlike `ors_directions()` it does not return detailed route information. But you may still specify the transportation mode and compute routes which adhere to certain restrictions, such as avoiding specific road types or object characteristics.
 
 ```{r matrix}
 coordinates = list(
@@ -174,7 +174,7 @@ res$distances
 
 ## Geocoding
 
-`ors_geocode` transforms a description of a location provided in `query`, such as the place's name, street address or postal code, into a normalized description of the location with a point geometry. Additionally, it offers reverse geocoding which does exactly the opposite: It returns the next enclosing object which surrounds the coordinates of the given `location`. To obtain more relevant results you may also set a radius of tolerance around the requested coordinates. 
+`ors_geocode()` transforms a description of a location provided in `query`, such as the place's name, street address or postal code, into a normalized description of the location with a point geometry. Additionally, it offers reverse geocoding which does exactly the opposite: It returns the next enclosing object which surrounds the coordinates of the given `location`. To obtain more relevant results you may also set a radius of tolerance around the requested coordinates. 
 
 ```{r geocode}
 ## locations of Heidelberg around the globe

@@ -1,5 +1,4 @@
-Gettig started
---------------
+# openrouteservice R package
 
 The *openrouteservice* package provides easy access to the
 [openrouteservice](https://go.openrouteservice.org) (ORS) API from R. It
@@ -23,7 +22,7 @@ For further details, please visit:
 By using this package, you agree to the ORS [terms and
 conditions](https://go.openrouteservice.org/terms-of-service/).
 
-### Installation
+## Installation
 
 The package is not yet available from CRAN, but you can install the
 development version directly from GitHub.
