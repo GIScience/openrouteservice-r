@@ -1,4 +1,5 @@
-# openrouteservice R package
+openrouteservice R client
+-------------------------
 
 The *openrouteservice* package provides easy access to the
 [openrouteservice](https://openrouteservice.org) (ORS) API from R. It
@@ -11,21 +12,21 @@ allows you to painlessly consume the following services:
 -   [matrix](https://openrouteservice.org/documentation/#/reference/matrix/matrix)
 -   [pois](https://github.com/GIScience/openpoiservice#api-documentation)
 
-For further details, please visit:
-
--   [openrouteservice.org](https://openrouteservice.org)
--   [ORS API
-    documentation](https://openrouteservice.org/documentation/)
--   [openrouteservice-r
-    documentation](http://GIScience.github.io/openrouteservice-r/)
+### Disclaimer
 
 By using this package, you agree to the ORS [terms and
 conditions](https://openrouteservice.org/terms-of-service/).
 
-## Installation
+### Installation
 
 The package is not yet available from CRAN, but you can install the
 development version directly from GitHub.
 
     # install.packages("devtools")
     devtools::install_github("GIScience/openrouteservice-r")
+
+### Get started
+
+See the package
+[vignette](https://giscience.github.io/openrouteservice-r/articles/openrouteservice.html)
+for an overview of the offered functionality.

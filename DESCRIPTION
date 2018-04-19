@@ -1,14 +1,14 @@
 Package: openrouteservice
-Title: Query openrouteservice API
-Version: 0.1.0
+Title: openrouteservice API client
+Version: 0.1.1
 Authors@R: person("Andrzej", "Oleś", email = "andrzej@openrouteservice.org", role = c("aut", "cre"))
 Description: The package streamlines access to the services provided by openrouteservice.org.
   It allows you to painlessly query for directions, geocoding, isochrones, time-distance matrices, and POIs.
 URL: https://github.com/GIScience/openrouteservice-r
 BugReports: https://github.com/GIScience/openrouteservice-r/issues
 Imports: httr, jsonlite, keyring, leaflet, utils
-Suggests: knitr, rmarkdown, roxygen2, sp
-License: Apache License 2.0
+Suggests: knitr, pkgdown, rmarkdown, roxygen2, sp
+License: Apache License 2.0 | file LICENSE
 Encoding: UTF-8
 LazyData: true
 VignetteBuilder: knitr

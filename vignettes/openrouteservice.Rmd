@@ -15,15 +15,18 @@ vignette: >
 ```{r config, include=FALSE}
 ## set up knitr defaults
 knitr::opts_chunk$set(eval=TRUE, out.width='100%', out.height='560px')
+```
 
+## Get started
+
+<!-- README START -->
+```{r doc, include=FALSE}
 ## create alias
 doc <- openrouteservice:::doc_link
 ```
 
-## Getting started
-
 The *openrouteservice* package provides easy access to the
-[openrouteservice](https://go.openrouteservice.org) (ORS) API from R. 
+[openrouteservice](https://openrouteservice.org) (ORS) API from R. 
 It allows you to painlessly consume the following services:
 
   - `r doc('directions')`
@@ -32,14 +35,10 @@ It allows you to painlessly consume the following services:
   - `r doc('matrix')`
   - `r doc('pois')`
 
-For further details, please visit:
-
-  - [openrouteservice.org](https://go.openrouteservice.org)
-  - [ORS API documentation](https://go.openrouteservice.org/documentation/)
-  - [openrouteservice-r documentation](http://GIScience.github.io/openrouteservice-r/)
+### Disclaimer
 
 By using this package, you agree to the ORS [terms and
-conditions](https://go.openrouteservice.org/terms-of-service/).
+conditions](https://openrouteservice.org/terms-of-service/).
 
 ### Installation
 
@@ -50,7 +49,7 @@ development version directly from GitHub.
 # install.packages("devtools")
 devtools::install_github("GIScience/openrouteservice-r")
 ```
-
+<!-- README END -->
 
 ### Setting up API key
 
