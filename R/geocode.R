@@ -45,9 +45,11 @@ ors_geocode <- function(query, location, ...) {
     api_call("geocode/reverse", "GET", list(point.lon = location[1L], point.lat = location[2L], ...))
   }
   else {
-    if ( length(query) > 1)
-      ## FIXME: is do.call needed?
-      do.call("api_call", c(path="geocode/search/structured", method="GET", list(query, ...)))
+    if ( length(query) > 1) {
+      if ( !is.list(query) )
+        query <- as.list(query)
+      api_call("geocode/search/structured", "GET", c(query, ...))
+    }
     else
       api_call("geocode/search", "GET", list(text = query, ...))
   }
