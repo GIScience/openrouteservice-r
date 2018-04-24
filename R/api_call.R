@@ -1,5 +1,13 @@
 #' @importFrom jsonlite toJSON
 api_query <- function(query, collapse) {
+  # limit precision of numeric parametrs to 6 decimal places
+  query = rapply(query, how="replace", f = function(x) {
+    if (is.numeric(x))
+      round(x, digits=6L)
+    else
+      x
+  })
+
   # encode longitude and latitude as comma-separated pairs
   coordinatesQuery <- function(x) {
     ul = unlist(x)
