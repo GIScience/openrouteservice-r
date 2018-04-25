@@ -65,7 +65,7 @@ api_call <- function(path, method, query = list(), ..., simplifyMatrix = TRUE) {
       call. = FALSE
     )
 
-  structure(parsed, class = c(sprintf("ors_%s", path), "ors_api"))
+  structure(parsed, class = c(sprintf("ors_%s", path), "ors_api", class(parsed)))
 }
 
 #' Print a Compact Summary of the API Response
