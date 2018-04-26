@@ -6,11 +6,15 @@ The *openrouteservice* package provides easy access to the
 allows you to painlessly consume the following services:
 
 -   [directions](https://openrouteservice.org/documentation/#/reference/directions/directions)
+    (routing)
 -   [geocode](https://openrouteservice.org/documentation/#/reference/geocode/geocode)
     powered by [Pelias](https://pelias.io)
 -   [isochrones](https://openrouteservice.org/documentation/#/reference/isochrones/isochrones)
--   [matrix](https://openrouteservice.org/documentation/#/reference/matrix/matrix)
+    (accessibilty)
+-   time-distance
+    [matrix](https://openrouteservice.org/documentation/#/reference/matrix/matrix)
 -   [pois](https://github.com/GIScience/openpoiservice#api-documentation)
+    (points of interest)
 
 ### Disclaimer
 

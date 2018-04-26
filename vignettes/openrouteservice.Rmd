@@ -29,11 +29,11 @@ The *openrouteservice* package provides easy access to the
 [openrouteservice](https://openrouteservice.org) (ORS) API from R. 
 It allows you to painlessly consume the following services:
 
-  - `r doc('directions')`
+  - `r doc('directions')` (routing)
   - `r doc('geocode')` powered by [Pelias](https://pelias.io)
-  - `r doc('isochrones')`
-  - `r doc('matrix')`
-  - `r doc('pois')`
+  - `r doc('isochrones')` (accessibilty)
+  - time-distance `r doc('matrix')`
+  - `r doc('pois')` (points of interest)
 
 ### Disclaimer
 
