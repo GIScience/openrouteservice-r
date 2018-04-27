@@ -11,7 +11,7 @@
 #' @param range Maximum range value of the analysis in seconds for time and
 #'   meters for distance. Alternatively a comma separated list of specific
 #'   single range values.
-#' @template dotsargs
+#' @template args
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint isochrones
 #' @return Duration or distance matrix for mutliple source and destination
@@ -23,7 +23,8 @@
 ors_isochrones <- function(locations,
                            profile = c('driving-car', 'driving-hgv', 'cycling-regular', 'cycling-road', 'cycling-safe', 'cycling-mountain', 'cycling-tour', 'foot-walking', 'foot-hiking'),
                            range = 60,
-                           ...) {
+                           ...,
+                           parse_output = NULL) {
   if (missing(locations))
     stop('Missing argument "locations"')
 

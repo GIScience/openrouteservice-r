@@ -10,7 +10,7 @@
 #' @param query Name of location, street address or postal code. For a
 #'   structured geocoding request a named list of parameters.
 #' @param location Coordinates to be inquired provided in the form `c(longitude, latitude)`
-#' @template dotsargs
+#' @template args
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint geocode
 #' @return Geocoding: a JSON formatted list of objects corresponding to the
@@ -38,7 +38,7 @@
 #' y = ors_geocode(location = location, layers = "locality", size = 1)
 #'
 #' @export
-ors_geocode <- function(query, location, ...) {
+ors_geocode <- function(query, location, ..., parse_output = NULL) {
   if ( missing(query) ) {
     if ( missing(location) )
       stop('Specify at least one of the arguments "query/location"')

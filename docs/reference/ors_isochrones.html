@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">openrouteservice</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.4</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.5</span>
       </span>
     </div>
 
@@ -110,7 +110,8 @@
 
     <pre class="usage"><span class='fu'>ors_isochrones</span>(<span class='no'>locations</span>, <span class='kw'>profile</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"driving-car"</span>, <span class='st'>"driving-hgv"</span>,
   <span class='st'>"cycling-regular"</span>, <span class='st'>"cycling-road"</span>, <span class='st'>"cycling-safe"</span>, <span class='st'>"cycling-mountain"</span>,
-  <span class='st'>"cycling-tour"</span>, <span class='st'>"foot-walking"</span>, <span class='st'>"foot-hiking"</span>), <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>60</span>, <span class='no'>...</span>)</pre>
+  <span class='st'>"cycling-tour"</span>, <span class='st'>"foot-walking"</span>, <span class='st'>"foot-hiking"</span>), <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>60</span>, <span class='no'>...</span>,
+  <span class='kw'>parse_output</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -132,6 +133,10 @@ single range values.</p></td>
     <tr>
       <th>...</th>
       <td><p>Optional parameters as described <a href='https://openrouteservice.org/documentation/#/reference/isochrones/isochrones'>here</a>.</p></td>
+    </tr>
+    <tr>
+      <th>parse_output</th>
+      <td><p>Should the response be parsed to an R object</p></td>
     </tr>
     </table>
     

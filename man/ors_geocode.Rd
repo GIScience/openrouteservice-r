@@ -4,7 +4,7 @@
 \alias{ors_geocode}
 \title{Openrouteservice Geocoding}
 \usage{
-ors_geocode(query, location, ...)
+ors_geocode(query, location, ..., parse_output = NULL)
 }
 \arguments{
 \item{query}{Name of location, street address or postal code. For a
@@ -13,6 +13,8 @@ structured geocoding request a named list of parameters.}
 \item{location}{Coordinates to be inquired provided in the form \code{c(longitude, latitude)}}
 
 \item{...}{Optional parameters as described \href{https://openrouteservice.org/documentation/#/reference/geocode/geocode}{here}.}
+
+\item{parse_output}{Should the response be parsed to an R object}
 }
 \value{
 Geocoding: a JSON formatted list of objects corresponding to the

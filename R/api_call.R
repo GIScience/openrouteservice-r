@@ -36,41 +36,72 @@ api_query <- function(query, collapse) {
 }
 
 #' @importFrom httr content http_error http_type modify_url status_code
-#' @importFrom httr GET POST accept_json user_agent
+#' @importFrom httr GET POST accept user_agent
 #' @importFrom jsonlite fromJSON
-api_call <- function(path, method, query = list(), ..., simplifyMatrix = TRUE) {
+#' @importFrom geojson as.geojson
+#' @importFrom geojsonlint geojson_validate
+#' @importFrom xml2 read_xml
+api_call <- function(path, method, query = list(), ...,
+                     response_format = c("json", "xml"),
+                     parse_output = NULL, simplifyMatrix = TRUE) {
+
+  response_format <- match.arg(response_format)
+  type <- sprintf("application/%s", response_format)
+
   collapse = ifelse (startsWith(path, 'geocode'), ',', '|')
 
   url <- modify_url(url = getOption('openrouteservice.url'),
                     path = path,
                     query = api_query(query, collapse=collapse))
 
-  res <- do.call(method, list(url, accept_json(), user_agent("openrouteservice-r"), ...))
+  res <- do.call(method, list(url, accept(type), user_agent("openrouteservice-r"), ...))
 
-  if (http_type(res) != 'application/json')
-    stop("API did not return json", call. = FALSE)
-
-  parsed <- fromJSON(content(res, "text"),
-                     simplifyVector = TRUE,
-                     simplifyDataFrame = FALSE,
-                     simplifyMatrix = simplifyMatrix)
+  if (http_type(res) != type)
+    stop(sprintf("API did not return %s", response_format), call. = FALSE)
 
   if (http_error(res))
     stop(
       sprintf(
         "openrouteservice API request failed [%s]:\n%s",
         status_code(res),
-        parsed$error$message
+        fromJSON(content(res, "text"), simplifyVector=TRUE)$error
       ),
       call. = FALSE
     )
 
-  structure(parsed, class = c(sprintf("ors_%s", path), "ors_api", class(parsed)))
+  if (is.null(parse_output))
+    parse_output <- getOption("penrouteservice.parse_output", TRUE)
+  parse_output <- isTRUE(parse_output)
+
+  chr <- content(res, "text")
+
+  if (parse_output) {
+    if (response_format=="json") {
+      parsed <- fromJSON(chr,
+                         simplifyVector = TRUE,
+                         simplifyDataFrame = FALSE,
+                         simplifyMatrix = simplifyMatrix)
+      structure(parsed, class = c(sprintf("ors_%s", path), "ors_api", class(parsed)))
+
+    }
+    else {
+      ## TODO: validate against the GPX schema
+      read_xml(chr)
+    }
+  }
+  else {
+    if (response_format=="json") {
+      class(chr) <- "json"
+      if ( isTRUE(geojson_validate(chr)) )
+        chr <- as.geojson(chr)
+    }
+    chr
+  }
 }
 
 #' Print a Compact Summary of the API Response
 #'
-#' `print.ors_api`` uses [str][utils::str()] to compactly display the structure of the openrouteservice API response object.
+#' `print.ors_api` uses [str][utils::str()] to compactly display the structure of the openrouteservice API response object.
 #'
 #' @param x object of class `ors_api`.
 #' @inheritParams utils::str

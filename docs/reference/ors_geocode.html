@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">openrouteservice</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.4</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.5</span>
       </span>
     </div>
 
@@ -108,7 +108,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>ors_geocode</span>(<span class='no'>query</span>, <span class='no'>location</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>ors_geocode</span>(<span class='no'>query</span>, <span class='no'>location</span>, <span class='no'>...</span>, <span class='kw'>parse_output</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -125,6 +125,10 @@ structured geocoding request a named list of parameters.</p></td>
     <tr>
       <th>...</th>
       <td><p>Optional parameters as described <a href='https://openrouteservice.org/documentation/#/reference/geocode/geocode'>here</a>.</p></td>
+    </tr>
+    <tr>
+      <th>parse_output</th>
+      <td><p>Should the response be parsed to an R object</p></td>
     </tr>
     </table>
     

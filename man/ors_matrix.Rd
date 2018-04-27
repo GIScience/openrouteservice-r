@@ -7,7 +7,7 @@
 ors_matrix(locations, profile = c("driving-car", "driving-hgv",
   "cycling-regular", "cycling-road", "cycling-safe", "cycling-mountain",
   "cycling-tour", "cycling-electric", "foot-walking", "foot-hiking",
-  "wheelchair"), ...)
+  "wheelchair"), ..., parse_output = NULL)
 }
 \arguments{
 \item{locations}{List of \code{longitude, latitude} coordinate pairs}
@@ -15,6 +15,8 @@ ors_matrix(locations, profile = c("driving-car", "driving-hgv",
 \item{profile}{Route profile, defaults to \code{driving-car}.}
 
 \item{...}{Optional parameters as described \href{https://openrouteservice.org/documentation/#/reference/matrix/matrix}{here}.}
+
+\item{parse_output}{Should the response be parsed to an R object}
 }
 \value{
 Duration or distance matrix for mutliple source and destination points.
