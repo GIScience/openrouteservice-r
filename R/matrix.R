@@ -4,7 +4,7 @@
 #'
 #' @param locations List of `longitude, latitude` coordinate pairs
 #' @param profile Route profile, defaults to `driving-car`.
-#' @template dotsargs
+#' @template args
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint matrix
 #' @return Duration or distance matrix for mutliple source and destination points.
@@ -28,7 +28,8 @@
 #' @export
 ors_matrix <- function(locations,
                        profile = c('driving-car', 'driving-hgv', 'cycling-regular', 'cycling-road', 'cycling-safe', 'cycling-mountain', 'cycling-tour', 'cycling-electric', 'foot-walking', 'foot-hiking', 'wheelchair'),
-                       ...) {
+                       ...,
+                       parse_output = NULL) {
   if (missing(locations))
     stop('Missing argument "locations"')
 

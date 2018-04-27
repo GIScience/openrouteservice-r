@@ -6,7 +6,8 @@
 \usage{
 ors_isochrones(locations, profile = c("driving-car", "driving-hgv",
   "cycling-regular", "cycling-road", "cycling-safe", "cycling-mountain",
-  "cycling-tour", "foot-walking", "foot-hiking"), range = 60, ...)
+  "cycling-tour", "foot-walking", "foot-hiking"), range = 60, ...,
+  parse_output = NULL)
 }
 \arguments{
 \item{locations}{List of \code{longitude, latitude} coordinate pairs}
@@ -18,6 +19,8 @@ meters for distance. Alternatively a comma separated list of specific
 single range values.}
 
 \item{...}{Optional parameters as described \href{https://openrouteservice.org/documentation/#/reference/isochrones/isochrones}{here}.}
+
+\item{parse_output}{Should the response be parsed to an R object}
 }
 \value{
 Duration or distance matrix for mutliple source and destination

@@ -9,7 +9,7 @@
 #' `list` returns a list of category groups and their ids.
 #' @param request One of the following: `"pois"`, `"stats"` or `"list"`
 #' @param geometry GeoJSON geometry object (Point, Linestring or Polygon)
-#' @template dotsargs
+#' @template args
 #' @templateVar dotsargs request attributes
 #' @templateVar endpoint pois
 #' @return A list of points of interest in the area specified in `geometry`.
@@ -19,7 +19,8 @@
 #' @export
 ors_pois <- function(request = c('pois', 'stats', 'list'),
                      geometry,
-                     ...) {
+                     ...,
+                     parse_output = NULL) {
   request = match.arg(request)
 
   body = list(request = request, ...)

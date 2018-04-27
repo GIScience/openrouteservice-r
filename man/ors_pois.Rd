@@ -4,7 +4,8 @@
 \alias{ors_pois}
 \title{Openrouteservice POIs}
 \usage{
-ors_pois(request = c("pois", "stats", "list"), geometry, ...)
+ors_pois(request = c("pois", "stats", "list"), geometry, ...,
+  parse_output = NULL)
 }
 \arguments{
 \item{request}{One of the following: \code{"pois"}, \code{"stats"} or \code{"list"}}
@@ -12,6 +13,8 @@ ors_pois(request = c("pois", "stats", "list"), geometry, ...)
 \item{geometry}{GeoJSON geometry object (Point, Linestring or Polygon)}
 
 \item{...}{Optional request attributes as described \href{https://github.com/GIScience/openpoiservice#api-documentation}{here}.}
+
+\item{parse_output}{Should the response be parsed to an R object}
 }
 \value{
 A list of points of interest in the area specified in \code{geometry}.

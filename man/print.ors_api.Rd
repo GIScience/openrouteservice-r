@@ -21,5 +21,5 @@
 \code{print.ors_api} prints its argument and returns it \emph{invisibly}.
 }
 \description{
-`print.ors_api`` uses \link[utils:str]{str} to compactly display the structure of the openrouteservice API response object.
+\code{print.ors_api} uses \link[utils:str]{str} to compactly display the structure of the openrouteservice API response object.
 }

@@ -4,8 +4,9 @@
 #'
 #' @param coordinates List of `longitude, latitude` coordinate pairs visited in
 #'   order.
-#' @param profile Route profile, defaults to `driving-car`.
-#' @template dotsargs
+#' @param profile Route profile, defaults to `"driving-car"`.
+#' @param format Response format, defaults to `"json"`
+#' @template args
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint directions
 #' @return Route between two or more locations for a selected profile and its
@@ -22,13 +23,21 @@
 #' @export
 ors_directions <- function(coordinates,
                            profile = c('driving-car', 'driving-hgv', 'cycling-regular', 'cycling-road', 'cycling-safe', 'cycling-mountain', 'cycling-tour', 'cycling-electric', 'foot-walking', 'foot-hiking', 'wheelchair'),
-                           ...) {
+                           format = c('json', 'geojson', 'gpx'),
+                           ...,
+                           parse_output = NULL) {
   if (missing(coordinates))
     stop('Missing argument "coordinates"')
 
   profile = match.arg(profile)
 
-  query = list(coordinates = coordinates, profile = profile, ...)
+  format = match.arg(format)
+  response_format = switch(format, 'gpx'='xml', 'json')
 
-  api_call("directions", "GET", query)
+  if (format=='gpx')
+    parse_output = FALSE
+
+  query = list(coordinates = coordinates, profile = profile, format = format, ...)
+
+  api_call("directions", "GET", query, response_format = response_format, parse_output = parse_output)
 }
