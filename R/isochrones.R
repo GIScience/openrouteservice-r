@@ -34,7 +34,7 @@ ors_isochrones <- function(locations,
 
   res = api_call("isochrones", "GET", query, simplifyMatrix=FALSE, parse_output = parse_output)
 
-  if (isTRUE(parse_output))
+  if (inherits(res, "ors_api"))
     res$info$query$ranges = as.numeric(unlist(strsplit(res$info$query$ranges, ",")))
 
   res
