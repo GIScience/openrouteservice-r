@@ -37,5 +37,5 @@ ors_matrix <- function(locations,
 
   query = list(locations = locations, profile = profile, ...)
 
-  api_call("matrix", "GET", query)
+  api_call("matrix", "GET", query, parse_output = parse_output)
 }

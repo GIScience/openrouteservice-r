@@ -42,15 +42,19 @@ ors_geocode <- function(query, location, ..., parse_output = NULL) {
   if ( missing(query) ) {
     if ( missing(location) )
       stop('Specify at least one of the arguments "query/location"')
-    api_call("geocode/reverse", "GET", list(point.lon = location[1L], point.lat = location[2L], ...))
+    query <- list(point.lon = location[1L], point.lat = location[2L], ...)
+    api_call("geocode/reverse", "GET", query, parse_output = parse_output)
   }
   else {
     if ( length(query) > 1) {
       if ( !is.list(query) )
         query <- as.list(query)
-      api_call("geocode/search/structured", "GET", c(query, ...))
+      query <- c(query, ...)
+      api_call("geocode/search/structured", "GET", query, parse_output = parse_output)
     }
-    else
-      api_call("geocode/search", "GET", list(text = query, ...))
+    else {
+      query <- list(text = query, ...)
+      api_call("geocode/search", "GET", query, parse_output = parse_output)
+    }
   }
 }

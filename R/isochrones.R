@@ -32,9 +32,10 @@ ors_isochrones <- function(locations,
 
   query = list(locations = locations, profile = profile, range = range, ...)
 
-  res = api_call("isochrones", "GET", query, simplifyMatrix=FALSE)
+  res = api_call("isochrones", "GET", query, simplifyMatrix=FALSE, parse_output = parse_output)
 
-  res$info$query$ranges = as.numeric(unlist(strsplit(res$info$query$ranges, ",")))
+  if (isTRUE(parse_output))
+    res$info$query$ranges = as.numeric(unlist(strsplit(res$info$query$ranges, ",")))
 
   res
 }
