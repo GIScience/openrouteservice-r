@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">openrouteservice</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.5</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.6</span>
       </span>
     </div>
 
@@ -111,7 +111,8 @@
     <pre class="usage"><span class='fu'>ors_matrix</span>(<span class='no'>locations</span>, <span class='kw'>profile</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"driving-car"</span>, <span class='st'>"driving-hgv"</span>,
   <span class='st'>"cycling-regular"</span>, <span class='st'>"cycling-road"</span>, <span class='st'>"cycling-safe"</span>, <span class='st'>"cycling-mountain"</span>,
   <span class='st'>"cycling-tour"</span>, <span class='st'>"cycling-electric"</span>, <span class='st'>"foot-walking"</span>, <span class='st'>"foot-hiking"</span>,
-  <span class='st'>"wheelchair"</span>), <span class='no'>...</span>, <span class='kw'>parse_output</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='st'>"wheelchair"</span>), <span class='kw'>metrics</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"distance"</span>, <span class='st'>"duration"</span>), <span class='no'>...</span>,
+  <span class='kw'>parse_output</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -122,7 +123,11 @@
     </tr>
     <tr>
       <th>profile</th>
-      <td><p>Route profile, defaults to <code>driving-car</code>.</p></td>
+      <td><p>Route profile, defaults to <code>"driving-car"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>metrics</th>
+      <td><p>Returned metrics. Use <code>"distance"</code> for distance matrix in defined <code>units</code>, and/or `duration`` for time matrix in seconds.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -152,10 +157,10 @@
 
 <span class='co'># duration in hours</span>
 <span class='no'>res</span>$<span class='no'>durations</span> / <span class='fl'>3600</span></div><div class='output co'>#&gt;            [,1]       [,2]     [,3]      [,4]
-#&gt; [1,]   0.000000   1.649714 24.55161 110.85012
-#&gt; [2,]   1.649928   0.000000 24.37846 110.67696
-#&gt; [3,]  24.359136  24.164981  0.00000  86.66983
-#&gt; [4,] 110.438725 110.244567 86.47034   0.00000</div><div class='input'>
+#&gt; [1,]   0.000000   1.649861 24.55144 110.85004
+#&gt; [2,]   1.649631   0.000000 24.37814 110.67674
+#&gt; [3,]  24.358964  24.165103  0.00000  86.66972
+#&gt; [4,] 110.438656 110.244792 86.47023   0.00000</div><div class='input'>
 <span class='co'># distance in km</span>
 <span class='no'>res</span>$<span class='no'>distances</span></div><div class='output co'>#&gt;          [,1]     [,2]    [,3]     [,4]
 #&gt; [1,]     0.00   154.65 2346.59 10166.87

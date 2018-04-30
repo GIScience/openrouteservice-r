@@ -9,7 +9,7 @@
 #' `list` returns a list of category groups and their ids.
 #' @param request One of the following: `"pois"`, `"stats"` or `"list"`
 #' @param geometry GeoJSON geometry object (Point, Linestring or Polygon)
-#' @template args
+#' @template param-common
 #' @templateVar dotsargs request attributes
 #' @templateVar endpoint pois
 #' @return A list of points of interest in the area specified in `geometry`.

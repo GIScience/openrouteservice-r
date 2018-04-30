@@ -10,7 +10,7 @@
 #' @param query Name of location, street address or postal code. For a
 #'   structured geocoding request a named list of parameters.
 #' @param location Coordinates to be inquired provided in the form `c(longitude, latitude)`
-#' @template args
+#' @template param-common
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint geocode
 #' @return Geocoding: a JSON formatted list of objects corresponding to the

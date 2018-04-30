@@ -3,8 +3,9 @@
 #' Obtain one-to-many, many-to-one and many-to-many matrices for time and distance.
 #'
 #' @param locations List of `longitude, latitude` coordinate pairs
-#' @param profile Route profile, defaults to `driving-car`.
-#' @template args
+#' @template param-profile
+#' @param metrics Returned metrics. Use `"distance"` for distance matrix in defined `units`, and/or `duration`` for time matrix in seconds.
+#' @template param-common
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint matrix
 #' @return Duration or distance matrix for mutliple source and destination points.
@@ -28,6 +29,7 @@
 #' @export
 ors_matrix <- function(locations,
                        profile = c('driving-car', 'driving-hgv', 'cycling-regular', 'cycling-road', 'cycling-safe', 'cycling-mountain', 'cycling-tour', 'cycling-electric', 'foot-walking', 'foot-hiking', 'wheelchair'),
+                       metrics = c('distance', 'duration'),
                        ...,
                        parse_output = NULL) {
   if (missing(locations))
@@ -35,7 +37,10 @@ ors_matrix <- function(locations,
 
   profile = match.arg(profile)
 
-  query = list(locations = locations, profile = profile, ...)
+  metrics = match.arg(metrics, several.ok=TRUE)
+  metrics = collapse_vector(metrics)
 
-  api_call("matrix", "GET", query, parse_output = parse_output)
+  body = list(locations = locations, profile = profile, metrics = metrics, ...)
+
+  api_call("matrix", "POST", body = body, encode = "json", parse_output = parse_output)
 }

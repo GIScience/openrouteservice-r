@@ -12,7 +12,7 @@ ors_isochrones(locations, profile = c("driving-car", "driving-hgv",
 \arguments{
 \item{locations}{List of \code{longitude, latitude} coordinate pairs}
 
-\item{profile}{Route profile, defaults to \code{driving-car}.}
+\item{profile}{Route profile, defaults to \code{"driving-car"}.}
 
 \item{range}{Maximum range value of the analysis in seconds for time and
 meters for distance. Alternatively a comma separated list of specific

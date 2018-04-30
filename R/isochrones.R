@@ -7,11 +7,11 @@
 #' multiple exact isochrone range values.
 #'
 #' @param locations List of `longitude, latitude` coordinate pairs
-#' @param profile Route profile, defaults to `driving-car`.
+#' @template param-profile
 #' @param range Maximum range value of the analysis in seconds for time and
 #'   meters for distance. Alternatively a comma separated list of specific
 #'   single range values.
-#' @template args
+#' @template param-common
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint isochrones
 #' @return Duration or distance matrix for mutliple source and destination

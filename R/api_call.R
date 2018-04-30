@@ -1,3 +1,10 @@
+collapse_vector <- function(x, collapse = "|") {
+  if (length(x) > 1L)
+    paste(x, collapse=collapse)
+  else
+    x
+}
+
 #' @importFrom jsonlite toJSON
 api_query <- function(query, collapse) {
   # limit precision of numeric parametrs to 6 decimal places
@@ -22,12 +29,7 @@ api_query <- function(query, collapse) {
   if ( !is.null(query$options) )
     query$options = toJSON(query$options, auto_unbox=TRUE)
 
-  query = rapply(query, how="replace", f = function(x) {
-    if (length(x) > 1L)
-      paste(x, collapse=collapse)
-    else
-      x
-  })
+  query = rapply(query, collapse_vector, how="replace", collapse=collapse)
 
   if ( !is.null(query$options) )
     query$options = toJSON(query$options, auto_unbox=TRUE)

@@ -7,12 +7,15 @@
 ors_matrix(locations, profile = c("driving-car", "driving-hgv",
   "cycling-regular", "cycling-road", "cycling-safe", "cycling-mountain",
   "cycling-tour", "cycling-electric", "foot-walking", "foot-hiking",
-  "wheelchair"), ..., parse_output = NULL)
+  "wheelchair"), metrics = c("distance", "duration"), ...,
+  parse_output = NULL)
 }
 \arguments{
 \item{locations}{List of \code{longitude, latitude} coordinate pairs}
 
-\item{profile}{Route profile, defaults to \code{driving-car}.}
+\item{profile}{Route profile, defaults to \code{"driving-car"}.}
+
+\item{metrics}{Returned metrics. Use \code{"distance"} for distance matrix in defined \code{units}, and/or `duration`` for time matrix in seconds.}
 
 \item{...}{Optional parameters as described \href{https://openrouteservice.org/documentation/#/reference/matrix/matrix}{here}.}
 

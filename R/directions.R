@@ -4,9 +4,9 @@
 #'
 #' @param coordinates List of `longitude, latitude` coordinate pairs visited in
 #'   order.
-#' @param profile Route profile, defaults to `"driving-car"`.
+#' @template param-profile
 #' @param format Response format, defaults to `"json"`
-#' @template args
+#' @template param-common
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint directions
 #' @return Route between two or more locations for a selected profile and its
