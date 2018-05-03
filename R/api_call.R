@@ -87,8 +87,12 @@ api_call <- function(path, method, query = list(), ...,
 
     }
     else {
-      ## TODO: validate against the GPX schema
-      read_xml(chr)
+      xml <- read_xml(chr)
+      gpx_xsd = getOption("openrouteservice.gpx_xsd", "https://raw.githubusercontent.com/GIScience/openrouteservice-schema/master/gpx/v1/ors-gpx.xsd")
+      xsd <- read_xml(gpx_xsd)
+      if (!xml_validate(xml, xsd))
+        stop("Failed to validate GPX response")
+      xml
     }
   }
   else {

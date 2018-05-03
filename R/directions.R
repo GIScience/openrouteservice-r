@@ -34,9 +34,6 @@ ors_directions <- function(coordinates,
   format = match.arg(format)
   response_format = switch(format, 'gpx'='xml', 'json')
 
-  if (format=='gpx')
-    parse_output = FALSE
-
   query = list(coordinates = coordinates, profile = profile, format = format, ...)
 
   api_call("directions", "GET", query, response_format = response_format, parse_output = parse_output)
