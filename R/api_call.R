@@ -42,7 +42,7 @@ api_query <- function(query, collapse) {
 #' @importFrom jsonlite fromJSON
 #' @importFrom geojson as.geojson
 #' @importFrom geojsonlint geojson_validate
-#' @importFrom xml2 read_xml
+#' @importFrom xml2 read_xml xml_validate
 api_call <- function(path, method, query = list(), ...,
                      response_format = c("json", "xml"),
                      parse_output = NULL, simplifyMatrix = TRUE) {
