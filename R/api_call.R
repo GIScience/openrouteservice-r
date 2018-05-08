@@ -52,9 +52,8 @@ api_call <- function(path, method, query = list(), ...,
 
   collapse = ifelse (startsWith(path, 'geocode'), ',', '|')
 
-  url <- modify_url(url = getOption('openrouteservice.url'),
-                    path = path,
-                    query = api_query(query, collapse=collapse))
+  url <- getOption('openrouteservice.url', "https://api.openrouteservice.org")
+  url <- modify_url(url, path = path, query = api_query(query, collapse=collapse))
 
   res <- do.call(method, list(url, accept(type), user_agent("openrouteservice-r"), ...))
 
@@ -64,7 +63,7 @@ api_call <- function(path, method, query = list(), ...,
   if (http_error(res))
     stop(
       sprintf(
-        "openrouteservice API request failed [%s]:\n%s",
+        "openrouteservice API request failed\n  [%s] %s",
         status_code(res),
         fromJSON(content(res, "text"), simplifyVector=TRUE)$error
       ),
@@ -72,7 +71,7 @@ api_call <- function(path, method, query = list(), ...,
     )
 
   if (is.null(parse_output))
-    parse_output <- getOption("penrouteservice.parse_output", TRUE)
+    parse_output <- getOption("openrouteservice.parse_output", TRUE)
   parse_output <- isTRUE(parse_output)
 
   chr <- content(res, "text")
