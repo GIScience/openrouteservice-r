@@ -63,7 +63,7 @@ api_call <- function(path, method, query = list(), ...,
   if (http_error(res))
     stop(
       sprintf(
-        "openrouteservice API request failed\n  [%s] %s",
+        "openrouteservice API request failed\n[%s] %s",
         status_code(res),
         fromJSON(content(res, "text"), simplifyVector=TRUE)$error
       ),

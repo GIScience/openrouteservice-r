@@ -54,7 +54,7 @@ devtools::install_github("GIScience/openrouteservice-r")
 ### Setting up API key
 
 In order to start using ORS services you first need to set up your personal API
-key, which you can [get for free](https://openrouteservice.org/sign-up/).
+key, which you can `r openrouteservice:::signup_url("get for free")`.
 
 ```{r api_key, eval=FALSE}
 library(openrouteservice)
