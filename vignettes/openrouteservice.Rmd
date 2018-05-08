@@ -110,7 +110,7 @@ colnames(coords) = c("Longitude", "Latitude", "Height")
 
 dists = spDists(coords[,c("Longitude", "Latitude")], longlat=TRUE, segments=TRUE)
 
-plot(c(0, cumsum(dists)), coords[, "Height"], type = "l", main = "Elevation profile", xlab = "Distance", ylab = "Height")
+plot(c(0, cumsum(dists)), coords[, "Height"], type = "l", main = "Elevation profile", xlab = "Distance [km]", ylab = "Height [m]")
 ```
 
 
@@ -168,7 +168,7 @@ res = ors_matrix(coordinates, metrics = c("duration", "distance"), units = "km")
 (res$durations / 3600) %>% round(1)
 
 # distance in km
-res$distances
+res$distances %>% round
 ```
 
 ## Geocoding
