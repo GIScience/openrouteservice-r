@@ -28,6 +28,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Openrouteservice POIs — ors_pois" />
 
 <meta property="og:description" content="Search for points of interest around points or in geometries." />
@@ -144,39 +146,40 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>ors_pois</span>(<span class='st'>'list'</span>)</div><div class='output co'>#&gt; <span class='message'>No encoding supplied: defaulting to UTF-8.</span></div><div class='output co'>#&gt; &lt;ors_pois&gt;
+    <pre class="examples"><div class='input'><span class='fu'>ors_pois</span>(<span class='st'>'list'</span>)</div><div class='output co'>#&gt; &lt;ors_pois&gt;
 #&gt; List of 16
 #&gt;  $ accomodation             :List of 2
+#&gt;   ..$ id      : int 100
 #&gt;   ..$ children:List of 1
 #&gt;   .. ..$ tourism:List of 20
 #&gt;   .. .. ..$ alpine_hut    : int 101
 #&gt;   .. .. ..$ appartment    : int 102
-#&gt;   .. .. ..$ aquarium      : int 308
-#&gt;   .. .. ..$ artwork       : int 621
-#&gt;   .. .. ..$ attraction    : int 622
 #&gt;   .. .. ..$ camp_site     : int 103
+#&gt;   .. .. ..$ caravan_site  : int 104
+#&gt;   .. .. ..$ chalet        : int 105
+#&gt;   .. .. ..$ guest_house   : int 106
 #&gt;   .. .. .. [list output truncated]
-#&gt;   ..$ id      : int 100
 #&gt;  $ animals                  :List of 2
+#&gt;   ..$ id      : int 120
 #&gt;   ..$ children:List of 2
 #&gt;   .. ..$ amenity:List of 103
 #&gt;   .. .. ..$ animal_boarding       : int 121
 #&gt;   .. .. ..$ animal_shelter        : int 122
+#&gt;   .. .. ..$ veterinary            : int 123
 #&gt;   .. .. ..$ arts_centre           : int 131
-#&gt;   .. .. ..$ atm                   : int 191
-#&gt;   .. .. ..$ baby_hatch            : int 201
-#&gt;   .. .. ..$ bank                  : int 192
+#&gt;   .. .. ..$ library               : int 133
+#&gt;   .. .. ..$ place_of_worship      : int 135
 #&gt;   .. .. .. [list output truncated]
 #&gt;   .. ..$ shop   :List of 123
-#&gt;   .. .. ..$ agrarian             : int 421
-#&gt;   .. .. ..$ alkohol              : int 422
-#&gt;   .. .. ..$ antiques             : int 423
-#&gt;   .. .. ..$ art                  : int 424
-#&gt;   .. .. ..$ bag                  : int 425
-#&gt;   .. .. ..$ bakery               : int 426
+#&gt;   .. .. ..$ pet                  : int 124
+#&gt;   .. .. ..$ beauty               : int 391
+#&gt;   .. .. ..$ estate_agent         : int 392
+#&gt;   .. .. ..$ dry_cleaning         : int 393
+#&gt;   .. .. ..$ glaziery             : int 394
+#&gt;   .. .. ..$ hairdresser          : int 395
 #&gt;   .. .. .. [list output truncated]
-#&gt;   ..$ id      : int 120
 #&gt;  $ arts_and_culture         :List of 2
+#&gt;   ..$ id      : int 130
 #&gt;   ..$ children:List of 2
 #&gt;   .. ..$ amenity:List of 4
 #&gt;   .. .. ..$ arts_centre     : int 131
@@ -186,8 +189,8 @@
 #&gt;   .. ..$ tourism:List of 2
 #&gt;   .. .. ..$ gallery: int 132
 #&gt;   .. .. ..$ museum : int 134
-#&gt;   ..$ id      : int 130
 #&gt;  $ education                :List of 2
+#&gt;   ..$ id      : int 150
 #&gt;   ..$ children:List of 1
 #&gt;   .. ..$ amenity:List of 7
 #&gt;   .. .. ..$ college       : int 151
@@ -197,28 +200,27 @@
 #&gt;   .. .. ..$ music_school  : int 155
 #&gt;   .. .. ..$ school        : int 156
 #&gt;   .. .. .. [list output truncated]
-#&gt;   ..$ id      : int 150
 #&gt;  $ facilities               :List of 2
+#&gt;   ..$ id      : int 160
 #&gt;   ..$ children:List of 2
 #&gt;   .. ..$ amenity  :List of 20
-#&gt;   .. .. ..$ bench                : int 162
-#&gt;   .. .. ..$ clock                : int 164
 #&gt;   .. .. ..$ compressed_air       : int 161
-#&gt;   .. .. ..$ drinking_water       : int 166
+#&gt;   .. .. ..$ bench                : int 162
 #&gt;   .. .. ..$ emergency_phone      : int 163
+#&gt;   .. .. ..$ clock                : int 164
+#&gt;   .. .. ..$ drinking_water       : int 166
 #&gt;   .. .. ..$ hunting_stand        : int 168
 #&gt;   .. .. .. [list output truncated]
 #&gt;   .. ..$ emergency:List of 2
 #&gt;   .. .. ..$ defibrillator: int 165
 #&gt;   .. .. ..$ fire_hydrant : int 167
-#&gt;   ..$ id      : int 160
 #&gt;  $ financial                :List of 2
+#&gt;   ..$ id      : int 190
 #&gt;   ..$ children:List of 1
 #&gt;   .. ..$ amenity:List of 3
 #&gt;   .. .. ..$ atm             : int 191
 #&gt;   .. .. ..$ bank            : int 192
 #&gt;   .. .. ..$ bureau_de_change: int 193
-#&gt;   ..$ id      : int 190
 #&gt;   [list output truncated]</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

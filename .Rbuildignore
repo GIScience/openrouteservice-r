@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 ^docs$
 ^build_docs.sh$
+^pkgdown$
