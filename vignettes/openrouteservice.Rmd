@@ -113,7 +113,7 @@ leaflet() %>%
 Setting `elevation = TRUE` adds height to the coordinates of the points along
 the route, which can be used to plot the elevation profile.
 
-```{r elevation}
+```{r elevation, out.width='75%', out.height='75%'}
 library(sp)
 
 ## create data.frame
