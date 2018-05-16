@@ -1,1 +1,1 @@
-build_docs.sh linguist-detectable=false
+update_web.sh linguist-detectable=false
