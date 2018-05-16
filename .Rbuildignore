@@ -1,5 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^docs$
-^build_docs.sh$
+^man-roxygen$
+^Makefile$
 ^pkgdown$
+^docs$
+^update_web\.sh$
