@@ -3,3 +3,12 @@
 language: R
 sudo: false
 cache: packages
+addons:
+  apt:
+    sources:
+      - sourceline: 'ppa:opencpu/jq'
+    packages:
+      - libjq-dev
+      - libprotobuf-dev
+      - libv8-3.14-dev
+      - libsecret-1-dev
