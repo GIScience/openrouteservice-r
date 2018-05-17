@@ -1,5 +1,7 @@
 [![Travis-CI Build
 Status](https://travis-ci.org/GIScience/openrouteservice-r.svg?branch=master)](https://travis-ci.org/GIScience/openrouteservice-r)
+[![Coverage
+Status](https://img.shields.io/codecov/c/github/GIScience/openrouteservice-r/master.svg)](https://codecov.io/github/GIScience/openrouteservice-r?branch=master)
 
 openrouteservice R client
 =========================
