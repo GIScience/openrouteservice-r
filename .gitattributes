@@ -1,1 +1,3 @@
+Makefile linguist-detectable=false
 update_web.sh linguist-detectable=false
+pkgdown/extra.css linguist-detectable=false
