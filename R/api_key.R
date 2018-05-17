@@ -11,12 +11,19 @@
 #' @template author
 #' @export
 ors_api_key <- function (key, service = 'openrouteservice', username = NULL, keyring = NULL) {
+  ## get key
   if ( missing(key) )
-    if ( toString(username) %in% key_list(service, keyring)$username )
-      key_get(service, username, keyring)
+    if ( runningCI() )
+      Sys.getenv("ORS_API_KEY")
     else
-      stop(sprintf("API key not set.\n  Get your free key at %s\n  Use `ors_api_key('<your-api-key>')` to set it",
-                   signup_url()), call. = FALSE)
+      if ( toString(username) %in% key_list(service, keyring)$username )
+        key_get(service, username, keyring)
+      else
+        stop(sprintf("API key not set.\n  Get your free key at %s\n  Use `ors_api_key('<your-api-key>')` to set it",
+                     signup_url()), call. = FALSE)
+  ## set key
   else
     key_set_with_value(service, username, key, keyring)
 }
+
+runningCI <- function() isTRUE(as.logical(Sys.getenv("CI")))
