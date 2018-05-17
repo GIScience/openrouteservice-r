@@ -7,7 +7,8 @@ Description: The package streamlines access to the services provided by openrout
 URL: https://github.com/GIScience/openrouteservice-r
 BugReports: https://github.com/GIScience/openrouteservice-r/issues
 Imports: geojson, geojsonlint, httr, jsonlite, keyring, leaflet, utils, xml2
-Suggests: knitr, pkgdown, rmarkdown, roxygen2, sp
+Suggests: knitr, pkgdown, rmarkdown, roxygen2, sp,
+    testthat
 License: Apache License 2.0 | file LICENSE
 Encoding: UTF-8
 LazyData: true
