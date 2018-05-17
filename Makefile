@@ -21,7 +21,7 @@ install: build
 	R CMD INSTALL ../${PKGNAME}_${PKGVER}.tar.gz
 
 check: build
-	R CMD check ../${PKGNAME}_${PKGVER}.tar.gz
+	cd ..; R CMD check --as-cran --no-manual ${PKGNAME}_${PKGVER}.tar.gz
 
 website:
 	${RSCRIPT} -e "pkgdown::build_site()"

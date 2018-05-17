@@ -1,6 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^man-roxygen$
+^README\.Rmd$
 ^Makefile$
 ^pkgdown$
 ^docs$
