@@ -16,7 +16,7 @@ addons:
 
 after_success:
   - Rscript -e 'covr::codecov()'
-  - Rscript -e 'pkgdown::clean_site(); pkgdown::build_site()'
+  - Rscript -e 'cat(getwd())'
 
 deploy:
   provider: pages
@@ -25,4 +25,4 @@ deploy:
   keep-history: true
   local-dir: docs
   on:
-    branch: gh-pages
+    branch: master
