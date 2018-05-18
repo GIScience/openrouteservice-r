@@ -1,13 +1,20 @@
 collapse_vector <- function(x, collapse = "|") {
-  if (length(x) > 1L)
+  if (!is.list(x) && length(x) > 1L)
     paste(x, collapse=collapse)
   else
     x
 }
 
+# encode pairs as comma-separated strings
+encode_pairs <- function(x) {
+  ul = unlist(x)
+  v = c(TRUE, FALSE)
+  paste(ul[v], ul[!v], sep=",")
+}
+
 #' @importFrom jsonlite toJSON
 api_query <- function(query, collapse) {
-  # limit precision of numeric parametrs to 6 decimal places
+  # limit precision of numeric parameters to 6 decimal places
   query = rapply(query, how="replace", f = function(x) {
     if (is.numeric(x))
       round(x, digits=6L)
@@ -15,21 +22,20 @@ api_query <- function(query, collapse) {
       x
   })
 
-  # encode longitude and latitude as comma-separated pairs
-  coordinatesQuery <- function(x) {
-    ul = unlist(x)
-    v = c(TRUE, FALSE)
-    paste(ul[v], ul[!v], sep=",")
-  }
-  if ( !is.null(query$locations) )
-    query$locations = coordinatesQuery(query$locations)
-  if ( !is.null(query$coordinates) )
-    query$coordinates = coordinatesQuery(query$coordinates)
+  # encode lists of pairs
+  pair_params = c("locations", "coordinates", "bearings")
+  pair_params = pair_params[pair_params %in% names(query)]
 
-  if ( !is.null(query$options) )
-    query$options = toJSON(query$options, auto_unbox=TRUE)
+  if ( length(pair_params)>0L )
+    query[pair_params] = lapply(query[pair_params], encode_pairs)
+
+  # store polygon coordinates to preserve their original structure
+  avoid_polygons = query$options$avoid_polygons
 
   query = rapply(query, collapse_vector, how="replace", collapse=collapse)
+
+  if ( !is.null(avoid_polygons) )
+    query$options$avoid_polygons = avoid_polygons
 
   if ( !is.null(query$options) )
     query$options = toJSON(query$options, auto_unbox=TRUE)
