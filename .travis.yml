@@ -16,7 +16,7 @@ addons:
 
 after_success:
   - Rscript -e 'covr::codecov()'
-  - Rscript -e 'cat(getwd())'
+  - Rscript -e 'pkgdown::build_site()'
 
 deploy:
   provider: pages
