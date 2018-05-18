@@ -14,8 +14,8 @@
 #' @template param-common
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint isochrones
-#' @return Duration or distance matrix for mutliple source and destination
-#'   points.
+#' @return A GeoJSON object containing a FeatureCollection of Polygons
+#'   corresponding to the accessible area.
 #' @examples
 #' ors_isochrones(c(8.34234, 48.23424), interval=20)
 #' @template author

@@ -2,7 +2,8 @@
 #'
 #' Get/set the API key to openrouteservice.
 #'
-#' To set the key provide it in the `key` argument. To retrieve the current value call the function with `key` unset.
+#' To set the key provide it in the `key` argument. To retrieve the current
+#' value call the function with `key` unset.
 #'
 #' @return API Key value when called without `key`.
 #' @param key API key value provided as a character scalar

@@ -1,14 +1,17 @@
 #' Openrouteservice Matrix
 #'
-#' Obtain one-to-many, many-to-one and many-to-many matrices for time and distance.
+#' Obtain one-to-many, many-to-one and many-to-many matrices for time and
+#' distance.
 #'
 #' @param locations List of `longitude, latitude` coordinate pairs
 #' @template param-profile
-#' @param metrics Returned metrics. Use `"distance"` for distance matrix in defined `units`, and/or `duration`` for time matrix in seconds.
+#' @param metrics Returned metrics. Use `"distance"` for distance matrix in
+#'   defined `units`, and/or `duration`` for time matrix in seconds.
 #' @template param-common
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint matrix
-#' @return Duration or distance matrix for mutliple source and destination points.
+#' @return Duration or distance matrix for multiple source and destination
+#'   points.
 #' @examples
 #' coordinates = list(
 #'   c(9.970093, 48.477473),

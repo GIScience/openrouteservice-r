@@ -18,8 +18,7 @@ structured geocoding request a named list of parameters.}
 }
 \value{
 Geocoding: a JSON formatted list of objects corresponding to the
-search input.
-Reverse geocoding: the next enclosing object with an address
+search input. Reverse geocoding: the next enclosing object with an address
 tag which surrounds the given coordinate.
 }
 \description{

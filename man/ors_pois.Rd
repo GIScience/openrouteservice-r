@@ -25,7 +25,9 @@ Search for points of interest around points or in geometries.
 \details{
 There are three different request types: \code{pois}, \code{stats} and \code{list}.
 
-\code{pois} returns a GeoJSON FeatureCollection in the specified bounding box or geometry. \code{stats} does the same but groups by categories, ultimately returning a JSON object with the absolute numbers of POIs of a certain group.
+\code{pois} returns a GeoJSON FeatureCollection in the specified bounding box or
+geometry. \code{stats} does the same but groups by categories, ultimately
+returning a JSON object with the absolute numbers of POIs of a certain group.
 
 \code{list} returns a list of category groups and their ids.
 }

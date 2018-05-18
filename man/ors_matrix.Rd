@@ -15,17 +15,20 @@ ors_matrix(locations, profile = c("driving-car", "driving-hgv",
 
 \item{profile}{Route profile, defaults to \code{"driving-car"}.}
 
-\item{metrics}{Returned metrics. Use \code{"distance"} for distance matrix in defined \code{units}, and/or `duration`` for time matrix in seconds.}
+\item{metrics}{Returned metrics. Use \code{"distance"} for distance matrix in
+defined \code{units}, and/or `duration`` for time matrix in seconds.}
 
 \item{...}{Optional parameters as described \href{https://openrouteservice.org/documentation/#/reference/matrix/matrix}{here}.}
 
 \item{parse_output}{Should the response be parsed to an R object}
 }
 \value{
-Duration or distance matrix for mutliple source and destination points.
+Duration or distance matrix for multiple source and destination
+points.
 }
 \description{
-Obtain one-to-many, many-to-one and many-to-many matrices for time and distance.
+Obtain one-to-many, many-to-one and many-to-many matrices for time and
+distance.
 }
 \examples{
 coordinates = list(

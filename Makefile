@@ -32,4 +32,7 @@ clean:
 publish: check clean website
 	./update_web.sh
 
-.PHONY: readme document build install check website clean publish
+spellcheck:
+	${RSCRIPT} -e "devtools::spell_check()"
+
+.PHONY: readme document build install check website clean publish spellcheck

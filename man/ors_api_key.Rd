@@ -26,7 +26,8 @@ API Key value when called without \code{key}.
 Get/set the API key to openrouteservice.
 }
 \details{
-To set the key provide it in the \code{key} argument. To retrieve the current value call the function with \code{key} unset.
+To set the key provide it in the \code{key} argument. To retrieve the current
+value call the function with \code{key} unset.
 }
 \author{
 Andrzej Oleś <\email{andrzej@openrouteservice.org}>

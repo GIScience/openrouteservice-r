@@ -23,8 +23,8 @@ single range values.}
 \item{parse_output}{Should the response be parsed to an R object}
 }
 \value{
-Duration or distance matrix for mutliple source and destination
-points.
+A GeoJSON object containing a FeatureCollection of Polygons
+corresponding to the accessible area.
 }
 \description{
 Obtain areas of reachability from given locations.

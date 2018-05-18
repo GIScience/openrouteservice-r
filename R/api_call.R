@@ -112,7 +112,8 @@ api_call <- function(path, method, query = list(), ...,
 
 #' Print a Compact Summary of the API Response
 #'
-#' `print.ors_api` uses [str][utils::str()] to compactly display the structure of the openrouteservice API response object.
+#' `print.ors_api` uses [str][utils::str()] to compactly display the structure
+#' of the openrouteservice API response object.
 #'
 #' @param x object of class `ors_api`.
 #' @inheritParams utils::str

@@ -4,7 +4,9 @@
 #'
 #' There are three different request types: `pois`, `stats` and `list`.
 #'
-#' `pois` returns a GeoJSON FeatureCollection in the specified bounding box or geometry. `stats` does the same but groups by categories, ultimately returning a JSON object with the absolute numbers of POIs of a certain group.
+#' `pois` returns a GeoJSON FeatureCollection in the specified bounding box or
+#' geometry. `stats` does the same but groups by categories, ultimately
+#' returning a JSON object with the absolute numbers of POIs of a certain group.
 #'
 #' `list` returns a list of category groups and their ids.
 #' @param request One of the following: `"pois"`, `"stats"` or `"list"`
