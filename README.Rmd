@@ -7,17 +7,16 @@ output: rmarkdown::md_document
 
 # openrouteservice R client
 
-```{r readme, include=FALSE}
+```{r readme, echo = FALSE, results = 'asis'}
 lines = readLines("vignettes/openrouteservice.Rmd")
 ids = grep("<!-- README (START|END) -->", lines) + c(1, -1)
 readme = lines[do.call(":", as.list(ids))]
 readme = gsub("^#(#+)(.*)", "\\1\\2", readme)
-writeLines(readme, file.path(dirname(tempdir()), "README.Rmd"))
-```
-
-```{r child = file.path(dirname(tempdir()), "README.Rmd")}
+cat(knitr::knit_child(text=readme, quiet=TRUE))
 ```
 
 ## Get started
 
-See the package [vignette](https://giscience.github.io/openrouteservice-r/articles/openrouteservice.html) for an overview of the offered functionality.
+See the package
+[vignette](https://giscience.github.io/openrouteservice-r/articles/openrouteservice.html)
+for an overview of the offered functionality.
