@@ -29,7 +29,7 @@ website:
 clean:
 	${RSCRIPT} -e "pkgdown::clean_site()"
 
-publish: check clean website
+publish: clean website
 	./update_web.sh
 
 spellcheck:
