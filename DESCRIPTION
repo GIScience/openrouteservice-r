@@ -1,6 +1,6 @@
 Package: openrouteservice
 Title: openrouteservice API client
-Version: 0.1.10
+Version: 0.1.11
 Authors@R: person("Andrzej", "Oleś", email = "andrzej@openrouteservice.org", comment = c(ORCID = "0000-0003-0285-2787"), role = c("aut", "cre"))
 Description: The package streamlines access to the services provided by openrouteservice.org.
   It allows you to painlessly query for directions, geocoding, isochrones, time-distance matrices, and POIs.

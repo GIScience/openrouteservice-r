@@ -43,6 +43,19 @@ api_query <- function(query, collapse) {
   c(api_key = ors_api_key(), query)
 }
 
+#' @importFrom httr status_code
+rate_limited_call <- function (method, args) {
+  sleep_time <- 1L
+  while (TRUE) {
+    res <- do.call(method, args)
+    if ( status_code(res) == 429L )
+      Sys.sleep( (sleep_time <- sleep_time * 2L) )
+    else
+      break
+  }
+  res
+}
+
 #' @importFrom httr content http_error http_type modify_url status_code
 #' @importFrom httr GET POST accept user_agent
 #' @importFrom jsonlite fromJSON
@@ -53,6 +66,7 @@ api_call <- function(path, method, query = list(), ...,
                      response_format = c("json", "xml"),
                      parse_output = NULL, simplifyMatrix = TRUE) {
 
+  method <- match.fun(method)
   response_format <- match.arg(response_format)
   type <- sprintf("application/%s", response_format)
 
@@ -61,10 +75,7 @@ api_call <- function(path, method, query = list(), ...,
   url <- getOption('openrouteservice.url', "https://api.openrouteservice.org")
   url <- modify_url(url, path = path, query = api_query(query, collapse=collapse))
 
-  res <- do.call(method, list(url, accept(type), user_agent("openrouteservice-r"), ...))
-
-  if (http_type(res) != type)
-    stop(sprintf("API did not return %s", response_format), call. = FALSE)
+  res <- rate_limited_call(method, list(url, accept(type), user_agent("openrouteservice-r"), ...))
 
   if (http_error(res))
     stop(
@@ -75,6 +86,9 @@ api_call <- function(path, method, query = list(), ...,
       ),
       call. = FALSE
     )
+
+  if (http_type(res) != type)
+    stop(sprintf("API did not return %s", response_format), call. = FALSE)
 
   if (is.null(parse_output))
     parse_output <- getOption("openrouteservice.parse_output", TRUE)
