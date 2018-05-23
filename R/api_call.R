@@ -13,7 +13,8 @@ encode_pairs <- function(x) {
 }
 
 #' @importFrom jsonlite toJSON
-api_query <- function(query, collapse) {
+api_query <- function(query, collapse, 
+                      service = "openrouteservice", username = NULL, keyring = NULL) {
   # limit precision of numeric parameters to 6 decimal places
   query = rapply(query, how="replace", f = function(x) {
     if (is.numeric(x))
@@ -40,7 +41,7 @@ api_query <- function(query, collapse) {
   if ( !is.null(query$options) )
     query$options = toJSON(query$options, auto_unbox=TRUE)
 
-  c(api_key = ors_api_key(), query)
+  c(api_key = ors_api_key(service=service, username=username, keyring=keyring), query)
 }
 
 #' @importFrom httr status_code
@@ -64,7 +65,8 @@ rate_limited_call <- function (method, args) {
 #' @importFrom xml2 read_xml xml_validate
 api_call <- function(path, method, query = list(), ...,
                      response_format = c("json", "xml"),
-                     parse_output = NULL, simplifyMatrix = TRUE) {
+                     parse_output = NULL, simplifyMatrix = TRUE, 
+                     service = "openrouteservice", username = NULL, keyring = NULL) {
 
   method <- match.fun(method)
   response_format <- match.arg(response_format)
@@ -73,7 +75,8 @@ api_call <- function(path, method, query = list(), ...,
   collapse = ifelse (startsWith(path, 'geocode'), ',', '|')
 
   url <- getOption('openrouteservice.url', "https://api.openrouteservice.org")
-  url <- modify_url(url, path = path, query = api_query(query, collapse=collapse))
+  url <- modify_url(url, path = path, query = api_query(query, collapse=collapse, 
+                                                        service=service, username=username, keyring=keyring))
 
   res <- rate_limited_call(method, list(url, accept(type), user_agent("openrouteservice-r"), ...))
 

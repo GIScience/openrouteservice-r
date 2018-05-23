@@ -24,6 +24,7 @@
 ors_directions <- function(coordinates,
                            profile = c('driving-car', 'driving-hgv', 'cycling-regular', 'cycling-road', 'cycling-safe', 'cycling-mountain', 'cycling-tour', 'cycling-electric', 'foot-walking', 'foot-hiking', 'wheelchair'),
                            format = c('json', 'geojson', 'gpx'),
+                           service = "openrouteservice", username = NULL, keyring = NULL,
                            ...,
                            parse_output = NULL) {
   if (missing(coordinates))
@@ -36,5 +37,6 @@ ors_directions <- function(coordinates,
 
   query = list(coordinates = coordinates, profile = profile, format = format, ...)
 
-  api_call("directions", "GET", query, response_format = response_format, parse_output = parse_output)
+  api_call("directions", "GET", query, response_format = response_format, parse_output = parse_output,
+           service=service, username=username, keyring=keyring)
 }

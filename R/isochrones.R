@@ -23,6 +23,7 @@
 ors_isochrones <- function(locations,
                            profile = c('driving-car', 'driving-hgv', 'cycling-regular', 'cycling-road', 'cycling-safe', 'cycling-mountain', 'cycling-tour', 'foot-walking', 'foot-hiking'),
                            range = 60,
+                           service = "openrouteservice", username = NULL, keyring = NULL,
                            ...,
                            parse_output = NULL) {
   if (missing(locations))
@@ -32,7 +33,8 @@ ors_isochrones <- function(locations,
 
   query = list(locations = locations, profile = profile, range = range, ...)
 
-  res = api_call("isochrones", "GET", query, simplifyMatrix=FALSE, parse_output = parse_output)
+  res = api_call("isochrones", "GET", query, simplifyMatrix=FALSE, parse_output = parse_output,
+                 service=service, username=username, keyring=keyring)
 
   if (inherits(res, "ors_api"))
     res$info$query$ranges = as.numeric(unlist(strsplit(res$info$query$ranges, ",")))
