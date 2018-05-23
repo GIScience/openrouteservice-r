@@ -21,6 +21,7 @@
 #' @export
 ors_pois <- function(request = c('pois', 'stats', 'list'),
                      geometry,
+                     service = "openrouteservice", username = NULL, keyring = NULL,
                      ...,
                      parse_output = NULL) {
   request = match.arg(request)
@@ -34,5 +35,6 @@ ors_pois <- function(request = c('pois', 'stats', 'list'),
       body$geometry = geometry
   }
 
-  api_call("pois", "POST", body = body, encode = "json", parse_output = parse_output)
+  api_call("pois", "POST", body = body, encode = "json", parse_output = parse_output,
+           service=service, username=username, keyring=keyring)
 }

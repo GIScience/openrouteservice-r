@@ -33,6 +33,7 @@
 ors_matrix <- function(locations,
                        profile = c('driving-car', 'driving-hgv', 'cycling-regular', 'cycling-road', 'cycling-safe', 'cycling-mountain', 'cycling-tour', 'cycling-electric', 'foot-walking', 'foot-hiking', 'wheelchair'),
                        metrics = c('distance', 'duration'),
+                       service = "openrouteservice", username = NULL, keyring = NULL,
                        ...,
                        parse_output = NULL) {
   if (missing(locations))
@@ -45,5 +46,6 @@ ors_matrix <- function(locations,
 
   body = list(locations = locations, profile = profile, metrics = metrics, ...)
 
-  api_call("matrix", "POST", body = body, encode = "json", parse_output = parse_output)
+  api_call("matrix", "POST", body = body, encode = "json", parse_output = parse_output,
+           service=service, username=username, keyring=keyring)
 }

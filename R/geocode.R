@@ -38,12 +38,15 @@
 #' y = ors_geocode(location = location, layers = "locality", size = 1)
 #'
 #' @export
-ors_geocode <- function(query, location, ..., parse_output = NULL) {
+ors_geocode <- function(query, location,
+                        service = "openrouteservice", username = NULL, keyring = NULL,
+                        ..., parse_output = NULL) {
   if ( missing(query) ) {
     if ( missing(location) )
       stop('Specify at least one of the arguments "query/location"')
     query <- list(point.lon = location[1L], point.lat = location[2L], ...)
-    api_call("geocode/reverse", "GET", query, parse_output = parse_output)
+    api_call("geocode/reverse", "GET", query, parse_output = parse_output,
+             service=service, username=username, keyring=keyring)
   }
   else {
     if ( length(query) > 1) {
