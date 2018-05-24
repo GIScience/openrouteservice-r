@@ -4,6 +4,12 @@ context("API key management")
 env <- Sys.getenv("ORS_API_KEY", NA);
 key <- tryCatch(keyring::key_get("openrouteservice"), error = function(e) NA)
 
+## restore initial state
+on.exit({
+  if ( !is.na(env) ) Sys.setenv(ORS_API_KEY = env)
+  if ( !is.na(key) ) keyring::key_set_with_value("openrouteservice", NULL, key)
+})
+
 Sys.unsetenv("ORS_API_KEY")
 api_key_val <- "key_stored_in_keyring"
 
@@ -16,13 +22,6 @@ test_that("Get key from keyring", {
 })
 
 test_that("Environment variable takes precedance over keyring", {
-  ors_api_key <- Sys.getenv("ORS_API_KEY", NA)
-  on.exit(
-    if ( is.na(ors_api_key) )
-      Sys.unsetenv("ORS_API_KEY")
-    else
-      Sys.setenv(ORS_API_KEY = ors_api_key)
-  )
   api_key_val <- "key_stored_in_env_var"
   Sys.setenv(ORS_API_KEY = api_key_val)
   expect_identical(ors_api_key(), api_key_val)
@@ -35,7 +34,3 @@ test_that("Use non-default environment variable for api key", {
   expect_identical(ors_api_key(), api_key_val)
   Sys.unsetenv("MY_API_KEY")
 })
-
-## restore initial state
-if ( !is.na(env) ) Sys.setenv(ORS_API_KEY = env)
-if ( !is.na(key) ) keyring::key_set_with_value("openrouteservice", NULL, key)
