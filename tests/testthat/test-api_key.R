@@ -8,16 +8,24 @@ key <- tryCatch(keyring::key_get("openrouteservice"), error = function(e) NA)
 on.exit({
   if ( !is.na(env) ) Sys.setenv(ORS_API_KEY = env)
   if ( !is.na(key) ) keyring::key_set_with_value("openrouteservice", NULL, key)
-})
+}, add = TRUE)
 
 Sys.unsetenv("ORS_API_KEY")
 api_key_val <- "key_stored_in_keyring"
 
+skip_on_linux <- function() {
+  sysname <- tolower(Sys.info()[["sysname"]])
+  if (sysname == "linux") skip("Linux")
+  invisible(TRUE)
+}
+
 test_that("Set key in keyring", {
+  skip_on_linux()
   expect_silent(ors_api_key(api_key_val))
 })
 
 test_that("Get key from keyring", {
+  skip_on_linux()
   expect_identical(ors_api_key(), api_key_val)
 })
 
