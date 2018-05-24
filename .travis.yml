@@ -14,7 +14,9 @@ addons:
       - libsecret-1-dev
       - protobuf-compiler
 
-os: osx
+os:
+  - osx
+  - linux
 
 after_success:
   - Rscript -e 'covr::codecov()'
