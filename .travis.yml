@@ -19,9 +19,8 @@ os:
   - linux
 
 after_success:
-  - Rscript -e 'covr::codecov()'
-  - R CMD INSTALL .
-  - Rscript -e 'pkgdown::build_site()'
+  - test $TRAVIS_OS_NAME = "osx" && Rscript -e 'covr::codecov()'
+  - test $TRAVIS_OS_NAME = "linux" && R CMD INSTALL . && Rscript -e 'pkgdown::build_site()'
 
 deploy:
   provider: pages
@@ -30,3 +29,4 @@ deploy:
   local-dir: docs
   on:
     branch: master
+    condition: $TRAVIS_OS_NAME = "linux"
