@@ -23,11 +23,23 @@ keyring is used. See also \code{\link[=has_keyring_support]{has_keyring_support(
 API Key value when called without \code{key}.
 }
 \description{
-Get/set the API key to openrouteservice.
+Get/set openrouteservice API key.
 }
 \details{
 To set the key provide it in the \code{key} argument. To retrieve the current
 value call the function with \code{key} unset.
+
+Typically the key is saved in the system credential store. Once the key is
+defined, it persists in the keyring store of the operating system so it
+doesn't need to be set again in a new R session.
+
+Internally the function uses \code{\link[keyring]{key_set}} and
+\code{\link[keyring]{key_get}}. The use of keyring package can be bypassed by
+providing the key in the environment variable ORS_API_KEY. The value from the
+environment variable takes precedence over the value stored in the system
+credential store. The default environment variable name used to retrieve the
+openrouteservice api key can be overridden by specifying it in
+\code{options("openrouteservice.api_key_env")}.
 }
 \author{
 Andrzej Oleś <\email{andrzej@openrouteservice.org}>
