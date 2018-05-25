@@ -14,17 +14,22 @@ encode_pairs <- function(x) {
   paste(x[v], x[!v], sep=",")
 }
 
+
+# reduce precision of numeric parameters to 6 decimal places
+limit_precision <- function(l) {
+  rapply(l, how="replace", f = function(x) {
+    if ( is.numeric(x) && !is.integer(x) )
+      round(x, digits=6L)
+    else
+      x
+  })
+}
+
 #' @importFrom jsonlite toJSON
 api_query <- function(api_key, params = list(), collapse = "|") {
   ## process parameters
   if ( length(params) ) {
-    # limit precision of numeric parameters to 6 decimal places
-    params = rapply(params, how="replace", f = function(x) {
-      if (is.numeric(x))
-        round(x, digits=6L)
-      else
-        x
-    })
+    params <- limit_precision(params)
 
     # encode lists of pairs
     pair_params = c("locations", "coordinates", "bearings")
