@@ -46,8 +46,13 @@ api_query <- function(api_key, params = list(), collapse = "|") {
   c(api_key = api_key, params)
 }
 
-#' @importFrom httr status_code
-rate_limited_call <- function (method, args) {
+
+#' @importFrom httr GET POST accept modify_url user_agent status_code
+call_api <- function (method, url, response_format, ...) {
+  method <- match.fun(method)
+  type <- sprintf("application/%s", response_format)
+  args <- list(url, accept(type), user_agent("openrouteservice-r"), ...)
+
   sleep_time <- 1L
   while (TRUE) {
     res <- do.call(method, args)
@@ -59,25 +64,32 @@ rate_limited_call <- function (method, args) {
   res
 }
 
-#' @importFrom httr content http_error http_type modify_url status_code
-#' @importFrom httr GET POST accept user_agent
-#' @importFrom jsonlite fromJSON
-#' @importFrom geojson as.geojson
-#' @importFrom geojsonlint geojson_validate
-#' @importFrom xml2 read_xml xml_validate
+
 api_call <- function(path, method, query, ...,
                      response_format = c("json", "xml"),
                      parse_output = NULL, simplifyMatrix = TRUE) {
 
-  method <- match.fun(method)
   response_format <- match.arg(response_format)
-  type <- sprintf("application/%s", response_format)
 
+  url <- construct_url(path, query)
+
+  res <- call_api(method, url, response_format, ...)
+
+  process_response(res, path, response_format, parse_output, simplifyMatrix)
+}
+
+#' @importFrom httr modify_url
+construct_url <- function(path, query) {
   url <- getOption('openrouteservice.url', "https://api.openrouteservice.org")
-  url <- modify_url(url, path = path, query = query)
+  modify_url(url, path = path, query = query)
+}
 
-  res <- rate_limited_call(method, list(url, accept(type), user_agent("openrouteservice-r"), ...))
-
+#' @importFrom httr content http_error http_type status_code
+#' @importFrom jsonlite fromJSON
+#' @importFrom geojson as.geojson
+#' @importFrom geojsonlint geojson_validate
+#' @importFrom xml2 read_xml xml_validate
+process_response <- function(res, path, response_format, parse_output, simplifyMatrix) {
   if (http_error(res))
     stop(
       sprintf(
@@ -88,7 +100,7 @@ api_call <- function(path, method, query, ...,
       call. = FALSE
     )
 
-  if (http_type(res) != type)
+  if (http_type(res) != sprintf("application/%s", response_format))
     stop(sprintf("API did not return %s", response_format), call. = FALSE)
 
   if (is.null(parse_output))
