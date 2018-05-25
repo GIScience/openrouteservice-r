@@ -38,23 +38,32 @@
 #' y = ors_geocode(location = location, layers = "locality", size = 1)
 #'
 #' @export
-ors_geocode <- function(query, location, ..., parse_output = NULL) {
-  if ( missing(query) ) {
-    if ( missing(location) )
-      stop('Specify at least one of the arguments "query/location"')
-    query <- list(point.lon = location[1L], point.lat = location[2L], ...)
-    api_call("geocode/reverse", "GET", query, parse_output = parse_output)
-  }
-  else {
-    if ( length(query) > 1) {
-      if ( !is.list(query) )
-        query <- as.list(query)
-      query <- c(query, ...)
-      api_call("geocode/search/structured", "GET", query, parse_output = parse_output)
+ors_geocode <- function(query,
+                        location,
+                        ...,
+                        api_key = ors_api_key(),
+                        parse_output = NULL) {
+  path <-
+    if ( missing(query) ) {
+      if ( missing(location) )
+        stop('Specify at least one of the arguments "query/location"')
+      params <- list(point.lon = location[1L], point.lat = location[2L], ...)
+      "geocode/reverse"
     }
     else {
-      query <- list(text = query, ...)
-      api_call("geocode/search", "GET", query, parse_output = parse_output)
+      if ( length(query) > 1L ) {
+        if ( !is.list(query) )
+          query <- as.list(query)
+        params <- c(query, ...)
+        "geocode/search/structured"
+      }
+      else {
+        params <- list(text = query, ...)
+        "geocode/search"
+      }
     }
-  }
+
+  query <- api_query(api_key, params, collapse = ",")
+
+  api_call(path, "GET", query, parse_output = parse_output)
 }

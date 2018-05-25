@@ -8,7 +8,7 @@ ors_directions(coordinates, profile = c("driving-car", "driving-hgv",
   "cycling-regular", "cycling-road", "cycling-safe", "cycling-mountain",
   "cycling-tour", "cycling-electric", "foot-walking", "foot-hiking",
   "wheelchair"), format = c("json", "geojson", "gpx"), ...,
-  parse_output = NULL)
+  api_key = ors_api_key(), parse_output = NULL)
 }
 \arguments{
 \item{coordinates}{List of \code{longitude, latitude} coordinate pairs visited in
@@ -19,6 +19,8 @@ order.}
 \item{format}{Response format, defaults to \code{"json"}}
 
 \item{...}{Optional parameters as described \href{https://openrouteservice.org/documentation/#/reference/directions/directions}{here}.}
+
+\item{api_key}{Character scalar containing openrouteservice API key}
 
 \item{parse_output}{Should the response be parsed to an R object}
 }

@@ -22,8 +22,11 @@
 ors_pois <- function(request = c('pois', 'stats', 'list'),
                      geometry,
                      ...,
+                     api_key = ors_api_key(),
                      parse_output = NULL) {
   request = match.arg(request)
+
+  query = api_query(api_key)
 
   body = list(request = request, ...)
 
@@ -34,5 +37,5 @@ ors_pois <- function(request = c('pois', 'stats', 'list'),
       body$geometry = geometry
   }
 
-  api_call("pois", "POST", body = body, encode = "json", parse_output = parse_output)
+  api_call("pois", "POST", query, body = body, encode = "json", parse_output = parse_output)
 }

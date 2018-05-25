@@ -25,6 +25,7 @@ ors_directions <- function(coordinates,
                            profile = c('driving-car', 'driving-hgv', 'cycling-regular', 'cycling-road', 'cycling-safe', 'cycling-mountain', 'cycling-tour', 'cycling-electric', 'foot-walking', 'foot-hiking', 'wheelchair'),
                            format = c('json', 'geojson', 'gpx'),
                            ...,
+                           api_key = ors_api_key(),
                            parse_output = NULL) {
   if (missing(coordinates))
     stop('Missing argument "coordinates"')
@@ -34,7 +35,9 @@ ors_directions <- function(coordinates,
   format = match.arg(format)
   response_format = switch(format, 'gpx'='xml', 'json')
 
-  query = list(coordinates = coordinates, profile = profile, format = format, ...)
+  params = list(coordinates = coordinates, profile = profile, format = format, ...)
+
+  query = api_query(api_key, params)
 
   api_call("directions", "GET", query, response_format = response_format, parse_output = parse_output)
 }

@@ -13,34 +13,37 @@ encode_pairs <- function(x) {
 }
 
 #' @importFrom jsonlite toJSON
-api_query <- function(query, collapse) {
-  # limit precision of numeric parameters to 6 decimal places
-  query = rapply(query, how="replace", f = function(x) {
-    if (is.numeric(x))
-      round(x, digits=6L)
-    else
-      x
-  })
+api_query <- function(api_key, params = list(), collapse = "|") {
+  ## process parameters
+  if ( length(params) ) {
+    # limit precision of numeric parameters to 6 decimal places
+    params = rapply(params, how="replace", f = function(x) {
+      if (is.numeric(x))
+        round(x, digits=6L)
+      else
+        x
+    })
 
-  # encode lists of pairs
-  pair_params = c("locations", "coordinates", "bearings")
-  pair_params = pair_params[pair_params %in% names(query)]
+    # encode lists of pairs
+    pair_params = c("locations", "coordinates", "bearings")
+    pair_params = pair_params[pair_params %in% names(params)]
 
-  if ( length(pair_params)>0L )
-    query[pair_params] = lapply(query[pair_params], encode_pairs)
+    if ( length(pair_params)>0L )
+      params[pair_params] = lapply(params[pair_params], encode_pairs)
 
-  # store polygon coordinates to preserve their original structure
-  avoid_polygons = query$options$avoid_polygons
+    # store polygon coordinates to preserve their original structure
+    avoid_polygons = params$options$avoid_polygons
 
-  query = rapply(query, collapse_vector, how="replace", collapse=collapse)
+    params = rapply(params, collapse_vector, how="replace", collapse=collapse)
 
-  if ( !is.null(avoid_polygons) )
-    query$options$avoid_polygons = avoid_polygons
+    if ( !is.null(avoid_polygons) )
+      params$options$avoid_polygons = avoid_polygons
 
-  if ( !is.null(query$options) )
-    query$options = toJSON(query$options, auto_unbox=TRUE)
+    if ( !is.null(params$options) )
+      params$options = toJSON(params$options, auto_unbox=TRUE)
+  }
 
-  c(api_key = ors_api_key(), query)
+  c(api_key = api_key, params)
 }
 
 #' @importFrom httr status_code
@@ -62,7 +65,7 @@ rate_limited_call <- function (method, args) {
 #' @importFrom geojson as.geojson
 #' @importFrom geojsonlint geojson_validate
 #' @importFrom xml2 read_xml xml_validate
-api_call <- function(path, method, query = list(), ...,
+api_call <- function(path, method, query, ...,
                      response_format = c("json", "xml"),
                      parse_output = NULL, simplifyMatrix = TRUE) {
 
@@ -70,10 +73,8 @@ api_call <- function(path, method, query = list(), ...,
   response_format <- match.arg(response_format)
   type <- sprintf("application/%s", response_format)
 
-  collapse = ifelse (startsWith(path, 'geocode'), ',', '|')
-
   url <- getOption('openrouteservice.url', "https://api.openrouteservice.org")
-  url <- modify_url(url, path = path, query = api_query(query, collapse=collapse))
+  url <- modify_url(url, path = path, query = query)
 
   res <- rate_limited_call(method, list(url, accept(type), user_agent("openrouteservice-r"), ...))
 

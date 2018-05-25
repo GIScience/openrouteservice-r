@@ -24,13 +24,16 @@ ors_isochrones <- function(locations,
                            profile = c('driving-car', 'driving-hgv', 'cycling-regular', 'cycling-road', 'cycling-safe', 'cycling-mountain', 'cycling-tour', 'foot-walking', 'foot-hiking'),
                            range = 60,
                            ...,
+                           api_key = ors_api_key(),
                            parse_output = NULL) {
   if (missing(locations))
     stop('Missing argument "locations"')
 
   profile = match.arg(profile)
 
-  query = list(locations = locations, profile = profile, range = range, ...)
+  params = list(locations = locations, profile = profile, range = range, ...)
+
+  query = api_query(api_key, params)
 
   res = api_call("isochrones", "GET", query, simplifyMatrix=FALSE, parse_output = parse_output)
 
