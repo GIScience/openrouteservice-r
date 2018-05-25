@@ -1,4 +1,4 @@
-context("API key management")
+context("Key management")
 
 ## record current state before starting any tests
 env <- Sys.getenv("ORS_API_KEY", NA);

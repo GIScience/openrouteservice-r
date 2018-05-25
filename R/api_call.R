@@ -50,10 +50,8 @@ api_query <- function(api_key, params = list(), collapse = "|") {
 
 
 #' @importFrom httr GET POST accept modify_url user_agent status_code
-call_api <- function (method, url, response_format, ...) {
+call_api <- function (method, args) {
   method <- match.fun(method)
-  type <- sprintf("application/%s", response_format)
-  args <- list(url, accept(type), user_agent("openrouteservice-r"), ...)
 
   sleep_time <- 1L
   while (TRUE) {
@@ -75,7 +73,10 @@ api_call <- function(path, method, query, ...,
 
   url <- construct_url(path, query)
 
-  res <- call_api(method, url, response_format, ...)
+  type <- sprintf("application/%s", response_format)
+  args <- list(url, accept(type), user_agent("openrouteservice-r"), ...)
+
+  res <- call_api(method, args)
 
   process_response(res, path, response_format, parse_output, simplifyMatrix)
 }
