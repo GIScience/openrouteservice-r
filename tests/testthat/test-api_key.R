@@ -14,8 +14,7 @@ Sys.unsetenv("ORS_API_KEY")
 api_key_val <- "key_stored_in_keyring"
 
 skip_on_linux <- function() {
-  sysname <- tolower(Sys.info()[["sysname"]])
-  if (sysname == "linux") skip("Linux")
+  if (on_os("linux")) skip("Linux")
   invisible(TRUE)
 }
 
