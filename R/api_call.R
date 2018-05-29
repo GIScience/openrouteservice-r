@@ -1,3 +1,4 @@
+# collapse vectors to (pipe-separated) strings
 collapse_vector <- function(x, collapse = "|") {
   if (!is.list(x) && length(x) > 1L)
     paste(x, collapse=collapse)
@@ -14,12 +15,11 @@ encode_pairs <- function(x) {
   paste(x[v], x[!v], sep=",")
 }
 
-
 # reduce precision of numeric parameters to 6 decimal places
-limit_precision <- function(l) {
+limit_precision <- function(l, digits) {
   rapply(l, how="replace", f = function(x) {
     if ( is.numeric(x) && !is.integer(x) )
-      round(x, digits=6L)
+      round(x, digits=digits)
     else
       x
   })
@@ -29,7 +29,9 @@ limit_precision <- function(l) {
 api_query <- function(api_key, params = list(), collapse = "|") {
   ## process parameters
   if ( length(params) ) {
-    params <- limit_precision(params)
+    digits <- getOption('openrouteservice.digits', 6L)
+
+    params <- limit_precision(params, digits)
 
     # encode lists of pairs
     pair_params = c("locations", "coordinates", "bearings")
@@ -47,7 +49,7 @@ api_query <- function(api_key, params = list(), collapse = "|") {
       params$options$avoid_polygons = avoid_polygons
 
     if ( !is.null(params$options) )
-      params$options = toJSON(params$options, auto_unbox=TRUE)
+      params$options = toJSON(params$options, auto_unbox=TRUE, digits=digits)
   }
 
   c(api_key = api_key, params)
