@@ -72,13 +72,15 @@ call_api <- function (method, args) {
 }
 
 
+#' @importFrom httr modify_url
 api_call <- function(path, method, query, ...,
                      response_format = c("json", "xml"),
                      parse_output = NULL, simplifyMatrix = TRUE) {
 
   response_format <- match.arg(response_format)
 
-  url <- construct_url(path, query)
+  url <- getOption('openrouteservice.url', "https://api.openrouteservice.org")
+  url <- modify_url(url, path = path, query = query)
 
   type <- sprintf("application/%s", response_format)
   args <- list(url, accept(type), user_agent("openrouteservice-r"), ...)
@@ -88,11 +90,6 @@ api_call <- function(path, method, query, ...,
   process_response(res, path, response_format, parse_output, simplifyMatrix)
 }
 
-#' @importFrom httr modify_url
-construct_url <- function(path, query) {
-  url <- getOption('openrouteservice.url', "https://api.openrouteservice.org")
-  modify_url(url, path = path, query = query)
-}
 
 #' @importFrom httr content http_error http_type status_code
 #' @importFrom jsonlite fromJSON
