@@ -3,9 +3,13 @@ sys_name <- function() tolower(Sys.info()[["sysname"]])
 on_os <- function(name) isTRUE(tolower(name) == sys_name())
 
 mock_response <- function(status = 200L, ...) {
-  res <- list(status_code = as.integer(status), ...)
-  class(res) <- "response"
-  res
+  structure(
+    list(
+      status_code = as.integer(status),
+      ...
+    ),
+   class = "response"
+  )
 }
 
 counter <- list()
