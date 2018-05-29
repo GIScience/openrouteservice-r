@@ -1,7 +1,5 @@
 context("Rate limit")
 
-source("helpers.R")
-
 test_that("Call API", {
   expect_identical(status_code(mock_method()), 200L)
   expect_identical(status_code(mock_method()), 429L)
