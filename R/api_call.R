@@ -117,18 +117,18 @@ process_response <- function(res, path, parse_output, simplifyMatrix) {
     parse_output <- getOption("openrouteservice.parse_output", TRUE)
   parse_output <- isTRUE(parse_output)
 
-  chr <- content(res, "text")
+  res <- content(res, "text")
 
   if (parse_output) {
     if (format=="application/json") {
-      res <- fromJSON(chr,
+      res <- fromJSON(res,
                       simplifyVector = TRUE,
                       simplifyDataFrame = FALSE,
                       simplifyMatrix = simplifyMatrix)
       res <- structure(res, class = c(sprintf("ors_%s", path), "ors_api", class(res)))
     }
     else if (format=="application/xml"){
-      res <- read_xml(chr)
+      res <- read_xml(res)
       gpx_xsd = getOption("openrouteservice.gpx_xsd", "https://raw.githubusercontent.com/GIScience/openrouteservice-schema/master/gpx/v1/ors-gpx.xsd")
       xsd <- read_xml(gpx_xsd)
       if (!xml_validate(res, xsd))
@@ -136,7 +136,7 @@ process_response <- function(res, path, parse_output, simplifyMatrix) {
     }
   }
   else if (format=="application/json") {
-    res <- structure(chr, class = "json")
+    res <- structure(res, class = "json")
     if ( isTRUE(geojson_validate(res)) )
       res <- as.geojson(res)
   }
