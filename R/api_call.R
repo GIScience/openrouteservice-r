@@ -8,7 +8,7 @@ collapse_vector <- function(x, collapse = "|") {
 
 # encode pairs as comma-separated strings
 encode_pairs <- function(x) {
-  x = unlist(x)
+  x = unlist(x, use.names = FALSE)
   if ( length(x) %% 2L )
     stop("Failed to encode pairs, odd number of elements")
   v = c(TRUE, FALSE)
