@@ -3,7 +3,7 @@
 #' Obtain one-to-many, many-to-one and many-to-many matrices for time and
 #' distance.
 #'
-#' @param locations List of `longitude, latitude` coordinate pairs
+#' @param locations A list of `longitude, latitude` coordinate pairs, or a two column `data.frame`
 #' @template param-profile
 #' @param metrics Returned metrics. Use `"distance"` for distance matrix in
 #'   defined `units`, and/or `duration`` for time matrix in seconds.
@@ -38,6 +38,8 @@ ors_matrix <- function(locations,
                        parse_output = NULL) {
   if (missing(locations))
     stop('Missing argument "locations"')
+
+  names(locations) <- NULL
 
   profile = match.arg(profile)
 
