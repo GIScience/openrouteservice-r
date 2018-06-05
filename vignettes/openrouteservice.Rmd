@@ -68,11 +68,15 @@ system. This means that it survives beyond the termination of the R session, so
 you don't need to set it again each time you start a new R session. To retrieve
 the key just call `ors_api_key()` without the `key` argument.
 
+Alternatively, they key can be provided in the environment variable
+`ORS_API_KEY`. The value from the environment variable takes precedence over the
+former approach allowing to bypass the keyring infrastructure.
+
 
 ## Directions
 
 `ors_directions()` interfaces the ORS directions service to compute routes
-between given `coordinates`.
+between given points specified in `coordinates`.
 
 ```{r directions, eval=TRUE}
 library(openrouteservice)
@@ -94,6 +98,19 @@ leaflet() %>%
   addTiles() %>%
   addGeoJSON(x, fill=FALSE) %>%
   fitBBox(x$bbox)
+```
+
+The points are specified as a list of coordinate pairs `c(lng, lat)`, or an
+object which can be coerced to an interleaved vector of the form `c(lng1, lat1,
+lng2, lat2, ...)`. In particular, if the points are provided in rows of a
+matrix-like object such as the result of `sf::st_coordinates` it needs to be
+transposed.^[This is because R stores matrices in column-major order (c.f.
+https://en.wikipedia.org/wiki/Row-_and_column-major_order)]
+
+```{r data_frame_coordinates}
+df <- data.frame(lng = c(8.34234, 8.34423), lat = c(48.23424, 48.26424))
+
+coordinates <- t(df)
 ```
 
 The API offers a wide range of `profile`s for multiple modes of transport: car,
