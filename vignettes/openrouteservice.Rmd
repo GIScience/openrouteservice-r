@@ -133,7 +133,7 @@ setting `elevation = TRUE` adds height to the coordinates of the points along
 the route, which can be used to plot the elevation profile colored by steepness
 obtained by specifying it in `extra_info`.
 
-```{r elevation, fig.dim=c(10, 5)}
+```{r elevation, fig.dim=c(10, 5), out.height='100%'}
 library(sp)
 library(ggplot2)
 library(RColorBrewer)
