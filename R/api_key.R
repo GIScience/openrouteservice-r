@@ -18,26 +18,24 @@
 #' `options("openrouteservice.api_key_env")`.
 #'
 #' @param key API key value provided as a character scalar
-#' @inheritParams keyring::key_set
 #' @return API Key value when called without `key`.
 #' @template author
-#' @importFrom keyring key_list key_get key_list key_set_with_value
 #' @export
-ors_api_key <- function (key, service = 'openrouteservice', username = NULL, keyring = NULL) {
+ors_api_key <- function (key) {
+  api_key_env <- getOption("openrouteservice.api_key_env", "ORS_API_KEY")
   ## get key
   if ( missing(key) ) {
-    api_key_env <- getOption("openrouteservice.api_key_env", "ORS_API_KEY")
     api_key_val <- Sys.getenv(api_key_env)
     ## api key set in environment variable takes precedence over keyring
     if ( nchar(api_key_val) )
       api_key_val
     else
-      tryCatch(
-        key_get(service, username, keyring),
-        error = function(e)
-          stop(sprintf("API key not set.\n  Get your free key at %s\n  Use `ors_api_key('<your-api-key>')` to set it", signup_url()), call. = FALSE))
+      stop(sprintf("API key not set.\n  Get your free key at %s\n  Use `ors_api_key('<your-api-key>')` to set it", signup_url()), call. = FALSE)
   }
   ## set key
-  else
-    key_set_with_value(service, username, key, keyring)
+  else {
+    f <- normalizePath(file.path("~", ".Renviron"), mustWork = FALSE)
+    cat(sprintf("%s=%s", api_key_env, key), file = f)
+    message("Please restart your R session for the changes to take effect")
+  }
 }

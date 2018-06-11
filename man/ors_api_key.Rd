@@ -4,20 +4,10 @@
 \alias{ors_api_key}
 \title{API key management}
 \usage{
-ors_api_key(key, service = "openrouteservice", username = NULL,
-  keyring = NULL)
+ors_api_key(key)
 }
 \arguments{
 \item{key}{API key value provided as a character scalar}
-
-\item{service}{Service name, a character scalar.}
-
-\item{username}{Username, a character scalar, or \code{NULL} if the key
-is not associated with a username.}
-
-\item{keyring}{For systems that support multiple keyrings, specify
-the name of the keyring to use here. If \code{NULL}, then the default
-keyring is used. See also \code{\link[=has_keyring_support]{has_keyring_support()}}.}
 }
 \value{
 API Key value when called without \code{key}.
