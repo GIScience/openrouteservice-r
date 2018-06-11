@@ -172,7 +172,7 @@ df2 = data.frame(x = c(df$x1, df$x2, df$x2, df$x1),
                  id = 1:n)
 
 ggplot() + theme_bw() +
-  geom_segment(data = df, aes(x1, y1, xend = x2, yend = y2)) +
+  geom_segment(data = df, aes(x1, y1, xend = x2, yend = y2), size = 1) +
   geom_polygon(data = df2, aes(x, y, group = id), fill = "white") +
   geom_polygon(data = df2, aes(x, y , group = id, fill = steepness)) +
   scale_fill_manual(values = alpha(palette, 0.8), drop = FALSE) +
