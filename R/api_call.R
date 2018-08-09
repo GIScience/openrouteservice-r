@@ -79,6 +79,10 @@ api_call <- function(path, method, query, ...,
 
   response_format <- match.arg(response_format)
 
+  new_path <- getOption('openrouteservice.paths')[[path]]
+  if (!is.null(new_path))
+    path <- new_path
+
   url <- getOption('openrouteservice.url', "https://api.openrouteservice.org")
   url <- modify_url(url, path = path, query = query)
 
