@@ -307,7 +307,9 @@ leaflet() %>%
   addTiles() %>%
   addGeoJSON(x) %>%
   fitBBox(x$bbox)
+```
 
+```{r geocode2, eval=FALSE}
 ## set the number of results returned
 x <- ors_geocode("Heidelberg", size = 1)
 
