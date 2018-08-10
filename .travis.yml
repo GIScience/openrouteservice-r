@@ -12,6 +12,7 @@ addons:
       - libprotobuf-dev
       - libv8-3.14-dev
       - libsecret-1-dev
+      - libsodium-dev
       - protobuf-compiler
 
 os:
