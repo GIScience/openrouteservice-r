@@ -71,6 +71,9 @@ call_api <- function (method, args) {
   res
 }
 
+ors_url <- function() {
+  getOption('openrouteservice.url', "https://api.openrouteservice.org")
+}
 
 #' @importFrom httr modify_url
 api_call <- function(path, method, query, ...,
@@ -83,8 +86,7 @@ api_call <- function(path, method, query, ...,
   if (!is.null(new_path))
     path <- new_path
 
-  url <- getOption('openrouteservice.url', "https://api.openrouteservice.org")
-  url <- modify_url(url, path = path, query = query)
+  url <- modify_url(ors_url(), path = path, query = query)
 
   type <- sprintf("application/%s", response_format)
   args <- list(url, accept(type), user_agent("openrouteservice-r"), ...)

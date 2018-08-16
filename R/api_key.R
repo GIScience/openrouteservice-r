@@ -32,10 +32,11 @@ ors_api_key <- function (key, service = 'openrouteservice', username = NULL, key
     if ( nchar(api_key_val) )
       api_key_val
     else
-      tryCatch(
-        key_get(service, username, keyring),
-        error = function(e)
-          stop(sprintf("API key not set.\n  Get your free key at %s\n  Use `ors_api_key('<your-api-key>')` to set it", signup_url()), call. = FALSE))
+      if ( isTRUE(grepl("^https?://api.openrouteservice.org$", ors_url())) )
+        tryCatch(
+          key_get(service, username, keyring),
+          error = function(e)
+            stop(sprintf("API key not set.\n  Get your free key at %s\n  Use `ors_api_key('<your-api-key>')` to set it", signup_url()), call. = FALSE))
   }
   ## set key
   else
