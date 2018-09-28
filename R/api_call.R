@@ -88,6 +88,9 @@ api_call <- function(path, method, query, ...,
 
   url <- modify_url(ors_url(), path = path, query = query)
 
+  if (isTRUE(getOption('openrouteservice.verbose')))
+    message(url)
+
   type <- sprintf("application/%s", response_format)
   args <- list(url, accept(type), user_agent("openrouteservice-r"), ...)
 
