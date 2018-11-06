@@ -59,7 +59,6 @@ api_query <- function(api_key, params = list(), collapse = "|") {
 #' @importFrom httr GET POST accept modify_url user_agent status_code
 call_api <- function (method, args) {
   method <- match.fun(method)
-
   sleep_time <- 1L
   while (TRUE) {
     res <- do.call(method, args)
@@ -126,6 +125,7 @@ process_response <- function(res, path, parse_output, simplifyMatrix) {
     parse_output <- getOption("openrouteservice.parse_output", TRUE)
   parse_output <- isTRUE(parse_output)
 
+  query_time <- unname(res$times["total"])
   res <- content(res, "text")
 
   if (parse_output) {
@@ -149,6 +149,9 @@ process_response <- function(res, path, parse_output, simplifyMatrix) {
     if ( isTRUE(geojson_validate(res)) )
       res <- as.geojson(res)
   }
+
+  attr(res, "query_time") <- query_time
+
   res
 }
 
