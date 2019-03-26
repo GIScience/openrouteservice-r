@@ -23,6 +23,8 @@ order.}
 \item{api_key}{Character scalar containing openrouteservice API key}
 
 \item{parse_output}{Should the response be parsed to an R object}
+
+\item{output_sf}{Should the output be of class \code{sf}? \code{FALSE} by default}
 }
 \value{
 Route between two or more locations for a selected profile and its

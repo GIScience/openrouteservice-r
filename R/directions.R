@@ -6,6 +6,7 @@
 #'   order.
 #' @template param-profile
 #' @param format Response format, defaults to `"json"`
+#' @param output_sf Should the output be of class `sf`? `FALSE` by default
 #' @template param-common
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint directions
