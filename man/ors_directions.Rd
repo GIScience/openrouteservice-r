@@ -8,7 +8,7 @@ ors_directions(coordinates, profile = c("driving-car", "driving-hgv",
   "cycling-regular", "cycling-road", "cycling-safe", "cycling-mountain",
   "cycling-tour", "cycling-electric", "foot-walking", "foot-hiking",
   "wheelchair"), format = c("json", "geojson", "gpx"), ...,
-  api_key = ors_api_key(), parse_output = NULL)
+  api_key = ors_api_key(), parse_output = NULL, output_sf = FALSE)
 }
 \arguments{
 \item{coordinates}{List of \code{longitude, latitude} coordinate pairs visited in
@@ -36,8 +36,9 @@ coordinates = list(c(8.34234, 48.23424), c(8.34423, 48.26424))
 
 # simple call
 ors_directions(coordinates, preference="fastest")
-
-#customized options
+# sf output
+ors_directions(coordinates, preference="fastest", output_sf = TRUE)
+# customized options
 ors_directions(coordinates, profile="cycling-mountain", elevation=TRUE, format="geojson")
 }
 \author{

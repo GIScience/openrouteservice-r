@@ -16,8 +16,11 @@
 #'
 #' # simple call
 #' ors_directions(coordinates, preference="fastest")
-#'
-#' #customized options
+
+#' # sf output
+#' ors_directions(coordinates, preference="fastest", output_sf = TRUE)
+
+#' # customized options
 #' ors_directions(coordinates, profile="cycling-mountain", elevation=TRUE, format="geojson")
 #' @template author
 #' @export
@@ -26,18 +29,27 @@ ors_directions <- function(coordinates,
                            format = c('json', 'geojson', 'gpx'),
                            ...,
                            api_key = ors_api_key(),
-                           parse_output = NULL) {
+                           parse_output = NULL,
+                           output_sf = FALSE) {
   if (missing(coordinates))
     stop('Missing argument "coordinates"')
 
   profile = match.arg(profile)
 
-  format = match.arg(format)
+  if(output_sf) {
+    format = "geojson"
+  } else {
+    format = match.arg(format)
+  }
   response_format = switch(format, 'gpx'='xml', 'json')
 
   params = list(coordinates = coordinates, profile = profile, format = format, ...)
 
   query = api_query(api_key, params)
-
-  api_call("directions", "GET", query, response_format = response_format, parse_output = parse_output)
+  if(output_sf) {
+    a = api_call("directions", "GET", query, response_format = response_format, parse_output = FALSE)
+    geojsonsf::geojson_sf(a)
+  } else {
+    api_call("directions", "GET", query, response_format = response_format, parse_output = parse_output)
+  }
 }

@@ -6,11 +6,20 @@ Description: The package streamlines access to the services provided by openrout
   It allows you to painlessly query for directions, geocoding, isochrones, time-distance matrices, and POIs.
 URL: https://github.com/GIScience/openrouteservice-r
 BugReports: https://github.com/GIScience/openrouteservice-r/issues
-Imports: geojson, geojsonlint, httr, jsonlite, keyring, leaflet, utils, xml2
+Imports: 
+    geojson,
+    geojsonlint,
+    httr,
+    jsonlite,
+    keyring,
+    leaflet,
+    utils,
+    xml2,
+    geojsonsf
 Suggests: covr, ggplot2, knitr, pkgdown, RColorBrewer, rmarkdown, roxygen2, sp, testthat
 License: Apache License 2.0 | file LICENSE
 Encoding: UTF-8
 LazyData: true
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
