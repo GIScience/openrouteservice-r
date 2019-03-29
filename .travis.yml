@@ -2,7 +2,7 @@
 
 language: r
 r: release
-distro: xenial
+dist: xenial
 sudo: false
 addons:
   apt:
