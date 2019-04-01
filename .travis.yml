@@ -4,6 +4,7 @@ language: r
 r: release
 dist: xenial
 sudo: false
+cache: packages
 addons:
   apt:
     sources:
