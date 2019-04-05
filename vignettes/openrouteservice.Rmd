@@ -34,6 +34,7 @@ to painlessly consume the following services:
   - `r doc('isochrones')` (accessibilty)
   - time-distance `r doc('matrix')`
   - `r doc('pois')` (points of interest)
+  - `r doc('elevation')` (SRTM elevation for point and lines geometries)
 
 ### Disclaimer
 

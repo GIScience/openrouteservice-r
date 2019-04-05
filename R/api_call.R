@@ -81,9 +81,11 @@ api_call <- function(path, method, query, ...,
 
   response_format <- match.arg(response_format)
 
-  new_path <- getOption('openrouteservice.paths')[[path]]
+  new_path <- getOption('openrouteservice.paths')[[path[1]]]
   if (!is.null(new_path))
-    path <- new_path
+    path[1L] <- new_path[1L]
+
+  path <- paste(path, collapse="/")
 
   url <- modify_url(ors_url(), path = path, query = query)
 
@@ -106,7 +108,7 @@ api_call <- function(path, method, query, ...,
 #' @importFrom xml2 read_xml xml_validate
 process_response <- function(res, path, parse_output, simplifyMatrix) {
   if (http_error(res)) {
-    err <- fromJSON(content(res, "text"), simplifyVector=TRUE)$error
+    err <- fromJSON(content(res, "text"), simplifyVector=TRUE)
     tmp <- "openrouteservice API request failed\n[%s] %s"
     msg <-
     if ( length(err)==1L )
