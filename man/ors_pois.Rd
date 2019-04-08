@@ -12,7 +12,7 @@ ors_pois(request = c("pois", "stats", "list"), geometry, ...,
 
 \item{geometry}{GeoJSON geometry object (Point, Linestring or Polygon)}
 
-\item{...}{Optional request attributes as described \href{https://github.com/GIScience/openpoiservice#api-documentation}{here}.}
+\item{...}{Optional request attributes as described \href{https://openrouteservice.org/dev/#/api-docs/pois}{here}.}
 
 \item{api_key}{Character scalar containing openrouteservice API key}
 

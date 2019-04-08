@@ -4,9 +4,7 @@
 \alias{ors_isochrones}
 \title{Openrouteservice Isochrones}
 \usage{
-ors_isochrones(locations, profile = c("driving-car", "driving-hgv",
-  "cycling-regular", "cycling-road", "cycling-safe", "cycling-mountain",
-  "cycling-tour", "foot-walking", "foot-hiking"), range = 60, ...,
+ors_isochrones(locations, profile = ors_profile(), range = 60, ...,
   api_key = ors_api_key(), parse_output = NULL)
 }
 \arguments{
@@ -18,7 +16,7 @@ ors_isochrones(locations, profile = c("driving-car", "driving-hgv",
 meters for distance. Alternatively a comma separated list of specific
 single range values.}
 
-\item{...}{Optional parameters as described \href{https://openrouteservice.org/documentation/#/reference/isochrones/isochrones}{here}.}
+\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/isochrones}{here}.}
 
 \item{api_key}{Character scalar containing openrouteservice API key}
 
@@ -38,6 +36,9 @@ multiple exact isochrone range values.
 }
 \examples{
 ors_isochrones(c(8.34234, 48.23424), interval=20)
+
+locations <- list(c(8.681495, 49.41461), c(8.686507,49.41943))
+ors_isochrones(locations, range=c(300, 200))
 }
 \author{
 Andrzej Oleś <\email{andrzej@openrouteservice.org}>

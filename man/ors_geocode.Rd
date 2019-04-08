@@ -13,7 +13,7 @@ structured geocoding request a named list of parameters.}
 
 \item{location}{Coordinates to be inquired provided in the form \code{c(longitude, latitude)}}
 
-\item{...}{Optional parameters as described \href{https://openrouteservice.org/documentation/#/reference/geocode/geocode}{here}.}
+\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/geocode}{here}.}
 
 \item{api_key}{Character scalar containing openrouteservice API key}
 

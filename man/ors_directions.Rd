@@ -4,11 +4,9 @@
 \alias{ors_directions}
 \title{Openrouteservice Directions}
 \usage{
-ors_directions(coordinates, profile = c("driving-car", "driving-hgv",
-  "cycling-regular", "cycling-road", "cycling-safe", "cycling-mountain",
-  "cycling-tour", "cycling-electric", "foot-walking", "foot-hiking",
-  "wheelchair"), format = c("json", "geojson", "gpx"), ...,
-  api_key = ors_api_key(), parse_output = NULL)
+ors_directions(coordinates, profile = ors_profile(),
+  format = c("geojson", "json", "gpx"), ..., api_key = ors_api_key(),
+  parse_output = NULL)
 }
 \arguments{
 \item{coordinates}{List of \code{longitude, latitude} coordinate pairs visited in
@@ -16,9 +14,9 @@ order.}
 
 \item{profile}{Route profile, defaults to \code{"driving-car"}.}
 
-\item{format}{Response format, defaults to \code{"json"}}
+\item{format}{Response format, defaults to \code{"geojson"}}
 
-\item{...}{Optional parameters as described \href{https://openrouteservice.org/documentation/#/reference/directions/directions}{here}.}
+\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/directions}{here}.}
 
 \item{api_key}{Character scalar containing openrouteservice API key}
 
@@ -37,8 +35,8 @@ coordinates = list(c(8.34234, 48.23424), c(8.34423, 48.26424))
 # simple call
 ors_directions(coordinates, preference="fastest")
 
-#customized options
-ors_directions(coordinates, profile="cycling-mountain", elevation=TRUE, format="geojson")
+# customized options
+ors_directions(coordinates, profile="cycling-mountain", elevation=TRUE)
 }
 \author{
 Andrzej Oleś <\email{andrzej@openrouteservice.org}>

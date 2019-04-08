@@ -17,7 +17,7 @@ ors_elevation(format_in = c("geojson", "point", "polyline",
 
 \item{format_out}{output format}
 
-\item{...}{Optional parameters as described \href{https://openrouteservice.org/documentation/#/reference/elevation/elevation}{here}.}
+\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/elevation}{here}.}
 
 \item{api_key}{Character scalar containing openrouteservice API key}
 

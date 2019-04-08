@@ -25,7 +25,7 @@ knitr::opts_chunk$set(eval=TRUE, out.width='100%', out.height='560px')
 doc <- openrouteservice:::doc_link
 ```
 
-The *openrouteservice* package provides easy access to the
+*openrouteservice* R package provides easy access to the
 [openrouteservice](https://openrouteservice.org) (ORS) API from R. It allows you
 to painlessly consume the following services:
 
@@ -84,13 +84,13 @@ library(openrouteservice)
 
 coordinates <- list(c(8.34234, 48.23424), c(8.34423, 48.26424))
 
-x <- ors_directions(coordinates, format="geojson")
+x <- ors_directions(coordinates)
 ```
 
-By setting `format="geojson"` the result can formatted as geoJSON which allows
-to easily
+The response is formatted as geoJSON which allows to easily
 [visualize](https://rstudio.github.io/leaflet/json.html#working-with-raw-geojsontopojson)
-it with [leaflet](https://CRAN.R-project.org/package=leaflet).
+it with [leaflet](https://CRAN.R-project.org/package=leaflet). Other output
+formats, such as GPX, can be specified in the argument `format`.
 
 ```{r leaflet}
 library(leaflet)
@@ -101,26 +101,26 @@ leaflet() %>%
   fitBBox(x$bbox)
 ```
 
-The points are specified as a list of coordinate pairs `c(lng, lat)`, or an
-object which can be coerced to an interleaved vector of the form `c(lng1, lat1,
-lng2, lat2, ...)`. In particular, if the points are provided in rows of a
-matrix-like object such as the result of `sf::st_coordinates` it needs to be
-transposed.^[This is because R stores matrices in column-major order (c.f.
-https://en.wikipedia.org/wiki/Row-_and_column-major_order)]
+The points are specified as a list of coordinate pairs `c(lng, lat)`, or a
+2-column matrix-like object such as a data frame.
 
-```{r data_frame_coordinates}
-df <- data.frame(lng = c(8.34234, 8.34423), lat = c(48.23424, 48.26424))
-
-coordinates <- t(df)
+```{r data_frame}
+coordinates <- data.frame(lng = c(8.34234, 8.34423), lat = c(48.23424, 48.26424))
 ```
 
 The API offers a wide range of `profile`s for multiple modes of transport: car,
-different bicycle types, walking, hiking, wheelchair and heavy vehicle. Each of
-these modes uses a carefully compiled street network to suite the profiles
-requirements.
+different bicycle types, walking, hiking, wheelchair and heavy vehicle. These
+can be listed with
+
+```{r profiles}
+ors_profile()
+```
+
+Each of these modes uses a carefully compiled street network to suite the
+profiles requirements.
 
 ```{r bicycle}
-x <- ors_directions(coordinates, profile="cycling-mountain", format="geojson")
+x <- ors_directions(coordinates, profile="cycling-mountain")
 
 leaflet() %>%
   addTiles() %>%
@@ -139,11 +139,12 @@ library(sp)
 library(ggplot2)
 library(RColorBrewer)
 
-x <- ors_directions(coordinates, profile="cycling-mountain", geometry_format="geojson",
-                    elevation = TRUE, extra_info = "steepness")
+x <- ors_directions(coordinates, profile="cycling-mountain",
+                    elevation = TRUE, extra_info = I("steepness"))
 
+route <- x$features[[1]]
 ## create data.frame
-coords <- x$routes[[1]]$geometry$coordinates
+coords <- route$geometry$coordinates
 colnames(coords) <- c("Longitude", "Latitude", "Height")
 
 longlat <- coords[,c("Longitude", "Latitude")]
@@ -151,7 +152,7 @@ height <- coords[, "Height"]
 
 segments <- cumsum(spDists(longlat, longlat=TRUE, segments=TRUE))
 
-steepness <- x$routes[[1]]$extra$steepness$values
+steepness <- route$properties$extras$steepness$values
 steepness <- rep(steepness[,3], steepness[,2]-steepness[,1])
 steepness <- factor(steepness, -5:5)
 
@@ -200,11 +201,10 @@ polygon = list(
   )
 
 options <- list(
-  maximum_speed = 15,
   avoid_polygons = polygon
 )
 
-x <- ors_directions(coordinates, profile="cycling-mountain", options=options, format="geojson")
+x <- ors_directions(coordinates, profile="cycling-mountain", options=options)
 
 geojson <- list(
   type = "Feature",
@@ -233,11 +233,13 @@ will return an intersections of the computed isochrones if any exist.
 
 ```{r isochrones}
 coordinates <- list(c(8.34234, 48.23424), c(8.34234, 47.23424))
+range <- 60*60 # 60 minutes
+interval <- 20*60 # 20 minutes
 
-x <- ors_isochrones(coordinates, range = 60*60, interval = 20*60)
+x <- ors_isochrones(coordinates, range = range, interval = interval)
 
 # set isochrones color
-ranges <- x$info$query$ranges
+ranges <- seq(from=interval, to=range, by=interval)
 pal <- setNames(heat.colors(length(ranges)), ranges)
 
 x$features <- lapply(1:length(x$features), function(i) {

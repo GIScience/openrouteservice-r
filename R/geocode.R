@@ -65,5 +65,5 @@ ors_geocode <- function(query,
 
   query <- api_query(api_key, params, collapse = ",")
 
-  api_call(path, "GET", query, parse_output = parse_output)
+  api_call("GET", path, query, parse_output = parse_output)
 }

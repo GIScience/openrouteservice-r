@@ -4,10 +4,7 @@
 \alias{ors_matrix}
 \title{Openrouteservice Matrix}
 \usage{
-ors_matrix(locations, profile = c("driving-car", "driving-hgv",
-  "cycling-regular", "cycling-road", "cycling-safe", "cycling-mountain",
-  "cycling-tour", "cycling-electric", "foot-walking", "foot-hiking",
-  "wheelchair"), metrics = c("distance", "duration"), ...,
+ors_matrix(locations, profile = ors_profile(), ...,
   api_key = ors_api_key(), parse_output = NULL)
 }
 \arguments{
@@ -15,10 +12,7 @@ ors_matrix(locations, profile = c("driving-car", "driving-hgv",
 
 \item{profile}{Route profile, defaults to \code{"driving-car"}.}
 
-\item{metrics}{Returned metrics. Use \code{"distance"} for distance matrix in
-defined \code{units}, and/or `duration`` for time matrix in seconds.}
-
-\item{...}{Optional parameters as described \href{https://openrouteservice.org/documentation/#/reference/matrix/matrix}{here}.}
+\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/matrix}{here}.}
 
 \item{api_key}{Character scalar containing openrouteservice API key}
 

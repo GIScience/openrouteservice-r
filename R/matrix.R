@@ -5,8 +5,6 @@
 #'
 #' @param locations A list of `longitude, latitude` coordinate pairs, or a two column `data.frame`
 #' @template param-profile
-#' @param metrics Returned metrics. Use `"distance"` for distance matrix in
-#'   defined `units`, and/or `duration`` for time matrix in seconds.
 #' @template param-common
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint matrix
@@ -31,24 +29,28 @@
 #' @template author
 #' @export
 ors_matrix <- function(locations,
-                       profile = c('driving-car', 'driving-hgv', 'cycling-regular', 'cycling-road', 'cycling-safe', 'cycling-mountain', 'cycling-tour', 'cycling-electric', 'foot-walking', 'foot-hiking', 'wheelchair'),
-                       metrics = c('distance', 'duration'),
+                       profile = ors_profile(),
                        ...,
                        api_key = ors_api_key(),
                        parse_output = NULL) {
+
+  ## required arguments with no default value
   if (missing(locations))
     stop('Missing argument "locations"')
 
-  names(locations) <- NULL
-
+  ## required arguments with defaults
   profile = match.arg(profile)
 
-  metrics = match.arg(metrics, several.ok=TRUE)
-  metrics = collapse_vector(metrics)
+  names(locations) <- NULL
 
-  query = api_query(api_key)
+  ## request parameters
+  body = list(locations = locations, profile = profile, ...)
 
-  body = list(locations = locations, profile = profile, metrics = metrics, ...)
-
-  api_call("matrix", "POST", query, body = body, encode = "json", parse_output = parse_output)
+  api_call(method = "POST",
+           path = c("v2/matrix", profile),
+           query = NULL,
+           add_headers(Authorization = api_key),
+           body = body,
+           encode = "json",
+           parse_output = parse_output)
 }

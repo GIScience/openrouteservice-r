@@ -5,7 +5,7 @@
 #' @param coordinates List of `longitude, latitude` coordinate pairs visited in
 #'   order.
 #' @template param-profile
-#' @param format Response format, defaults to `"json"`
+#' @param format Response format, defaults to `"geojson"`
 #' @template param-common
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint directions
@@ -17,27 +17,37 @@
 #' # simple call
 #' ors_directions(coordinates, preference="fastest")
 #'
-#' #customized options
-#' ors_directions(coordinates, profile="cycling-mountain", elevation=TRUE, format="geojson")
+#' # customized options
+#' ors_directions(coordinates, profile="cycling-mountain", elevation=TRUE)
 #' @template author
 #' @export
 ors_directions <- function(coordinates,
-                           profile = c('driving-car', 'driving-hgv', 'cycling-regular', 'cycling-road', 'cycling-safe', 'cycling-mountain', 'cycling-tour', 'cycling-electric', 'foot-walking', 'foot-hiking', 'wheelchair'),
-                           format = c('json', 'geojson', 'gpx'),
+                           profile = ors_profile(),
+                           format = c('geojson', 'json', 'gpx'),
                            ...,
                            api_key = ors_api_key(),
                            parse_output = NULL) {
+
+  ## required arguments with no default value
   if (missing(coordinates))
     stop('Missing argument "coordinates"')
 
-  profile = match.arg(profile)
+  ## required arguments with defaults
+  profile <- match.arg(profile)
+  format <- match.arg(format)
 
-  format = match.arg(format)
-  response_format = switch(format, 'gpx'='xml', 'json')
+  ## request parameters
+  if (is.data.frame(coordinates))
+    coordinates <- as.matrix(coordinates)
 
-  params = list(coordinates = coordinates, profile = profile, format = format, ...)
+  body <- list(coordinates = coordinates, ...)
 
-  query = api_query(api_key, params)
-
-  api_call("directions", "GET", query, response_format = response_format, parse_output = parse_output)
+  api_call(method = "POST",
+           path = c("v2/directions", profile, format),
+           query = NULL,
+           add_headers(Authorization = api_key),
+           body = body,
+           encode = "json",
+           response_format = format,
+           parse_output = parse_output)
 }

@@ -38,12 +38,16 @@ ors_elevation <- function(format_in = c("geojson", "point", "polyline", "encoded
                           ...,
                           api_key = ors_api_key(),
                           parse_output = NULL) {
+
+  ## required arguments with no default value
   if (missing(format_in))
     stop('Missing input format specification')
   if (missing(geometry))
     stop('geometry')
 
   format_in <- match.arg(format_in)
+
+  ## required arguments with defaults
   format_out <- match.arg(format_out)
 
   ## check whether geojson is a point or a line
@@ -63,27 +67,11 @@ ors_elevation <- function(format_in = c("geojson", "point", "polyline", "encoded
                format_out = format_out,
                ...)
 
-  api_call(path = c("elevation", endpoint),
-           method = "POST",
+  api_call(method = "POST",
+           path = c("elevation", endpoint),
            query = NULL,
            add_headers(Authorization = api_key),
            body = body,
            encode = "json",
            parse_output = parse_output)
 }
-
-# curl -XPOST http://api.openrouteservice.org/elevation/line   -H 'Content-Type: application/json' -H 'Authorization: 58d904a497c67e00015b45fc4f0c8f0860ee4e5e90ee4cc867962a97'   -d '{
-#     "format_in": "polyline",
-# "format_out": "geojson",
-# "geometry": [[13.349762, 38.11295],
-# [12.638397, 37.645772]]
-# }'
-
-# curl -XPOST http://api.openrouteservice.org/elevation/point   -H 'Content-Type: application/json' -H 'Authorization: 58d904a497c67e00015b45fc4f0c8f0860ee4e5e90ee4cc867962a97'   -d '{
-#    "format_in": "geojson",
-# "format_out": "geojson",
-# "geometry": {
-# "coordinates": [13.349762, 38.11295],
-# "type": "Point"
-# }
-# }'

@@ -18,27 +18,41 @@
 #'   corresponding to the accessible area.
 #' @examples
 #' ors_isochrones(c(8.34234, 48.23424), interval=20)
+#'
+#' locations <- list(c(8.681495, 49.41461), c(8.686507,49.41943))
+#' ors_isochrones(locations, range=c(300, 200))
 #' @template author
 #' @export
 ors_isochrones <- function(locations,
-                           profile = c('driving-car', 'driving-hgv', 'cycling-regular', 'cycling-road', 'cycling-safe', 'cycling-mountain', 'cycling-tour', 'foot-walking', 'foot-hiking'),
+                           profile = ors_profile(),
                            range = 60,
                            ...,
                            api_key = ors_api_key(),
                            parse_output = NULL) {
+
+  ## required arguments with no default value
   if (missing(locations))
     stop('Missing argument "locations"')
 
-  profile = match.arg(profile)
+  ## required arguments with defaults
+  profile <- match.arg(profile)
 
-  params = list(locations = locations, profile = profile, range = range, ...)
+  ## request parameters
+  if (is.atomic(locations))
+    locations <- list(locations)
 
-  query = api_query(api_key, params)
+  if (length(range)==1L)
+    range <- I(range)
 
-  res = api_call("isochrones", "GET", query, simplifyMatrix=FALSE, parse_output = parse_output)
+  body <- list(locations = locations, range = range, ...)
 
-  if (inherits(res, "ors_api"))
-    res$info$query$ranges = as.numeric(unlist(strsplit(res$info$query$ranges, ",")))
-
-  res
+  api_call(method = "POST",
+           path = c("v2/isochrones", profile),
+           query = NULL,
+           add_headers(Authorization = api_key),
+           body = body,
+           encode = "json",
+           response_format = "geojson",
+           parse_output = parse_output,
+           simplifyMatrix = FALSE)
 }
