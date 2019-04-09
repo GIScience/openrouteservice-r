@@ -134,7 +134,7 @@ setting `elevation = TRUE` adds height to the coordinates of the points along
 the route, which can be used to plot the elevation profile colored by steepness
 obtained by specifying it in `extra_info`.
 
-```{r elevation, fig.dim=c(10, 5), out.height='100%'}
+```{r elevation_profile, fig.dim=c(10, 5), out.height='100%'}
 library(sp)
 library(ggplot2)
 library(RColorBrewer)
@@ -369,8 +369,8 @@ ors_pois(request = 'stats',
 
 ## Elevation
 
-Given a point or line geometry it is possible to use `ors_elevation` to query
-for its elevation.
+Given a point or line geometry one can use `ors_elevation` to query for its
+elevation.
 
 ```{r elevation}
 x <- ors_geocode("Königstuhl")
