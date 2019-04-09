@@ -87,9 +87,9 @@ coordinates <- list(c(8.34234, 48.23424), c(8.34423, 48.26424))
 x <- ors_directions(coordinates)
 ```
 
-The response is formatted as geoJSON which allows to easily
+By default the response is formatted as geoJSON which allows to easily
 [visualize](https://rstudio.github.io/leaflet/json.html#working-with-raw-geojsontopojson)
-it with [leaflet](https://CRAN.R-project.org/package=leaflet). Other output
+it with e.g. [leaflet](https://CRAN.R-project.org/package=leaflet). Other output
 formats, such as GPX, can be specified in the argument `format`.
 
 ```{r leaflet}
@@ -364,4 +364,18 @@ ors_pois(request = 'stats',
          filters = list(
            category_ids = I(488)
          ))
+```
+
+
+## Elevation
+
+Given a point or line geometry it is possible to use `ors_elevation` to query
+for its elevation.
+
+```{r elevation}
+x <- ors_geocode("Königstuhl")
+
+coordinates <- x$features[[1L]]$geometry$coordinates
+
+ors_elevation("point", coordinates)
 ```
