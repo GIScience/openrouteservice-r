@@ -47,8 +47,8 @@ The package is not yet available from CRAN, but you can install the
 development version directly from GitHub.
 
 ```{r installation, eval=FALSE}
-# install.packages("devtools")
-devtools::install_github("GIScience/openrouteservice-r")
+# install.packages("remotes")
+remotes::install_github("GIScience/openrouteservice-r")
 ```
 <!-- README END -->
 
