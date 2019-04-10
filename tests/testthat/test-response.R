@@ -13,15 +13,15 @@ test_that("Error response", {
 mock_gpx <- paste(readLines("mock_gpx.xml"), collapse = "\n")
 
 mock_xml <- mock_response(
-  headers = list("Content-Type" = "application/xml;charset=UTF-8"),
-  request = list(headers = list(Accept = "application/xml")),
+  headers = list("Content-Type" = "application/gpx+xml;charset=UTF-8"),
+  request = list(headers = list(Accept = "application/gpx+xml")),
   content = charToRaw(mock_gpx)
 )
 
 test_that("Parsed GPX response", {
-  expect_equal(process_response(mock_xml, parse_output = TRUE), read_xml(mock_gpx))
+  expect_equal(process_response(mock_xml, output = "parsed"), read_xml(mock_gpx))
 })
 
 test_that("Unparsed GPX response", {
-  expect_identical(process_response(mock_xml, parse_output = FALSE), mock_gpx)
+  expect_identical(process_response(mock_xml, output = "text"), mock_gpx)
 })

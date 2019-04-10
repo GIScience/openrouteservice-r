@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gpx version="1.0" creator="openrouteservice" xmlns="https://raw.githubusercontent.com/GIScience/openrouteservice-schema/master/gpx/v1/ors-gpx.xsd">
+<gpx version="1.0" creator="openrouteservice" xmlns="https://raw.githubusercontent.com/GIScience/openrouteservice-schema/master/gpx/v2/ors-gpx.xsd">
     <metadata>
         <name>openrouteservice directions</name>
         <desc>This is a directions instructions file as GPX, generated from openrouteservice</desc>
@@ -16,7 +16,7 @@
             <license>Apache License 2.0</license>
         </copyright>
         <time>2018-05-29T14:40:26.817Z</time>
-        <bounds minlat="48.23194589239238" minlon="8.327138051252172" maxlat="48.26355238245595" maxlon="8.345244266359007"/>
+        <bounds minLat="48.23194589239238" minLon="8.327138051252172" maxLat="48.26355238245595" maxLon="8.345244266359007"/>
     </metadata>
     <rte>
         <extensions/>

@@ -15,8 +15,12 @@
 #' @template param-common
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint isochrones
-#' @return A GeoJSON object containing a FeatureCollection of Polygons
-#'   corresponding to the accessible area.
+#' @template return
+#' @templateVar return A GeoJSON object containing a FeatureCollection of Polygons
+#'   corresponding to the accessible area,
+#' @template return-text
+#' @template return-parsed
+#' @template return-sf
 #' @examples
 #' ors_isochrones(c(8.34234, 48.23424), interval=20)
 #'
@@ -29,7 +33,7 @@ ors_isochrones <- function(locations,
                            range = 60,
                            ...,
                            api_key = ors_api_key(),
-                           parse_output = NULL) {
+                           output = c("parsed", "text", "sf")) {
 
   ## required arguments with no default value
   if (missing(locations))
@@ -37,6 +41,7 @@ ors_isochrones <- function(locations,
 
   ## required arguments with defaults
   profile <- match.arg(profile)
+  output <- match.arg(output)
 
   ## wrap single point coordinate pairs into list
   if (is.vector(locations) && is.atomic(locations))
@@ -56,6 +61,6 @@ ors_isochrones <- function(locations,
            body = body,
            encode = "json",
            response_format = "geojson",
-           parse_output = parse_output,
+           output = output,
            simplifyMatrix = FALSE)
 }
