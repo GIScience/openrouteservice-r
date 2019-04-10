@@ -96,8 +96,8 @@ ors_path <- function(endpoint) {
 
 #' @importFrom httr modify_url parse_url verbose
 api_call <- function(method, path, query, ...,
-                     response_format = c("json", "geojson", "xml"),
-                     parse_output = NULL, simplifyMatrix = TRUE) {
+                     response_format = c("json", "geojson", "gpx"),
+                     output, simplifyMatrix = TRUE) {
 
   response_format <- match.arg(response_format)
 
@@ -109,7 +109,7 @@ api_call <- function(method, path, query, ...,
 
   url <- modify_url(ors_url(), path = path, query = query)
 
-  type <- sprintf("application/%s", switch(response_format, "json", geojson="geo+json", gpx="xml"))
+  type <- sprintf("application/%s", switch(response_format, "json", geojson="geo+json", gpx="gpx+xml"))
 
   args <- list(url = url,
                accept(type),
@@ -119,16 +119,11 @@ api_call <- function(method, path, query, ...,
 
   res <- call_api(method, args)
 
-  process_response(res, endpoint, parse_output, simplifyMatrix)
+  process_response(res, endpoint, output, simplifyMatrix)
 }
 
-
 #' @importFrom httr content http_error http_type status_code
-#' @importFrom jsonlite fromJSON
-#' @importFrom geojson as.geojson
-#' @importFrom geojsonlint geojson_validate
-#' @importFrom xml2 read_xml xml_validate
-process_response <- function(res, endpoint, parse_output, simplifyMatrix) {
+process_response <- function(res, endpoint, output, simplifyMatrix) {
   if (http_error(res)) {
     err <- fromJSON(content(res, "text"), simplifyVector=TRUE)
     if (!is.null(err$error))
@@ -147,40 +142,67 @@ process_response <- function(res, endpoint, parse_output, simplifyMatrix) {
   if (http_type(res) != format)
     stop(sprintf("API did not return %s", format), call. = FALSE)
 
-  if (is.null(parse_output))
-    parse_output <- getOption("openrouteservice.parse_output", TRUE)
-  parse_output <- isTRUE(parse_output)
-
   query_time <- unname(res$times["total"])
-  res <- content(res, "text")
 
-  format <- switch(format, "application/xml"="xml", "json")
+  format <- switch(format, "application/gpx+xml"="xml", "json")
 
-  if (parse_output) {
-    if (format=="json") {
-      res <- fromJSON(res,
-                      simplifyVector = TRUE,
-                      simplifyDataFrame = FALSE,
-                      simplifyMatrix = simplifyMatrix)
-      res <- structure(res, class = c(sprintf("ors_%s", endpoint), "ors_api", class(res)))
-    }
-    else if (format=="xml"){
-      res <- read_xml(res)
-      gpx_xsd = getOption("openrouteservice.gpx_xsd", "https://raw.githubusercontent.com/GIScience/openrouteservice-schema/master/gpx/v1/ors-gpx.xsd")
-      xsd <- read_xml(gpx_xsd)
-      if (!xml_validate(res, xsd))
-        stop("Failed to validate GPX response")
-    }
-  }
-  else if (format=="json") {
-    res <- structure(res, class = "json")
-    if ( isTRUE(geojson_validate(res)) )
-      res <- as.geojson(res)
-  }
+  res <- parse_content(content(res, "text"), format, output, endpoint, simplifyMatrix)
 
   attr(res, "query_time") <- query_time
 
   res
+}
+
+#' @importFrom jsonlite fromJSON
+#' @importFrom geojson as.geojson
+#' @importFrom geojsonlint geojson_validate
+#' @importFrom geojsonsf geojson_sf
+#' @importFrom xml2 read_xml xml_validate
+parse_content <- function (content,
+                           format = c("json", "xml"),
+                           output = c("parsed", "text", "sf"),
+                           endpoint, simplifyMatrix) {
+  format <- match.arg(format)
+  output <- match.arg(output)
+
+  ## raw text output
+  if (output=="text") {
+    if (format=="json") {
+      content <- structure(content, class = "json")
+      if ( isTRUE(geojson_validate(content)) )
+        content <- as.geojson(content)
+    }
+    return(content)
+  }
+
+  ## parsed R list
+  if (output=="parsed") {
+    if (format=="json") {
+      content <- fromJSON(content,
+                          simplifyVector = TRUE,
+                          simplifyDataFrame = FALSE,
+                          simplifyMatrix = simplifyMatrix)
+      class <- c(sprintf("ors_%s", endpoint), "ors_api", class(content))
+      content <- structure(content, class = class)
+      return(content)
+    }
+    if (format=="xml") {
+      content <- read_xml(content)
+      gpx_xsd = getOption("openrouteservice.gpx_xsd", "https://raw.githubusercontent.com/GIScience/openrouteservice-schema/master/gpx/v2/ors-gpx.xsd")
+      xsd <- read_xml(gpx_xsd)
+      if (!xml_validate(content, xsd))
+        stop("Failed to validate GPX response")
+      return(content)
+    }
+  }
+
+  if (format=="json" && output=="sf") {
+    if (endpoint=="elevation")
+      content <- content$geometry
+    return(geojson_sf(content))
+  }
+
+  stop(sprintf("Unsupported %s output for %s format.", output, format))
 }
 
 #' Print a Compact Summary of the API Response

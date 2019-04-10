@@ -5,7 +5,7 @@
 \title{Openrouteservice Geocoding}
 \usage{
 ors_geocode(query, location, ..., api_key = ors_api_key(),
-  parse_output = NULL)
+  output = c("parsed", "text", "sf"))
 }
 \arguments{
 \item{query}{Name of location, street address or postal code. For a
@@ -13,11 +13,11 @@ structured geocoding request a named list of parameters.}
 
 \item{location}{Coordinates to be inquired provided in the form \code{c(longitude, latitude)}}
 
-\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/geocode}{here}.}
+\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/geocode}{here}}
 
 \item{api_key}{Character scalar containing openrouteservice API key}
 
-\item{parse_output}{Should the response be parsed to an R object}
+\item{output}{Output format. By default the response is being parsed to a list-based R object}
 }
 \value{
 Geocoding: a JSON formatted list of objects corresponding to the

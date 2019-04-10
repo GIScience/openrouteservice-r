@@ -10,8 +10,11 @@
 #' @template param-common
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint directions
-#' @return Route between two or more locations for a selected profile and its
-#'   settings as GeoJSON response.
+#' @template return
+#' @templateVar return Route between two or more locations in the selected `format`
+#' @template return-text
+#' @template return-parsed
+#' @template return-sf
 #' @examples
 #' coordinates = list(c(8.34234, 48.23424), c(8.34423, 48.26424))
 #'
@@ -27,7 +30,7 @@ ors_directions <- function(coordinates,
                            format = c('geojson', 'json', 'gpx'),
                            ...,
                            api_key = ors_api_key(),
-                           parse_output = NULL) {
+                           output = c("parsed", "text", "sf")) {
 
   ## required arguments with no default value
   if (missing(coordinates))
@@ -36,6 +39,7 @@ ors_directions <- function(coordinates,
   ## required arguments with defaults
   profile <- match.arg(profile)
   format <- match.arg(format)
+  output <- match.arg(output)
 
   ## request parameters
   names(coordinates) <- NULL
@@ -49,5 +53,5 @@ ors_directions <- function(coordinates,
            body = body,
            encode = "json",
            response_format = format,
-           parse_output = parse_output)
+           output = output)
 }

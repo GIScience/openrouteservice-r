@@ -9,8 +9,11 @@
 #' @template param-common
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint matrix
-#' @return Duration or distance matrix for multiple source and destination
-#'   points.
+#' @template return
+#' @templateVar return Duration or distance matrix for multiple source and destination
+#'   points
+#' @template return-text
+#' @template return-parsed
 #' @examples
 #' coordinates = list(
 #'   c(9.970093, 48.477473),
@@ -33,7 +36,7 @@ ors_matrix <- function(locations,
                        profile = ors_profile(),
                        ...,
                        api_key = ors_api_key(),
-                       parse_output = NULL) {
+                       output = c("parsed", "text")) {
 
   ## required arguments with no default value
   if (missing(locations))
@@ -41,6 +44,7 @@ ors_matrix <- function(locations,
 
   ## required arguments with defaults
   profile = match.arg(profile)
+  output <- match.arg(output)
 
   names(locations) <- NULL
 
@@ -53,5 +57,5 @@ ors_matrix <- function(locations,
            add_headers(Authorization = api_key),
            body = body,
            encode = "json",
-           parse_output = parse_output)
+           output = output)
 }

@@ -5,22 +5,29 @@
 \title{Openrouteservice Matrix}
 \usage{
 ors_matrix(locations, profile = ors_profile(), ...,
-  api_key = ors_api_key(), parse_output = NULL)
+  api_key = ors_api_key(), output = c("parsed", "text"))
 }
 \arguments{
 \item{locations}{List of \code{longitude, latitude} coordinate pairs, alternatively a two column \code{matrix} or \code{data.frame}.}
 
 \item{profile}{Route profile, defaults to \code{"driving-car"}.}
 
-\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/matrix}{here}.}
+\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/matrix}{here}}
 
 \item{api_key}{Character scalar containing openrouteservice API key}
 
-\item{parse_output}{Should the response be parsed to an R object}
+\item{output}{Output format. By default the response is being parsed to a list-based R object}
 }
 \value{
 Duration or distance matrix for multiple source and destination
-points.
+
+\itemize{
+\item for \code{"text"}, a character vector of length 1 re-encoded to UTF-8.
+}
+
+\itemize{
+\item for \code{"parsed"}, a parsed R object.
+}
 }
 \description{
 Obtain one-to-many, many-to-one and many-to-many matrices for time and

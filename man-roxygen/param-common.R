@@ -1,3 +1,3 @@
-#' @param ... Optional <%= dotsargs %> as described \href{<%= doc_url(endpoint) %>}{here}.
+#' @param ... Optional <%= dotsargs %> as described \href{<%= doc_url(endpoint) %>}{here}
 #' @param api_key Character scalar containing openrouteservice API key
-#' @param parse_output Should the response be parsed to an R object
+#' @param output Output format. By default the response is being parsed to a list-based R object

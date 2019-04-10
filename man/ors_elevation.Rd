@@ -8,7 +8,7 @@ ors_elevation(format_in = c("geojson", "point", "polyline",
   "encodedpolyline5", "encodedpolyline6"), geometry,
   format_out = c("geojson", "point", "polyline", "encodedpolyline5",
   "encodedpolyline6"), ..., api_key = ors_api_key(),
-  parse_output = NULL)
+  output = c("parsed", "text", "sf"))
 }
 \arguments{
 \item{format_in}{input format}
@@ -17,14 +17,26 @@ ors_elevation(format_in = c("geojson", "point", "polyline",
 
 \item{format_out}{output format}
 
-\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/elevation}{here}.}
+\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/elevation}{here}}
 
 \item{api_key}{Character scalar containing openrouteservice API key}
 
-\item{parse_output}{Should the response be parsed to an R object}
+\item{output}{Output format. By default the response is being parsed to a list-based R object}
 }
 \value{
-3D point or line geometry.
+3D point or line geometry structured according to \code{output}:
+
+\itemize{
+\item for \code{"text"}, a character vector of length 1 re-encoded to UTF-8.
+}
+
+\itemize{
+\item for \code{"parsed"}, a parsed R object.
+}
+
+\itemize{
+\item for \code{"sf"}, a \code{\link[sf]{sf}} object.
+}
 }
 \description{
 Get elevation data for points or lines
