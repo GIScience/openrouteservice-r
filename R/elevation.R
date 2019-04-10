@@ -11,7 +11,11 @@
 #' @template param-common
 #' @templateVar dotsargs parameters
 #' @templateVar endpoint elevation
-#' @return 3D point or line geometry.
+#' @template return
+#' @templateVar return 3D point or line geometry
+#' @template return-text
+#' @template return-parsed
+#' @template return-sf
 #' @examples
 #'
 #' # point coordinates
@@ -38,7 +42,7 @@ ors_elevation <- function(format_in = c("geojson", "point", "polyline", "encoded
                           format_out = c("geojson", "point", "polyline", "encodedpolyline5", "encodedpolyline6"),
                           ...,
                           api_key = ors_api_key(),
-                          parse_output = NULL) {
+                          output = c("parsed", "text", "sf")) {
 
   ## required arguments with no default value
   if (missing(format_in))
@@ -50,6 +54,7 @@ ors_elevation <- function(format_in = c("geojson", "point", "polyline", "encoded
 
   ## required arguments with defaults
   format_out <- match.arg(format_out)
+  output <- match.arg(output)
 
   ## check whether geojson is a point or a line
   if (format_in == "geojson") {
@@ -74,5 +79,5 @@ ors_elevation <- function(format_in = c("geojson", "point", "polyline", "encoded
            add_headers(Authorization = api_key),
            body = body,
            encode = "json",
-           parse_output = parse_output)
+           output = output)
 }

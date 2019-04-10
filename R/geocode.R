@@ -42,8 +42,8 @@ ors_geocode <- function(query,
                         location,
                         ...,
                         api_key = ors_api_key(),
-                        parse_output = NULL) {
-  endpoint <-
+                        output = c("parsed", "text", "sf")) {
+  path <-
     if ( missing(query) ) {
       if ( missing(location) )
         stop('Specify at least one of the arguments "query/location"')
@@ -65,5 +65,7 @@ ors_geocode <- function(query,
 
   query <- api_query(api_key, params, collapse = ",")
 
-  api_call("GET", c("geocode", endpoint), query, parse_output = parse_output)
+  output <- match.arg(output)
+
+  api_call("GET", path, query, output = output)
 }

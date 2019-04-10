@@ -6,7 +6,7 @@
 \usage{
 ors_directions(coordinates, profile = ors_profile(),
   format = c("geojson", "json", "gpx"), ..., api_key = ors_api_key(),
-  parse_output = NULL)
+  output = c("parsed", "text", "sf"))
 }
 \arguments{
 \item{coordinates}{List of \code{longitude, latitude} coordinate pairs visited in order, alternatively a two column \code{matrix} or \code{data.frame}.}
@@ -15,15 +15,26 @@ ors_directions(coordinates, profile = ors_profile(),
 
 \item{format}{Response format, defaults to \code{"geojson"}}
 
-\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/directions}{here}.}
+\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/directions}{here}}
 
 \item{api_key}{Character scalar containing openrouteservice API key}
 
-\item{parse_output}{Should the response be parsed to an R object}
+\item{output}{Output format. By default the response is being parsed to a list-based R object}
 }
 \value{
-Route between two or more locations for a selected profile and its
-settings as GeoJSON response.
+Route between two or more locations in the selected \code{format} structured according to \code{output}:
+
+\itemize{
+\item for \code{"text"}, a character vector of length 1 re-encoded to UTF-8.
+}
+
+\itemize{
+\item for \code{"parsed"}, a parsed R object.
+}
+
+\itemize{
+\item for \code{"sf"}, a \code{\link[sf]{sf}} object.
+}
 }
 \description{
 Get directions for different modes of transport.

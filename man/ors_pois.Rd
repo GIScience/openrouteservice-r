@@ -5,21 +5,29 @@
 \title{Openrouteservice POIs}
 \usage{
 ors_pois(request = c("pois", "stats", "list"), geometry, ...,
-  api_key = ors_api_key(), parse_output = NULL)
+  api_key = ors_api_key(), output = c("parsed", "text"))
 }
 \arguments{
 \item{request}{One of the following: \code{"pois"}, \code{"stats"} or \code{"list"}}
 
 \item{geometry}{GeoJSON geometry object (Point, LineString or Polygon)}
 
-\item{...}{Optional request attributes as described \href{https://openrouteservice.org/dev/#/api-docs/pois}{here}.}
+\item{...}{Optional request attributes as described \href{https://openrouteservice.org/dev/#/api-docs/pois}{here}}
 
 \item{api_key}{Character scalar containing openrouteservice API key}
 
-\item{parse_output}{Should the response be parsed to an R object}
+\item{output}{Output format. By default the response is being parsed to a list-based R object}
 }
 \value{
-A list of points of interest in the area specified in \code{geometry}.
+A list of points of interest in the area specified in \code{geometry} structured according to \code{output}:
+
+\itemize{
+\item for \code{"text"}, a character vector of length 1 re-encoded to UTF-8.
+}
+
+\itemize{
+\item for \code{"parsed"}, a parsed R object.
+}
 }
 \description{
 Search for points of interest around points or in geometries.

@@ -14,7 +14,10 @@
 #' @template param-common
 #' @templateVar dotsargs request attributes
 #' @templateVar endpoint pois
-#' @return A list of points of interest in the area specified in `geometry`.
+#' @template return
+#' @templateVar return A list of points of interest in the area specified in `geometry`
+#' @template return-text
+#' @template return-parsed
 #' @examples
 #' ors_pois('list')
 #' @template author
@@ -23,8 +26,9 @@ ors_pois <- function(request = c('pois', 'stats', 'list'),
                      geometry,
                      ...,
                      api_key = ors_api_key(),
-                     parse_output = NULL) {
+                     output = c("parsed", "text")) {
   request = match.arg(request)
+  output <- match.arg(output)
 
   query = api_query(api_key)
 
@@ -37,5 +41,5 @@ ors_pois <- function(request = c('pois', 'stats', 'list'),
       body$geometry = geometry
   }
 
-  api_call("POST", "pois", query, body = body, encode = "json", parse_output = parse_output)
+  api_call("POST", "pois", query, body = body, encode = "json", output = output)
 }
