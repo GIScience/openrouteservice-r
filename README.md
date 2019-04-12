@@ -51,20 +51,20 @@ for an overview of the offered functionality.
 Package News
 ------------
 
-### Changes in version 0.2.0
+### version 0.2.1
 
 #### NEW FEATURES
 
--   Update to openrouteservice API v2
--   Another feat
+-   `ors_elevation()` example added to vignette.
 
-#### BUG FIXES
-
--   Some bug
-
-### Changes in version 0.1.25
+### version 0.2.0
 
 #### NEW FEATURES
 
--   Add `ors_elevation` endpoint
--   Another feat
+-   Switched to openrouteservice API v2.
+
+### version 0.1.25
+
+#### NEW FEATURES
+
+-   `ors_elevation()` provides access to the new endpoint.

@@ -29,7 +29,9 @@ website:
 clean:
 	${RSCRIPT} -e "pkgdown::clean_site()"
 
-publish: clean website
+publish: check clean website
+
+gh_pages: publish
 	./update_web.sh
 
 spellcheck:
