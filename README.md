@@ -18,7 +18,7 @@ allows you to painlessly consume the following services:
 -   [geocode](https://openrouteservice.org/dev/#/api-docs/geocode)
     powered by [Pelias](https://pelias.io)
 -   [isochrones](https://openrouteservice.org/dev/#/api-docs/isochrones)
-    (accessibilty)
+    (accessibility)
 -   time-distance
     [matrix](https://openrouteservice.org/dev/#/api-docs/matrix)
 -   [pois](https://openrouteservice.org/dev/#/api-docs/pois) (points of
@@ -48,8 +48,34 @@ See the package
 [vignette](https://giscience.github.io/openrouteservice-r/articles/openrouteservice.html)
 for an overview of the offered functionality.
 
+Local ORS instance
+------------------
+
+The default is to fire any requests against the free public services at
+&lt;api.openrouteservice.org&gt;. In order to query a different
+openrouteservice instance, say a local one, set
+
+    options(openrouteservice.url = "http://localhost:8080/ors")
+
+If necessary, endpoint configuration can be further customized through
+`openrouteservice.paths` which specifies a named list of paths. The
+defaults are equivalent of having
+
+    options(openrouteservice.paths = list(directions = "v2/directions",
+                                          isochrones = "v2/isochrones",
+                                          matrix = "v2/matrix",
+                                          geocode = "geocode",
+                                          pois = "pois",
+                                          elevation = "elevation")
+
 Package News
 ------------
+
+### version 0.2.2
+
+#### BUG FIXES
+
+-   Improve handling of paths to openrouteservice endpoints (\#46).
 
 ### version 0.2.1
 
@@ -62,9 +88,3 @@ Package News
 #### NEW FEATURES
 
 -   Switched to openrouteservice API v2.
-
-### version 0.1.25
-
-#### NEW FEATURES
-
--   `ors_elevation()` provides access to the new endpoint.

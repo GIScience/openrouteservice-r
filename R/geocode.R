@@ -43,27 +43,27 @@ ors_geocode <- function(query,
                         ...,
                         api_key = ors_api_key(),
                         parse_output = NULL) {
-  path <-
+  endpoint <-
     if ( missing(query) ) {
       if ( missing(location) )
         stop('Specify at least one of the arguments "query/location"')
       params <- list(point.lon = location[1L], point.lat = location[2L], ...)
-      "geocode/reverse"
+      "reverse"
     }
     else {
       if ( length(query) > 1L ) {
         if ( !is.list(query) )
           query <- as.list(query)
         params <- c(query, ...)
-        "geocode/search/structured"
+        "search/structured"
       }
       else {
         params <- list(text = query, ...)
-        "geocode/search"
+        "search"
       }
     }
 
   query <- api_query(api_key, params, collapse = ",")
 
-  api_call("GET", path, query, parse_output = parse_output)
+  api_call("GET", c("geocode", endpoint), query, parse_output = parse_output)
 }

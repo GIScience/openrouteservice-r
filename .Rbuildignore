@@ -10,3 +10,4 @@
 ^codecov\.yml$
 ^\.covrignore$
 ^appveyor\.yml$
+^inst/WORDLIST

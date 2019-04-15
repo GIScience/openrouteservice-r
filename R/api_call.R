@@ -74,20 +74,38 @@ ors_url <- function() {
   getOption('openrouteservice.url', "https://api.openrouteservice.org")
 }
 
-#' @importFrom httr modify_url verbose
+ors_path <- function(endpoint) {
+  default_paths <- list (
+    directions = "v2/directions",
+    isochrones = "v2/isochrones",
+    matrix = "v2/matrix",
+    geocode = "geocode",
+    pois = "pois",
+    elevation = "elevation"
+  )
+  if (missing(endpoint))
+    return(default_paths)
+
+  ## path from options overrides the default
+  path <- getOption('openrouteservice.paths')[[endpoint]]
+  if (!is.null(path))
+    path
+  else
+   default_paths[[endpoint]]
+}
+
+#' @importFrom httr modify_url parse_url verbose
 api_call <- function(method, path, query, ...,
                      response_format = c("json", "geojson", "xml"),
                      parse_output = NULL, simplifyMatrix = TRUE) {
 
   response_format <- match.arg(response_format)
 
-  endpoint <- basename(path[1])
+  endpoint <- basename(path[1L])
+  path[1L] <- ors_path(endpoint)
 
-  new_path <- getOption('openrouteservice.paths')[[path[1]]]
-  if (!is.null(new_path))
-    path[1L] <- new_path[1L]
-
-  path <- paste(path, collapse="/")
+  ## extract base path from url in order to retain it in modify_url(), see #46
+  path <- paste0(parse_url(ors_url())$path, path, collapse="/")
 
   url <- modify_url(ors_url(), path = path, query = query)
 

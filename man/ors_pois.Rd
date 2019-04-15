@@ -10,7 +10,7 @@ ors_pois(request = c("pois", "stats", "list"), geometry, ...,
 \arguments{
 \item{request}{One of the following: \code{"pois"}, \code{"stats"} or \code{"list"}}
 
-\item{geometry}{GeoJSON geometry object (Point, Linestring or Polygon)}
+\item{geometry}{GeoJSON geometry object (Point, LineString or Polygon)}
 
 \item{...}{Optional request attributes as described \href{https://openrouteservice.org/dev/#/api-docs/pois}{here}.}
 

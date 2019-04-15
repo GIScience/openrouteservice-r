@@ -2,7 +2,8 @@
 #'
 #' Get elevation data for points or lines
 #'
-#' A GeoJSON based service to query SRTM elevation for Point or LineString 2D geometries and return 3D geometries in various formats.
+#' A GeoJSON based service to query SRTM elevation for Point or LineString 2D
+#' geometries and return 3D geometries in various formats.
 #'
 #' @param geometry `longitude, latitude` coordinate pairs
 #' @param format_in input format

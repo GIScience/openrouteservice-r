@@ -2,7 +2,8 @@
 #'
 #' List of available modes of transport.
 #'
-#' Convenience funtion for specifing the profile in [ors_directions()], [ors_isochrones()] and [ors_matrix()].
+#' Convenience function for specifying the profile in [ors_directions()],
+#' [ors_isochrones()] and [ors_matrix()].
 #'
 #' @param mode Profile label.
 #' @return Profile name, or named vector of available profiles.

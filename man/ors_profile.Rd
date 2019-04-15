@@ -17,7 +17,8 @@ Profile name, or named vector of available profiles.
 List of available modes of transport.
 }
 \details{
-Convenience funtion for specifing the profile in \code{\link[=ors_directions]{ors_directions()}}, \code{\link[=ors_isochrones]{ors_isochrones()}} and \code{\link[=ors_matrix]{ors_matrix()}}.
+Convenience function for specifying the profile in \code{\link[=ors_directions]{ors_directions()}},
+\code{\link[=ors_isochrones]{ors_isochrones()}} and \code{\link[=ors_matrix]{ors_matrix()}}.
 }
 \examples{
 # list availbale profiles

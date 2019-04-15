@@ -8,7 +8,8 @@ ors_matrix(locations, profile = ors_profile(), ...,
   api_key = ors_api_key(), parse_output = NULL)
 }
 \arguments{
-\item{locations}{A list of \code{longitude, latitude} coordinate pairs, or a two column \code{data.frame}}
+\item{locations}{A list of \code{longitude, latitude} coordinate pairs, or a two
+column \code{data.frame}}
 
 \item{profile}{Route profile, defaults to \code{"driving-car"}.}
 

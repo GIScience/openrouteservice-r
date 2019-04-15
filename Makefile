@@ -29,12 +29,12 @@ website:
 clean:
 	${RSCRIPT} -e "pkgdown::clean_site()"
 
-publish: check clean website
+spellcheck:
+	${RSCRIPT} -e "devtools::spell_check()"
+
+publish: check clean website spellcheck
 
 gh_pages: publish
 	./update_web.sh
-
-spellcheck:
-	${RSCRIPT} -e "devtools::spell_check()"
 
 .PHONY: readme document build install check website clean publish spellcheck

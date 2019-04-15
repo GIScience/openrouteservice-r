@@ -1,3 +1,9 @@
+# openrouteservice 0.2.2
+
+## BUG FIXES
+
+- Improve handling of paths to openrouteservice endpoints (#46).
+
 # openrouteservice 0.2.1
 
 ## NEW FEATURES

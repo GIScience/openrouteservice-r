@@ -30,7 +30,8 @@ ors_elevation(format_in = c("geojson", "point", "polyline",
 Get elevation data for points or lines
 }
 \details{
-A GeoJSON based service to query SRTM elevation for Point or LineString 2D geometries and return 3D geometries in various formats.
+A GeoJSON based service to query SRTM elevation for Point or LineString 2D
+geometries and return 3D geometries in various formats.
 }
 \examples{
 

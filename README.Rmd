@@ -23,6 +23,29 @@ See the package
 [vignette](https://giscience.github.io/openrouteservice-r/articles/openrouteservice.html)
 for an overview of the offered functionality.
 
+## Local ORS instance
+
+The default is to fire any requests against the free public services at
+<api.openrouteservice.org>. In order to query a different openrouteservice
+instance, say a local one, set
+
+```{r openrouteservice.url, eval=FALSE}
+options(openrouteservice.url = "http://localhost:8080/ors")
+```
+
+If necessary, endpoint configuration can be further customized through
+`openrouteservice.paths` which specifies a named list of paths. The defaults are
+equivalent of having
+
+```{r openrouteservice.paths, echo=FALSE, comment=NA}
+opts_str <- "options(openrouteservice.paths = "
+nch <- nchar(opts_str) + 4L
+ors_paths <- unlist(strsplit(deparse(openrouteservice:::ors_path(), 500L), ","))
+indent <- paste0(rep(" ", nch), collapse="")
+cat(opts_str, paste0(ors_paths, collapse = paste(",", indent, sep="\n")), sep="")
+options(openrouteservice.path = list(directions = "v2/directions"))
+```
+
 ## Package News
 
 ```{r news, echo = FALSE, results = 'asis'}
