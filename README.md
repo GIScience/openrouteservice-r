@@ -66,10 +66,17 @@ defaults are equivalent of having
                                           matrix = "v2/matrix",
                                           geocode = "geocode",
                                           pois = "pois",
-                                          elevation = "elevation")
+                                          elevation = "elevation"))
 
 Package News
 ------------
+
+### version 0.2.3
+
+#### NEW FEATURES
+
+-   `ors_isochrones()` now accepts `locations` provided as `data.frame`
+    (\#38).
 
 ### version 0.2.2
 
@@ -82,9 +89,3 @@ Package News
 #### NEW FEATURES
 
 -   `ors_elevation()` example added to vignette.
-
-### version 0.2.0
-
-#### NEW FEATURES
-
--   Switched to openrouteservice API v2.

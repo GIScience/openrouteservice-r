@@ -2,8 +2,9 @@
 #'
 #' Get directions for different modes of transport.
 #'
-#' @param coordinates List of `longitude, latitude` coordinate pairs visited in
-#'   order.
+#' @template param-coordinates
+#' @templateVar argname coordinates
+#' @templateVar suffix visited in order
 #' @template param-profile
 #' @param format Response format, defaults to `"geojson"`
 #' @template param-common
@@ -37,8 +38,7 @@ ors_directions <- function(coordinates,
   format <- match.arg(format)
 
   ## request parameters
-  if (is.data.frame(coordinates))
-    coordinates <- as.matrix(coordinates)
+  names(coordinates) <- NULL
 
   body <- list(coordinates = coordinates, ...)
 

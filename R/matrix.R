@@ -3,8 +3,8 @@
 #' Obtain one-to-many, many-to-one and many-to-many matrices for time and
 #' distance.
 #'
-#' @param locations A list of `longitude, latitude` coordinate pairs, or a two
-#'   column `data.frame`
+#' @template param-coordinates
+#' @templateVar argname locations
 #' @template param-profile
 #' @template param-common
 #' @templateVar dotsargs parameters

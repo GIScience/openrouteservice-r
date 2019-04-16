@@ -6,7 +6,8 @@
 #' multiple locations. You may also specify the isochrone interval or provide
 #' multiple exact isochrone range values.
 #'
-#' @param locations List of `longitude, latitude` coordinate pairs
+#' @template param-coordinates
+#' @templateVar argname locations
 #' @template param-profile
 #' @param range Maximum range value of the analysis in seconds for time and
 #'   meters for distance. Alternatively a comma separated list of specific
@@ -37,9 +38,11 @@ ors_isochrones <- function(locations,
   ## required arguments with defaults
   profile <- match.arg(profile)
 
-  ## request parameters
-  if (is.atomic(locations))
+  ## wrap single point coordinate pairs into list
+  if (is.vector(locations) && is.atomic(locations))
     locations <- list(locations)
+
+  names(locations) <- NULL
 
   if (length(range)==1L)
     range <- I(range)

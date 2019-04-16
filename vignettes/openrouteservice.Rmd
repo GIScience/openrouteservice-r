@@ -77,7 +77,7 @@ former approach allowing to bypass the keyring infrastructure.
 ## Directions
 
 `ors_directions()` interfaces the ORS directions service to compute routes
-between given points specified in `coordinates`.
+between points provided in `coordinates`.
 
 ```{r directions, eval=TRUE}
 library(openrouteservice)
@@ -87,10 +87,11 @@ coordinates <- list(c(8.34234, 48.23424), c(8.34423, 48.26424))
 x <- ors_directions(coordinates)
 ```
 
-By default the response is formatted as geoJSON which allows to easily
+The default response format is geoJSON which allows to easily
 [visualize](https://rstudio.github.io/leaflet/json.html#working-with-raw-geojsontopojson)
-it with e.g. [leaflet](https://CRAN.R-project.org/package=leaflet). Other output
-formats, such as GPX, can be specified in the argument `format`.
+the results with, e.g. [leaflet](https://CRAN.R-project.org/package=leaflet).
+Other output formats, say GPX, can be specified through `format = "gpx"`
+argument.
 
 ```{r leaflet}
 library(leaflet)
@@ -101,7 +102,7 @@ leaflet() %>%
   fitBBox(x$bbox)
 ```
 
-The points are specified as a list of coordinate pairs `c(lng, lat)`, or a
+The coordinate pairs `c(lng, lat)` can be given as a list, or in a 
 2-column matrix-like object such as a data frame.
 
 ```{r data_frame}
@@ -128,11 +129,12 @@ leaflet() %>%
   fitBBox(x$bbox)
 ```
 
-Any optional [query parameters](`r doc('directions')`) can be specified by
-providing them as additional `...` arguments to `ors_directions`. For example,
-setting `elevation = TRUE` adds height to the coordinates of the points along
-the route, which can be used to plot the elevation profile colored by steepness
-obtained by specifying it in `extra_info`.
+Any optional `r openrouteservice:::doc_link('directions', 'query parameters')`
+can be specified by providing them as additional `...` arguments to
+`ors_directions`. For example, setting `elevation = TRUE` adds height to the
+coordinates of the points along the route. This information can be then used to
+plot the elevation profile colored by steepness obtained by specifying it in
+`extra_info`.
 
 ```{r elevation_profile, fig.dim=c(10, 5), out.height='100%'}
 library(sp)
@@ -229,7 +231,7 @@ distance. The reachability areas are returned as contours of polygons. Next to
 the `range` provided in seconds or meters you may as well specify the
 corresponding `interval`s. If the input entails a list of points the service
 will return an intersections of the computed isochrones if any exist.
-`ors_isochrones()` accepts identical arguments as `ors_directions()`.
+`ors_isochrones()` accepts similar arguments as `ors_directions()`.
 
 ```{r isochrones}
 coordinates <- list(c(8.34234, 48.23424), c(8.34234, 47.23424))
@@ -267,7 +269,7 @@ leaflet() %>%
 
 ## Matrix
 
-One to many, many to many or many to one. `ors_matrix()` allows you to obtain
+One to many, many to many or many to one: `ors_matrix()` allows you to obtain
 aggregated time and distance information between a set of locations (origins and
 destinations). Unlike `ors_directions()` it does not return detailed route
 information. But you may still specify the transportation mode and compute
@@ -369,7 +371,7 @@ ors_pois(request = 'stats',
 
 ## Elevation
 
-Given a point or line geometry one can use `ors_elevation` to query for its
+Given a point or line geometry you can use `ors_elevation` to query for its
 elevation.
 
 ```{r elevation}

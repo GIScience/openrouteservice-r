@@ -32,7 +32,7 @@ clean:
 spellcheck:
 	${RSCRIPT} -e "devtools::spell_check()"
 
-publish: check clean website spellcheck
+publish: install check clean website spellcheck
 
 gh_pages: publish
 	./update_web.sh

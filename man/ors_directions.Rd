@@ -9,8 +9,7 @@ ors_directions(coordinates, profile = ors_profile(),
   parse_output = NULL)
 }
 \arguments{
-\item{coordinates}{List of \code{longitude, latitude} coordinate pairs visited in
-order.}
+\item{coordinates}{List of \code{longitude, latitude} coordinate pairs visited in order, alternatively a two column \code{matrix} or \code{data.frame}.}
 
 \item{profile}{Route profile, defaults to \code{"driving-car"}.}
 

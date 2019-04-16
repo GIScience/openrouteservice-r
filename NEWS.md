@@ -1,3 +1,9 @@
+# openrouteservice 0.2.3
+
+## NEW FEATURES
+
+- `ors_isochrones()` now accepts `locations` provided as `data.frame` (#38).
+
 # openrouteservice 0.2.2
 
 ## BUG FIXES

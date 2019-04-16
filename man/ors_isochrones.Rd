@@ -8,7 +8,7 @@ ors_isochrones(locations, profile = ors_profile(), range = 60, ...,
   api_key = ors_api_key(), parse_output = NULL)
 }
 \arguments{
-\item{locations}{List of \code{longitude, latitude} coordinate pairs}
+\item{locations}{List of \code{longitude, latitude} coordinate pairs, alternatively a two column \code{matrix} or \code{data.frame}.}
 
 \item{profile}{Route profile, defaults to \code{"driving-car"}.}
 
