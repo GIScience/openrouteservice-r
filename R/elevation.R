@@ -31,15 +31,15 @@
 #'   c(13.349762, 38.11295),
 #'   c(12.638397, 37.645772)
 #' )
-#' ors_elevation("polyline", coordinates, format_out = "encodedpolyline5")
+#' ors_elevation("polyline", coordinates, format_out = "encodedpolyline")
 #'
 #' @template author
 #' @importFrom geojson as.geojson geo_type
 #' @importFrom httr add_headers
 #' @export
-ors_elevation <- function(format_in = c("geojson", "point", "polyline", "encodedpolyline5", "encodedpolyline6"),
+ors_elevation <- function(format_in = c("geojson", "point", "polyline", "encodedpolyline", "encodedpolyline6"),
                           geometry,
-                          format_out = c("geojson", "point", "polyline", "encodedpolyline5", "encodedpolyline6"),
+                          format_out = c("geojson", "point", "polyline", "encodedpolyline", "encodedpolyline6"),
                           ...,
                           api_key = ors_api_key(),
                           output = c("parsed", "text", "sf")) {
@@ -66,7 +66,7 @@ ors_elevation <- function(format_in = c("geojson", "point", "polyline", "encoded
 
   endpoint <- switch(tolower(input),
                      point = "point",
-                     polyline =, encodedpolyline5 =, encodedpolyline6 = "line")
+                     polyline =, encodedpolyline =, encodedpolyline6 = "line")
 
   body <- list(format_in = format_in,
                geometry = geometry,

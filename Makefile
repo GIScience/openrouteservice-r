@@ -7,7 +7,7 @@ RSCRIPT = Rscript --vanilla
 %.md: %.Rmd
 	${RSCRIPT} -e 'rmarkdown::render("$<")'
 
-README.md: vignettes/openrouteservice.Rmd
+README.md: vignettes/${PKGNAME}.Rmd
 
 readme: README.md
 
