@@ -71,6 +71,13 @@ defaults are equivalent of having
 Package News
 ------------
 
+### version 0.2.4
+
+#### NEW FEATURES
+
+-   `ors_directions()`, `ors_isochrones()`, `ors_elevation()` and
+    `ors_geocode()` can now output `sf` objects (\#42).
+
 ### version 0.2.3
 
 #### NEW FEATURES
@@ -83,9 +90,3 @@ Package News
 #### BUG FIXES
 
 -   Improve handling of paths to openrouteservice endpoints (\#46).
-
-### version 0.2.1
-
-#### NEW FEATURES
-
--   `ors_elevation()` example added to vignette.

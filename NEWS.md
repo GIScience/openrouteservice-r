@@ -1,3 +1,10 @@
+# openrouteservice 0.2.4
+
+## NEW FEATURES
+
+- `ors_directions()`, `ors_isochrones()`, `ors_elevation()` and `ors_geocode()`
+can now output `sf` objects (#42).
+
 # openrouteservice 0.2.3
 
 ## NEW FEATURES

@@ -10,11 +10,13 @@ addons:
     sources:
       - sourceline: 'ppa:opencpu/jq'
     packages:
+      - libgdal-dev
       - libjq-dev
       - libprotobuf-dev
-      - libv8-3.14-dev
       - libsecret-1-dev
       - libsodium-dev
+      - libudunits2-dev
+      - libv8-3.14-dev
       - protobuf-compiler
 
 os:

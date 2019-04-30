@@ -153,10 +153,10 @@ process_response <- function(res, endpoint, output, simplifyMatrix) {
   res
 }
 
-#' @importFrom jsonlite fromJSON
 #' @importFrom geojson as.geojson
 #' @importFrom geojsonlint geojson_validate
 #' @importFrom geojsonsf geojson_sf
+#' @importFrom jsonlite fromJSON
 #' @importFrom xml2 read_xml xml_validate
 parse_content <- function (content,
                            format = c("json", "xml"),
@@ -164,6 +164,17 @@ parse_content <- function (content,
                            endpoint, simplifyMatrix) {
   format <- match.arg(format)
   output <- match.arg(output)
+
+  parseJSON <- function(txt,
+                        simplifyVector = TRUE,
+                        simplifyDataFrame = FALSE,
+                        simplifyMatrix = TRUE,
+                        ...)
+    fromJSON(txt,
+             simplifyVector = simplifyVector,
+             simplifyDataFrame = simplifyDataFrame,
+             simplifyMatrix = simplifyMatrix,
+             ...)
 
   ## raw text output
   if (output=="text") {
@@ -178,10 +189,7 @@ parse_content <- function (content,
   ## parsed R list
   if (output=="parsed") {
     if (format=="json") {
-      content <- fromJSON(content,
-                          simplifyVector = TRUE,
-                          simplifyDataFrame = FALSE,
-                          simplifyMatrix = simplifyMatrix)
+      content <- parseJSON(content, simplifyMatrix = simplifyMatrix)
       class <- c(sprintf("ors_%s", endpoint), "ors_api", class(content))
       content <- structure(content, class = class)
       return(content)
@@ -199,7 +207,23 @@ parse_content <- function (content,
   if (format=="json" && output=="sf") {
     if (endpoint=="elevation")
       content <- content$geometry
-    return(geojson_sf(content))
+
+    res <- geojson_sf(content)
+
+    if (endpoint!="geocode") {
+      ## convert parsed properties to sf compatible data.frame
+      properties <- lapply(parseJSON(content)$features, function(feature) {
+        prop_list <- lapply(feature[['properties']],
+                            function(x) if (length(x) > 1L) list(x) else x)
+        structure(prop_list, class = "data.frame", row.names = 1L)
+      })
+
+      properties = do.call(rbind, properties)
+
+      res[names(properties)] <- properties
+    }
+
+    return(res)
   }
 
   stop(sprintf("Unsupported %s output for %s format.", output, format))

@@ -87,11 +87,16 @@ coordinates <- list(c(8.34234, 48.23424), c(8.34423, 48.26424))
 x <- ors_directions(coordinates)
 ```
 
-The default response format is geoJSON which allows to easily
+Way points can be provided as a list of coordinate pairs `c(lng, lat)`, or a
+2-column matrix-like object such as a data frame.
+
+```{r data_frame}
+coordinates <- data.frame(lng = c(8.34234, 8.34423), lat = c(48.23424, 48.26424))
+```
+
+By default the response is formatted as geoJSON which allows to easily
 [visualize](https://rstudio.github.io/leaflet/json.html#working-with-raw-geojsontopojson)
-the results with, e.g. [leaflet](https://CRAN.R-project.org/package=leaflet).
-Other output formats, say GPX, can be specified through `format = "gpx"`
-argument.
+it with e.g. [leaflet](https://CRAN.R-project.org/package=leaflet).
 
 ```{r leaflet}
 library(leaflet)
@@ -102,16 +107,23 @@ leaflet() %>%
   fitBBox(x$bbox)
 ```
 
-The coordinate pairs `c(lng, lat)` can be given as a list, or in a 
-2-column matrix-like object such as a data frame.
+Other output formats, such as GPX, can be specified in the argument `format`.
+Note that in plain JSON response the geometry is returned as [Google's encoded
+polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm).
 
-```{r data_frame}
-coordinates <- data.frame(lng = c(8.34234, 8.34423), lat = c(48.23424, 48.26424))
+```{r googlepolyline}
+x <- ors_directions(coordinates, format = "json")
+
+geometry <- x$routes[[1]]$geometry
+str(geometry)
+
+library(googlePolylines)
+str(decode(geometry))
 ```
 
 The API offers a wide range of `profile`s for multiple modes of transport: car,
-different bicycle types, walking, hiking, wheelchair and heavy vehicle. These
-can be listed with
+and heavy vehicle, different bicycle types, walking, hiking and wheelchair.
+These can be listed with
 
 ```{r profiles}
 ors_profile()
@@ -131,44 +143,60 @@ leaflet() %>%
 
 Any optional `r openrouteservice:::doc_link('directions', 'query parameters')`
 can be specified by providing them as additional `...` arguments to
-`ors_directions`. For example, setting `elevation = TRUE` adds height to the
-coordinates of the points along the route. This information can be then used to
-plot the elevation profile colored by steepness obtained by specifying it in
-`extra_info`.
+`ors_directions`. For example, in order to plot the elevation profile of a route
+colored by steepness use `elevation = TRUE` to add height to the coordinates of
+the points along the route and query for steepness in `extra_info`.
 
-```{r elevation_profile, fig.dim=c(10, 5), out.height='100%'}
-library(sp)
-library(ggplot2)
-library(RColorBrewer)
+```{r cycling_mountain, message=FALSE}
+x <- ors_directions(coordinates, profile = "cycling-mountain", elevation = TRUE,
+                    extra_info = I("steepness"), output = "sf")
 
-x <- ors_directions(coordinates, profile="cycling-mountain",
-                    elevation = TRUE, extra_info = I("steepness"))
+library("sf")
+height <- st_geometry(x)[[1]][, 3]
+```
 
-route <- x$features[[1]]
-## create data.frame
-coords <- route$geometry$coordinates
-colnames(coords) <- c("Longitude", "Latitude", "Height")
+Length of individual route segments and their distance relative to the starting
+point can be computed with `st_distance()` upon converting the `LINESTRING` to a
+list of `POINT`s,
 
-longlat <- coords[,c("Longitude", "Latitude")]
-height <- coords[, "Height"]
+```{r segments}
+points <- st_cast(st_geometry(x), "POINT")
 
-segments <- cumsum(spDists(longlat, longlat=TRUE, segments=TRUE))
+n <- length(points)
 
-steepness <- route$properties$extras$steepness$values
+segments <- cumsum(st_distance(points[-n], points[-1], by_element = TRUE))
+```
+
+while their steepness can be extracted from the requested metadata.
+
+```{r steepness}
+steepness <- x$extras$steepness$values
 steepness <- rep(steepness[,3], steepness[,2]-steepness[,1])
 steepness <- factor(steepness, -5:5)
 
-n <- length(segments)
+library(RColorBrewer)
+palette = setNames(rev(brewer.pal(11, "RdYlBu")), levels(steepness))
+```
 
-df <- data.frame(x1 = c(0, segments[-n]),
+For the final plot we use ggplot2 in combinations with ggforce which supports
+handling of length units associated with the data.
+
+```{r elevation_profile, fig.dim=c(10, 5), message=FALSE, out.height='100%'}
+library("ggplot2")
+library("ggforce")
+library("units")
+
+units(height) <- as_units("m")
+
+df <- data.frame(x1 = c(set_units(0, "m"), segments[-(n-1)]),
                  x2 = segments,
-                 y1 = height[-(n+1)],
+                 y1 = height[-n],
                  y2 = height[-1],
                  steepness)
 
-palette = setNames(rev(brewer.pal(11, "RdYlBu")), levels(steepness))
-
 y_ran = range(height) * c(0.9, 1.1)
+
+n = n-1
 
 df2 = data.frame(x = c(df$x1, df$x2, df$x2, df$x1),
                  y = c(rep(y_ran[1], 2*n), df$y2, df$y1),
@@ -180,9 +208,9 @@ ggplot() + theme_bw() +
   geom_polygon(data = df2, aes(x, y, group = id), fill = "white") +
   geom_polygon(data = df2, aes(x, y , group = id, fill = steepness)) +
   scale_fill_manual(values = alpha(palette, 0.8), drop = FALSE) +
-  scale_x_continuous(expand = c(0,0)) +
-  scale_y_continuous(expand = c(0,0), limits = y_ran) +
-  labs(x = "Distance [km]", y = "Height [m]")
+  scale_x_unit(unit = "km", expand = c(0,0)) +
+  scale_y_unit(expand = c(0,0), limits = y_ran) +
+  labs(x = "Distance", y = "Height")
 ```
 
 Advanced `options` are passed in form of native R lists formatted as a JSON

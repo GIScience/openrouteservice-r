@@ -34,7 +34,7 @@ A GeoJSON object containing a FeatureCollection of Polygons
 }
 
 \itemize{
-\item for \code{"sf"}, a \code{\link[sf]{sf}} object.
+\item for \code{"sf"}, a simple features \code{\link[sf]{sf}} object.
 }
 }
 \description{
