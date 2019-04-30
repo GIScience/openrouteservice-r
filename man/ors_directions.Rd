@@ -47,6 +47,11 @@ ors_directions(coordinates, preference="fastest")
 
 # customized options
 ors_directions(coordinates, profile="cycling-mountain", elevation=TRUE)
+
+# list of locations as `data.frame` output as simple features `sf` object
+locations <- data.frame(lng = c(8.34234, 8.327807, 8.34423),
+                        lat = c(48.23424, 48.239368, 48.26424))
+ors_directions(locations, output = "sf")
 }
 \author{
 Andrzej Oleś <\email{andrzej@openrouteservice.org}>
