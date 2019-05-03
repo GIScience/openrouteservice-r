@@ -19,9 +19,9 @@ mock_xml <- mock_response(
 )
 
 test_that("Parsed GPX response", {
-  expect_equal(process_response(mock_xml, output = "parsed"), read_xml(mock_gpx))
+  expect_equal(process_response(mock_xml, "endpoint", output = "parsed"), read_xml(mock_gpx))
 })
 
 test_that("Unparsed GPX response", {
-  expect_identical(process_response(mock_xml, output = "text"), mock_gpx)
+  expect_identical(process_response(mock_xml, "endpoint", output = "text"), mock_gpx)
 })

@@ -71,6 +71,12 @@ defaults are equivalent of having
 Package News
 ------------
 
+### version 0.2.5
+
+#### NEW FEATURES
+
+-   Improved `ors_elevation()` response handling.
+
 ### version 0.2.4
 
 #### NEW FEATURES
@@ -84,9 +90,3 @@ Package News
 
 -   `ors_isochrones()` now accepts `locations` provided as `data.frame`
     (\#38).
-
-### version 0.2.2
-
-#### BUG FIXES
-
--   Improve handling of paths to openrouteservice endpoints (\#46).

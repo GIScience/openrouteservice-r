@@ -156,7 +156,7 @@ process_response <- function(res, endpoint, output, simplifyMatrix) {
 #' @importFrom geojson as.geojson
 #' @importFrom geojsonlint geojson_validate
 #' @importFrom geojsonsf geojson_sf
-#' @importFrom jsonlite fromJSON
+#' @importFrom jsonlite fromJSON toJSON
 #' @importFrom xml2 read_xml xml_validate
 parse_content <- function (content,
                            format = c("json", "xml"),
@@ -176,15 +176,9 @@ parse_content <- function (content,
              simplifyMatrix = simplifyMatrix,
              ...)
 
-  ## raw text output
-  if (output=="text") {
-    if (format=="json") {
-      content <- structure(content, class = "json")
-      if ( isTRUE(geojson_validate(content)) )
-        content <- as.geojson(content)
-    }
-    return(content)
-  }
+  ## extract elevation geometry
+  if (endpoint=="elevation")
+    content <- toJSON(fromJSON(content)$geometry, auto_unbox=TRUE)
 
   ## parsed R list
   if (output=="parsed") {
@@ -196,7 +190,7 @@ parse_content <- function (content,
     }
     if (format=="xml") {
       content <- read_xml(content)
-      gpx_xsd = getOption("openrouteservice.gpx_xsd", "https://raw.githubusercontent.com/GIScience/openrouteservice-schema/master/gpx/v2/ors-gpx.xsd")
+      gpx_xsd <- getOption("openrouteservice.gpx_xsd", "https://raw.githubusercontent.com/GIScience/openrouteservice-schema/master/gpx/v2/ors-gpx.xsd")
       xsd <- read_xml(gpx_xsd)
       if (!xml_validate(content, xsd))
         stop("Failed to validate GPX response")
@@ -204,10 +198,20 @@ parse_content <- function (content,
     }
   }
 
-  if (format=="json" && output=="sf") {
-    if (endpoint=="elevation")
-      content <- content$geometry
+  ## check for geojson as some endpoints respond with generic json content type
+  is_geojson <- format=="json" && isTRUE(geojson_validate(content))
 
+  ## raw text output
+  if (output=="text") {
+    if (format=="json") {
+      content <- structure(content, class = "json")
+      if (is_geojson)
+        content <- as.geojson(content)
+    }
+    return(content)
+  }
+
+  if (output=="sf" && is_geojson) {
     res <- geojson_sf(content)
 
     if (endpoint!="geocode") {
@@ -242,6 +246,6 @@ parse_content <- function (content,
 #' @export
 print.ors_api <- function(x, give.attr = FALSE, list.len = 6L, ...) {
   cat(sprintf("<%s>\n", class(x)[1L]))
-  str(x, list.len = list.len, give.attr = give.attr, ...)
+  str(unclass(x), list.len = list.len, give.attr = give.attr, ...)
   invisible(x)
 }

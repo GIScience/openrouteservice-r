@@ -39,7 +39,7 @@
 #' @export
 ors_elevation <- function(format_in = c("geojson", "point", "polyline", "encodedpolyline", "encodedpolyline6"),
                           geometry,
-                          format_out = c("geojson", "point", "polyline", "encodedpolyline", "encodedpolyline6"),
+                          format_out = format_in,
                           ...,
                           api_key = ors_api_key(),
                           output = c("parsed", "text", "sf")) {
@@ -52,10 +52,6 @@ ors_elevation <- function(format_in = c("geojson", "point", "polyline", "encoded
 
   format_in <- match.arg(format_in)
 
-  ## required arguments with defaults
-  format_out <- match.arg(format_out)
-  output <- match.arg(output)
-
   ## check whether geojson is a point or a line
   if (format_in == "geojson") {
     geometry = fromJSON(geometry)
@@ -67,6 +63,13 @@ ors_elevation <- function(format_in = c("geojson", "point", "polyline", "encoded
   endpoint <- switch(tolower(input),
                      point = "point",
                      polyline =, encodedpolyline =, encodedpolyline6 = "line")
+
+  ## required arguments with defaults
+  valid_formats <- switch (endpoint,
+                           point = c("point"),
+                           line = c("polyline", "encodedpolyline", "encodedpolyline6"))
+  format_out <- match.arg(format_out, c("geojson", valid_formats))
+  output <- match.arg(output)
 
   body <- list(format_in = format_in,
                geometry = geometry,

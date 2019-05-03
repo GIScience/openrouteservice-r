@@ -6,8 +6,7 @@
 \usage{
 ors_elevation(format_in = c("geojson", "point", "polyline",
   "encodedpolyline", "encodedpolyline6"), geometry,
-  format_out = c("geojson", "point", "polyline", "encodedpolyline",
-  "encodedpolyline6"), ..., api_key = ors_api_key(),
+  format_out = format_in, ..., api_key = ors_api_key(),
   output = c("parsed", "text", "sf"))
 }
 \arguments{

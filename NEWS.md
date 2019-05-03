@@ -1,3 +1,9 @@
+# openrouteservice 0.2.5
+
+## NEW FEATURES
+
+- Improved `ors_elevation()` response handling.
+
 # openrouteservice 0.2.4
 
 ## NEW FEATURES
