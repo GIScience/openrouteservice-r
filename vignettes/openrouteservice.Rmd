@@ -34,7 +34,7 @@ to painlessly consume the following services:
   - `r doc('isochrones')` (accessibility)
   - time-distance `r doc('matrix')`
   - `r doc('pois')` (points of interest)
-  - `r doc('elevation')` (SRTM elevation for point and lines geometries)
+  - SRTM `r doc('elevation')` for point and lines geometries
 
 ### Disclaimer
 
@@ -77,7 +77,7 @@ former approach allowing to bypass the keyring infrastructure.
 ## Directions
 
 `ors_directions()` interfaces the ORS directions service to compute routes
-between points provided in `coordinates`.
+between given `coordinates`.
 
 ```{r directions, eval=TRUE}
 library(openrouteservice)
@@ -94,7 +94,7 @@ Way points can be provided as a list of coordinate pairs `c(lng, lat)`, or a
 coordinates <- data.frame(lng = c(8.34234, 8.34423), lat = c(48.23424, 48.26424))
 ```
 
-By default the response is formatted as geoJSON which allows to easily
+The response formatting defaults to geoJSON which allows to easily
 [visualize](https://rstudio.github.io/leaflet/json.html#working-with-raw-geojsontopojson)
 it with e.g. [leaflet](https://CRAN.R-project.org/package=leaflet).
 
@@ -108,21 +108,25 @@ leaflet() %>%
 ```
 
 Other output formats, such as GPX, can be specified in the argument `format`.
-Note that in plain JSON response the geometry is returned as [Google's encoded
-polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm).
+Note that plain JSON response returns the geometry as [Google's encoded
+polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm),
 
-```{r googlepolyline}
+```{r encodedpolyline}
 x <- ors_directions(coordinates, format = "json")
 
 geometry <- x$routes[[1]]$geometry
 str(geometry)
+```
 
+so an additional postprocessing step might be necessary.
+
+```{r googlepolyline}
 library(googlePolylines)
 str(decode(geometry))
 ```
 
-The API offers a wide range of `profile`s for multiple modes of transport: car,
-and heavy vehicle, different bicycle types, walking, hiking and wheelchair.
+The API offers a wide range of `profile`s for multiple modes of transport, such
+as: car, heavy vehicle, different bicycle types, walking, hiking and wheelchair.
 These can be listed with
 
 ```{r profiles}
@@ -148,22 +152,23 @@ colored by steepness use `elevation = TRUE` to add height to the coordinates of
 the points along the route and query for steepness in `extra_info`.
 
 ```{r cycling_mountain, message=FALSE}
+library("sf")
+
 x <- ors_directions(coordinates, profile = "cycling-mountain", elevation = TRUE,
                     extra_info = I("steepness"), output = "sf")
 
-library("sf")
 height <- st_geometry(x)[[1]][, 3]
 ```
 
-Length of individual route segments and their distance relative to the starting
-point can be computed with `st_distance()` upon converting the `LINESTRING` to a
-list of `POINT`s,
+Here we use [simple features](https://CRAN.R-project.org/package=sf) output for
+the sake of easy postprocessing which includes finding the length of individual
+route segments and their distance relative to the starting point. These can be
+computed with `st_distance()` upon converting the `LINESTRING` to a list of
+`POINT`s,
 
 ```{r segments}
 points <- st_cast(st_geometry(x), "POINT")
-
 n <- length(points)
-
 segments <- cumsum(st_distance(points[-n], points[-1], by_element = TRUE))
 ```
 
@@ -174,8 +179,7 @@ steepness <- x$extras$steepness$values
 steepness <- rep(steepness[,3], steepness[,2]-steepness[,1])
 steepness <- factor(steepness, -5:5)
 
-library(RColorBrewer)
-palette = setNames(rev(brewer.pal(11, "RdYlBu")), levels(steepness))
+palette = setNames(rev(RColorBrewer::brewer.pal(11, "RdYlBu")), levels(steepness))
 ```
 
 For the final plot we use ggplot2 in combinations with ggforce which supports
@@ -213,8 +217,8 @@ ggplot() + theme_bw() +
   labs(x = "Distance", y = "Height")
 ```
 
-Advanced `options` are passed in form of native R lists formatted as a JSON
-object.
+Advanced `options` are natively formatted as JSON objects, but can be passed as
+their R list representation.
 
 ```{r bicycle-avoid}
 polygon = list(
@@ -227,7 +231,8 @@ polygon = list(
         c(8.330469, 48.258227),
         c(8.330469, 48.261570)
       )
-    )
+    ),
+    properties = ""
   )
 
 options <- list(
@@ -236,15 +241,9 @@ options <- list(
 
 x <- ors_directions(coordinates, profile="cycling-mountain", options=options)
 
-geojson <- list(
-  type = "Feature",
-  properties = "",
-  geometry = polygon
-)
-
 leaflet() %>%
   addTiles() %>%
-  addGeoJSON(geojson, color="#F00") %>%
+  addGeoJSON(polygon, color="#F00") %>%
   addGeoJSON(x, fill=FALSE) %>%
   fitBBox(x$bbox)
 ```
@@ -257,43 +256,53 @@ different kinds of domains. `ors_isochrones()` helps you to determine which
 areas can be reached from certain location(s) in a given time or travel
 distance. The reachability areas are returned as contours of polygons. Next to
 the `range` provided in seconds or meters you may as well specify the
-corresponding `interval`s. If the input entails a list of points the service
-will return an intersections of the computed isochrones if any exist.
-`ors_isochrones()` accepts similar arguments as `ors_directions()`.
+corresponding `interval`s. The list of optional arguments to `ors_isochrones()`
+is similar as to `ors_directions()`.
 
-```{r isochrones}
-coordinates <- list(c(8.34234, 48.23424), c(8.34234, 47.23424))
-range <- 60*60 # 60 minutes
-interval <- 20*60 # 20 minutes
+```{r isochrones_ranges}
+library(mapview)
 
-x <- ors_isochrones(coordinates, range = range, interval = interval)
+coordinates <- list(c(8.34234, 48.23424), c(8.34234, 49.23424))
 
-# set isochrones color
-ranges <- seq(from=interval, to=range, by=interval)
-pal <- setNames(heat.colors(length(ranges)), ranges)
+## 1 hour range split into 20 minute intervals
+x <- ors_isochrones(coordinates, range = 60*60, interval = 20*60, output = "sf")
 
-x$features <- lapply(1:length(x$features), function(i) {
-  feature <- x$features[[i]]
-  range <- feature$properties$value
-  
-  ## set style
-  col <- unname(pal[as.character(range)])
-  feature$properties$style <- list(color = col, fillColor = col, fillOpacity=0.5)
-  
-  ## restrict polygon to current level only
-  if (range > ranges[1])
-    feature$geometry$coordinates <-
-      c(feature$geometry$coordinates, x$features[[i-1]]$geometry$coordinates)
-  
-  feature
-})
+values <- sort(unique(x$value))
+ranges <- split(x, x$value)
+ranges <- ranges[as.character(rev(values))]
 
-leaflet() %>%
-  addTiles() %>%
-  addGeoJSON(x) %>%
-  fitBBox(x$bbox)
+names(ranges) <- sprintf("%s min", as.numeric(names(ranges))/60)
+
+mapview(ranges, alpha.regions = 0.2, homebutton = FALSE)
 ```
 
+Here we have used `sf` output for the sake of some further postprocessing and
+visualization. By grouping the isochrones according to ranges we gain the
+ability of toggling individual ranges when displayed in
+[mapview](https://CRAN.R-project.org/package=mapview). Another option could be
+to group by locations. The following example illustrates a possible approach to
+applying a custom color palette to the non-overlapping parts of isochrones.
+
+```{r isochrones_colors}
+locations = split(x, x$group_index)
+
+locations <- lapply(locations, function(loc) {
+  g <- st_geometry(loc)
+  high <- which(loc$value==values[length(values)])
+  low <- which(loc$value==values[1])
+  g[-low] <- st_sfc(Map(st_difference,
+                       g[match(values[-low], loc$value)],
+                       g[match(values[-high], loc$value)]))
+  st_geometry(loc) <- g
+  loc
+})
+
+isochrones <- unsplit(locations, x$group_index)
+
+pal <- setNames(heat.colors(length(values)), values)
+mapview(isochrones, zcol = "value", col = pal, col.regions = pal,
+        alpha.regions = 0.5, homebutton = FALSE)
+```
 
 ## Matrix
 

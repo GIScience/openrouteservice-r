@@ -23,8 +23,9 @@ allows you to painlessly consume the following services:
     [matrix](https://openrouteservice.org/dev/#/api-docs/matrix)
 -   [pois](https://openrouteservice.org/dev/#/api-docs/pois) (points of
     interest)
--   [elevation](https://openrouteservice.org/dev/#/api-docs/elevation)
-    (SRTM elevation for point and lines geometries)
+-   SRTM
+    [elevation](https://openrouteservice.org/dev/#/api-docs/elevation)
+    for point and lines geometries
 
 Disclaimer
 ----------
