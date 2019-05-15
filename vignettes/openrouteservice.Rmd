@@ -389,7 +389,8 @@ ors_pois(request = 'pois',
          filters = list(
            category_ids = I(488),
            wheelchair = I("yes")
-         ))
+         ),
+         output = "sf")
 ```
 
 You can gather statistics on the amount of certain POIs in an area by using

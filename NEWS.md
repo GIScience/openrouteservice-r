@@ -1,3 +1,9 @@
+# openrouteservice 0.2.6
+
+## NEW FEATURES
+
+- `ors_pois()` gains `sf` output.
+
 # openrouteservice 0.2.5
 
 ## NEW FEATURES

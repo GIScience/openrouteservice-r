@@ -5,12 +5,14 @@
 \title{Openrouteservice POIs}
 \usage{
 ors_pois(request = c("pois", "stats", "list"), geometry, ...,
-  api_key = ors_api_key(), output = c("parsed", "text"))
+  api_key = ors_api_key(), output = c("parsed", "text", "sf"))
 }
 \arguments{
 \item{request}{One of the following: \code{"pois"}, \code{"stats"} or \code{"list"}}
 
-\item{geometry}{GeoJSON geometry object (Point, LineString or Polygon)}
+\item{geometry}{named list containing either a \code{geojson} geometry object
+(GeoJSON Point, LineString or Polygon) or a \code{bbox}, optionally buffered by
+a value provided  \code{buffer}}
 
 \item{...}{Optional request attributes as described \href{https://openrouteservice.org/dev/#/api-docs/pois}{here}}
 
@@ -35,14 +37,45 @@ Search for points of interest around points or in geometries.
 \details{
 There are three different request types: \code{pois}, \code{stats} and \code{list}.
 
-\code{pois} returns a GeoJSON FeatureCollection in the specified bounding box or
-geometry. \code{stats} does the same but groups by categories, ultimately
-returning a JSON object with the absolute numbers of POIs of a certain group.
+\code{pois} returns a GeoJSON FeatureCollection in the bounding box specified in
+\code{geometry$bbox} or a GeoJSON geometry provided in \code{geometry$geojson}. \code{stats}
+does the same but groups by categories, ultimately returning a JSON object
+with the absolute numbers of POIs of a certain group.
 
 \code{list} returns a list of category groups and their ids.
 }
 \examples{
+# POI categories list
 ors_pois('list')
+
+# POIs around a buffered point
+geometry = list(geojson = list(type = "Point",
+                               coordinates = c(8.8034, 53.0756)),
+                buffer = 100)
+ors_pois(geometry = geometry)
+
+# alternative specification via bounding box
+ors_pois(geometry = list(bbox = list(c(8.8034, 53.0756), c(8.8034, 53.0756)),
+                         buffer = 100))
+
+# POIs of given categories
+ors_pois(geometry = geometry,
+         limit = 200,
+         sortby = "distance",
+         filters = list(
+           category_ids = c(180, 245)
+         ))
+
+# POIs of given category groups
+ors_pois(geometry = geometry,
+         limit = 200,
+         sortby = "distance",
+         filters = list(
+           category_group_ids = I(160)
+         ))
+
+# POI Statistics
+ors_pois("stats", geometry = geometry)
 }
 \author{
 Andrzej Oleś <\email{andrzej@openrouteservice.org}>

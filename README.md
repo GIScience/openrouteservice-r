@@ -72,6 +72,12 @@ defaults are equivalent of having
 Package News
 ------------
 
+### version 0.2.6
+
+#### NEW FEATURES
+
+-   `ors_pois()` gains `sf` output.
+
 ### version 0.2.5
 
 #### NEW FEATURES
@@ -84,10 +90,3 @@ Package News
 
 -   `ors_directions()`, `ors_isochrones()`, `ors_elevation()` and
     `ors_geocode()` can now output `sf` objects (\#42).
-
-### version 0.2.3
-
-#### NEW FEATURES
-
--   `ors_isochrones()` now accepts `locations` provided as `data.frame`
-    (\#38).
