@@ -13,8 +13,10 @@ vignette: >
 ---
 
 ```{r config, include=FALSE}
+## increase width for code output
+options(width = 100)
 ## set up knitr defaults
-knitr::opts_chunk$set(eval=TRUE, out.width='100%', out.height='560px')
+knitr::opts_chunk$set(eval = TRUE, out.width = '100%', out.height = '560px')
 ```
 
 ## Get started
@@ -87,11 +89,11 @@ coordinates <- list(c(8.34234, 48.23424), c(8.34423, 48.26424))
 x <- ors_directions(coordinates)
 ```
 
-Way points can be provided as a list of coordinate pairs `c(lng, lat)`, or a
+Way points can be provided as a list of coordinate pairs `c(lon, lat)`, or a
 2-column matrix-like object such as a data frame.
 
 ```{r data_frame}
-coordinates <- data.frame(lng = c(8.34234, 8.34423), lat = c(48.23424, 48.26424))
+coordinates <- data.frame(lon = c(8.34234, 8.34423), lat = c(48.23424, 48.26424))
 ```
 
 The response formatting defaults to geoJSON which allows to easily
@@ -370,8 +372,8 @@ y <- ors_geocode(location = location, layers = "locality", size = 1)
 
 This service allows you to find places of interest around or within given
 geographic coordinates. You may search for given features around a point, path
-or even within a given polygon specified in `geometry`. To list all the
-available POI categories use `ors_pois('list')`.
+or even within a polygon specified in `geometry`. To list all the available POI
+categories use `ors_pois('list')`.
 
 ```{r pois}
 geometry <- list(
@@ -413,9 +415,7 @@ Given a point or line geometry you can use `ors_elevation` to query for its
 elevation.
 
 ```{r elevation}
-x <- ors_geocode("Königstuhl")
+x <- ors_geocode("Königstuhl", output = "sf")
 
-coordinates <- x$features[[1L]]$geometry$coordinates
-
-ors_elevation("point", coordinates)
+ors_elevation("point", st_coordinates(x))
 ```

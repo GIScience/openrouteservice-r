@@ -1,3 +1,13 @@
+# openrouteservice 0.2.7
+
+## NEW FEATURES
+
+- `ors_elevation()` now accepts point coordinates in matrix form.
+
+## BUG FIXES
+
+- `ors_elevation()` does not issue a message on missing encoding anymore.
+
 # openrouteservice 0.2.6
 
 ## NEW FEATURES

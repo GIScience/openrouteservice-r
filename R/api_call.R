@@ -146,7 +146,8 @@ process_response <- function(res, endpoint, output, simplifyMatrix) {
 
   format <- switch(format, "application/gpx+xml"="xml", "json")
 
-  res <- parse_content(content(res, "text"), format, output, endpoint, simplifyMatrix)
+  res <- parse_content(suppressMessages(content(res, "text")),
+                       format, output, endpoint, simplifyMatrix)
 
   attr(res, "query_time") <- query_time
 

@@ -54,9 +54,12 @@ ors_elevation <- function(format_in = c("geojson", "point", "polyline", "encoded
 
   ## check whether geojson is a point or a line
   if (format_in == "geojson") {
-    geometry = fromJSON(geometry)
+    geometry <- fromJSON(geometry)
     input <- geometry$type
   } else {
+    names(geometry) <- NULL
+    if (format_in=="point")
+      geometry <- as.vector(geometry)
     input <- format_in
   }
 

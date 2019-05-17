@@ -72,6 +72,17 @@ defaults are equivalent of having
 Package News
 ------------
 
+### version 0.2.7
+
+#### NEW FEATURES
+
+-   `ors_elevation()` now accepts point coordinates in matrix form.
+
+#### BUG FIXES
+
+-   `ors_elevation()` does not issue a message on missing encoding
+    anymore.
+
 ### version 0.2.6
 
 #### NEW FEATURES
@@ -83,10 +94,3 @@ Package News
 #### NEW FEATURES
 
 -   Improved `ors_elevation()` response handling.
-
-### version 0.2.4
-
-#### NEW FEATURES
-
--   `ors_directions()`, `ors_isochrones()`, `ors_elevation()` and
-    `ors_geocode()` can now output `sf` objects (\#42).
