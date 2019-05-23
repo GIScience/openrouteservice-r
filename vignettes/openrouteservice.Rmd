@@ -264,18 +264,19 @@ is similar as to `ors_directions()`.
 ```{r isochrones_ranges}
 library(mapview)
 
-coordinates <- list(c(8.34234, 48.23424), c(8.34234, 49.23424))
+coordinates <- data.frame(lon = c(8.34234, 8.34234), lat = c(48.23424, 49.23424))
 
 ## 1 hour range split into 20 minute intervals
-x <- ors_isochrones(coordinates, range = 60*60, interval = 20*60, output = "sf")
+res <- ors_isochrones(coordinates, range = 3600, interval = 1200, output = "sf")
+res
 
-values <- sort(unique(x$value))
-ranges <- split(x, x$value)
-ranges <- ranges[as.character(rev(values))]
+values <- levels(factor(res$value))
+ranges <- split(res, values)
+ranges <- ranges[rev(values)]
 
 names(ranges) <- sprintf("%s min", as.numeric(names(ranges))/60)
 
-mapview(ranges, alpha.regions = 0.2, homebutton = FALSE)
+mapview(ranges, alpha.regions = 0.2, homebutton = FALSE, legend = FALSE)
 ```
 
 Here we have used `sf` output for the sake of some further postprocessing and
@@ -286,20 +287,18 @@ to group by locations. The following example illustrates a possible approach to
 applying a custom color palette to the non-overlapping parts of isochrones.
 
 ```{r isochrones_colors}
-locations = split(x, x$group_index)
+locations = split(res, res$group_index)
 
 locations <- lapply(locations, function(loc) {
   g <- st_geometry(loc)
-  high <- which(loc$value==values[length(values)])
-  low <- which(loc$value==values[1])
-  g[-low] <- st_sfc(Map(st_difference,
-                       g[match(values[-low], loc$value)],
-                       g[match(values[-high], loc$value)]))
+  g[-which.min(values)] <- st_sfc(Map(st_difference,
+                                      g[match(values[-which.min(values)], loc$value)],
+                                      g[match(values[-which.max(values)], loc$value)]))
   st_geometry(loc) <- g
   loc
 })
 
-isochrones <- unsplit(locations, x$group_index)
+isochrones <- unsplit(locations, res$group_index)
 
 pal <- setNames(heat.colors(length(values)), values)
 mapview(isochrones, zcol = "value", col = pal, col.regions = pal,
