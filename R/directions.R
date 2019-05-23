@@ -51,10 +51,8 @@ ors_directions <- function(coordinates,
 
   body <- list(coordinates = coordinates, ...)
 
-  api_call(method = "POST",
-           path = c("v2/directions", profile, format),
-           query = NULL,
-           add_headers(Authorization = api_key),
+  api_call(path = c("v2/directions", profile, format),
+           api_key = api_key,
            body = body,
            encode = "json",
            response_format = format,

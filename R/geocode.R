@@ -63,9 +63,10 @@ ors_geocode <- function(query,
       }
     }
 
-  query <- api_query(api_key, params, collapse = ",")
-
   output <- match.arg(output)
 
-  api_call("GET", c("geocode", endpoint), query, output = output)
+  api_call(c("geocode", endpoint),
+           api_key = api_key,
+           query = params,
+           output = output)
 }

@@ -66,8 +66,6 @@ ors_pois <- function(request = c('pois', 'stats', 'list'),
   if (request!="pois" && output=="sf")
     stop('"sf" output available only for request type "pois"')
 
-  query = api_query(api_key)
-
   body = list(request = request, ...)
 
   if ( request!="list") {
@@ -77,5 +75,9 @@ ors_pois <- function(request = c('pois', 'stats', 'list'),
       body$geometry = geometry
   }
 
-  api_call("POST", "pois", query, body = body, encode = "json", output = output)
+  api_call("pois",
+           api_key = api_key,
+           body = body,
+           encode = "json",
+           output = output)
 }

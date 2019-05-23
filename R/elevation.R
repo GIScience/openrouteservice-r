@@ -79,10 +79,8 @@ ors_elevation <- function(format_in = c("geojson", "point", "polyline", "encoded
                format_out = format_out,
                ...)
 
-  api_call(method = "POST",
-           path = c("elevation", endpoint),
-           query = NULL,
-           add_headers(Authorization = api_key),
+  api_call(path = c("elevation", endpoint),
+           api_key = api_key,
            body = body,
            encode = "json",
            output = output)

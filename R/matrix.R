@@ -51,10 +51,8 @@ ors_matrix <- function(locations,
   ## request parameters
   body = list(locations = locations, profile = profile, ...)
 
-  api_call(method = "POST",
-           path = c("v2/matrix", profile),
-           query = NULL,
-           add_headers(Authorization = api_key),
+  api_call(path = c("v2/matrix", profile),
+           api_key = api_key,
            body = body,
            encode = "json",
            output = output)

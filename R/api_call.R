@@ -95,7 +95,7 @@ ors_path <- function(endpoint) {
 }
 
 #' @importFrom httr modify_url parse_url verbose
-api_call <- function(method, path, query, ...,
+api_call <- function(path, api_key, query = NULL, body = NULL, ...,
                      response_format = c("json", "geojson", "gpx"),
                      output, simplifyMatrix = TRUE) {
 
@@ -103,6 +103,10 @@ api_call <- function(method, path, query, ...,
 
   endpoint <- basename(path[1L])
   path[1L] <- ors_path(endpoint)
+
+  ## process query params
+  if (!is.null(query))
+    query <- api_query(api_key, query, collapse = ",")
 
   ## extract base path from url in order to retain it in modify_url(), see #46
   path <- paste0(parse_url(ors_url())$path, path, collapse="/")
@@ -116,6 +120,12 @@ api_call <- function(method, path, query, ...,
                user_agent("openrouteservice-r"),
                ...,
                if (isTRUE(getOption('openrouteservice.verbose'))) verbose())
+
+  method = if (is.null(body)) "GET" else "POST"
+
+  ## add body and authorization header
+  if (method=="POST")
+    args = c(args, list(body = body, add_headers(Authorization = api_key)))
 
   res <- call_api(method, args)
 

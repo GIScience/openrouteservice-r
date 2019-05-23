@@ -54,10 +54,8 @@ ors_isochrones <- function(locations,
 
   body <- list(locations = locations, range = range, ...)
 
-  api_call(method = "POST",
-           path = c("v2/isochrones", profile),
-           query = NULL,
-           add_headers(Authorization = api_key),
+  api_call(path = c("v2/isochrones", profile),
+           api_key = api_key,
            body = body,
            encode = "json",
            response_format = "geojson",
