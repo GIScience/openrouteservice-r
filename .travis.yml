@@ -18,6 +18,8 @@ addons:
       - libudunits2-dev
       - libv8-3.14-dev
       - protobuf-compiler
+brew_packages:
+  - udunits
 
 os:
   - osx
