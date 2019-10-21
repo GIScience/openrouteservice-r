@@ -48,13 +48,25 @@ ors_directions <- function(coordinates,
 
   ## request parameters
   names(coordinates) <- NULL
+  body <- protect(
+    list(coordinates = coordinates, ...),
+    arrays = c(
+      "attributes",
+      "bearings",
+      "extra_info",
+      "radiuses",
+      "skip_segments",
+      "avoid_countries",
+      "avoid_features"
+    )
+  )
 
-  body <- list(coordinates = coordinates, ...)
-
-  api_call(path = c("v2/directions", profile, format),
-           api_key = api_key,
-           body = body,
-           encode = "json",
-           response_format = format,
-           output = output)
+  api_call(
+    path = c("v2/directions", profile, format),
+    api_key = api_key,
+    body = body,
+    encode = "json",
+    response_format = format,
+    output = output
+  )
 }

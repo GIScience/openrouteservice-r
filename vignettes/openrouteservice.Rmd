@@ -157,7 +157,7 @@ the points along the route and query for steepness in `extra_info`.
 library("sf")
 
 x <- ors_directions(coordinates, profile = "cycling-mountain", elevation = TRUE,
-                    extra_info = I("steepness"), output = "sf")
+                    extra_info = "steepness", output = "sf")
 
 height <- st_geometry(x)[[1]][, 3]
 ```
@@ -383,28 +383,30 @@ geometry <- list(
   buffer = 500
 )
 
-ors_pois(request = 'pois',
-         geometry = geometry,
-         limit = 2000,
-         sortby = "distance",
-         filters = list(
-           category_ids = I(488),
-           wheelchair = I("yes")
-         ),
-         output = "sf")
+ors_pois(
+  request = 'pois',
+  geometry = geometry,
+  limit = 2000,
+  sortby = "distance",
+  filters = list(
+    category_ids = 488,
+    wheelchair = "yes"
+  ),
+  output = "sf"
+)
 ```
 
 You can gather statistics on the amount of certain POIs in an area by using
 `request='stats'`.
 
 ```{r stats}
-ors_pois(request = 'stats',
-         geometry = geometry,
-         limit = 2000,
-         sortby = "distance",
-         filters = list(
-           category_ids = I(488)
-         ))
+ors_pois(
+  request = 'stats',
+  geometry = geometry,
+  limit = 2000,
+  sortby = "distance",
+  filters = list(category_ids = 488)
+  )
 ```
 
 

@@ -48,7 +48,7 @@
 #'          limit = 200,
 #'          sortby = "distance",
 #'          filters = list(
-#'            category_group_ids = I(160)
+#'            category_group_ids = 160
 #'          ))
 #'
 #' # POI Statistics
@@ -60,24 +60,31 @@ ors_pois <- function(request = c('pois', 'stats', 'list'),
                      ...,
                      api_key = ors_api_key(),
                      output = c("parsed", "text", "sf")) {
-  request = match.arg(request)
+  request <- match.arg(request)
   output <- match.arg(output)
 
   if (request!="pois" && output=="sf")
     stop('"sf" output available only for request type "pois"')
 
-  body = list(request = request, ...)
+  dots <- list(...)
 
-  if ( request!="list") {
-    if ( missing(geometry) )
+  if (!is.null(dots[["filters"]]))
+    dots[["filters"]] <- protect(dots[["filters"]])
+
+  body <- c(request = request, dots)
+
+  if (request!="list") {
+    if (missing(geometry))
       stop('Missing argument "geometry"')
     else
-      body$geometry = geometry
+      body$geometry <- geometry
   }
 
-  api_call("pois",
-           api_key = api_key,
-           body = body,
-           encode = "json",
-           output = output)
+  api_call(
+    "pois",
+    api_key = api_key,
+    body = body,
+    encode = "json",
+    output = output
+  )
 }

@@ -71,7 +71,7 @@ ors_pois(geometry = geometry,
          limit = 200,
          sortby = "distance",
          filters = list(
-           category_group_ids = I(160)
+           category_group_ids = 160
          ))
 
 # POI Statistics

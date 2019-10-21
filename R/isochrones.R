@@ -49,16 +49,17 @@ ors_isochrones <- function(locations,
 
   names(locations) <- NULL
 
-  if (length(range)==1L)
-    range <- I(range)
+  ## request parameters
+  body <- protect(list(locations = locations, range = range, ...),
+                  arrays = c("attributes", "range"))
 
-  body <- list(locations = locations, range = range, ...)
-
-  api_call(path = c("v2/isochrones", profile),
-           api_key = api_key,
-           body = body,
-           encode = "json",
-           response_format = "geojson",
-           output = output,
-           simplifyMatrix = FALSE)
+  api_call(
+    path = c("v2/isochrones", profile),
+    api_key = api_key,
+    body = body,
+    encode = "json",
+    response_format = "geojson",
+    output = output,
+    simplifyMatrix = FALSE
+  )
 }

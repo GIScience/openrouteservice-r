@@ -43,17 +43,20 @@ ors_matrix <- function(locations,
     stop('Missing argument "locations"')
 
   ## required arguments with defaults
-  profile = match.arg(profile)
+  profile <- match.arg(profile)
   output <- match.arg(output)
 
   names(locations) <- NULL
 
   ## request parameters
-  body = list(locations = locations, profile = profile, ...)
+  body <- protect(list(locations = locations, ...),
+                  arrays = c("destinations", "metrics", "sources"))
 
-  api_call(path = c("v2/matrix", profile),
-           api_key = api_key,
-           body = body,
-           encode = "json",
-           output = output)
+  api_call(
+    path = c("v2/matrix", profile),
+    api_key = api_key,
+    body = body,
+    encode = "json",
+    output = output
+  )
 }
