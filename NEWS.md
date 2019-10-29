@@ -1,3 +1,15 @@
+# openrouteservice 0.3.2
+
+## NEW FEATURES
+
+- More descriptive messages for API response errors.
+
+# openrouteservice 0.3.1
+
+## NEW FEATURES
+
+- Arguments corresponding to array parameters don't need to be wrapped in `I()`.
+
 # openrouteservice 0.2.7
 
 ## NEW FEATURES

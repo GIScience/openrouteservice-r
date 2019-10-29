@@ -67,10 +67,24 @@ defaults are equivalent of having
                                           matrix = "v2/matrix",
                                           geocode = "geocode",
                                           pois = "pois",
-                                          elevation = "elevation"))
+                                          elevation = "elevation",
+                                          optimization = "optimization"))
 
 Package News
 ------------
+
+### version 0.3.2
+
+#### NEW FEATURES
+
+-   More descriptive messages for API response errors.
+
+### version 0.3.1
+
+#### NEW FEATURES
+
+-   Arguments corresponding to array parameters don’t need to be wrapped
+    in `I()`.
 
 ### version 0.2.7
 
@@ -82,15 +96,3 @@ Package News
 
 -   `ors_elevation()` does not issue a message on missing encoding
     anymore.
-
-### version 0.2.6
-
-#### NEW FEATURES
-
--   `ors_pois()` gains `sf` output.
-
-### version 0.2.5
-
-#### NEW FEATURES
-
--   Improved `ors_elevation()` response handling.

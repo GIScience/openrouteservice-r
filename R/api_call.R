@@ -81,7 +81,8 @@ ors_path <- function(endpoint) {
     matrix = "v2/matrix",
     geocode = "geocode",
     pois = "pois",
-    elevation = "elevation"
+    elevation = "elevation",
+    optimization = "optimization"
   )
   if (missing(endpoint))
     return(default_paths)
@@ -91,7 +92,7 @@ ors_path <- function(endpoint) {
   if (!is.null(path))
     path
   else
-   default_paths[[endpoint]]
+    default_paths[[endpoint]]
 }
 
 #' @importFrom httr modify_url parse_url verbose
@@ -132,19 +133,24 @@ api_call <- function(path, api_key, query = NULL, body = NULL, ...,
   process_response(res, endpoint, output, simplifyMatrix)
 }
 
-#' @importFrom httr content http_error http_type status_code
+#' @importFrom httr content http_condition http_error http_type status_code
 process_response <- function(res, endpoint, output, simplifyMatrix) {
   if (http_error(res)) {
-    err <- fromJSON(content(res, "text"), simplifyVector=TRUE)
-    if (!is.null(err$error))
-      err <- err$error
-    tmp <- "openrouteservice API request failed\n[%s] %s"
-    msg <-
-    if ( length(err)==1L )
-      sprintf(tmp, status_code(res), err)
-    else
-      sprintf(tmp, status_code(err$code), err$message)
-    stop(msg, call. = FALSE)
+    condition <- http_condition(res, "error", call = NULL)
+    ## extract error details
+    try(if (http_type(res)=="application/json") {
+      err <- content(res)
+      if (!is.null(err$error))
+        err <- err$error
+      else if (!is.null(err$geocoding))
+        err <- paste(err$geocoding$errors, collapse = "; ")
+      condition$message <-
+      if (length(err) == 1L)
+        error_message(res, err)
+      else
+        error_message(err$code, err$message)
+    }, silent = TRUE)
+    stop(condition)
   }
 
   format <- res$request$headers[["Accept"]]
@@ -162,6 +168,13 @@ process_response <- function(res, endpoint, output, simplifyMatrix) {
   attr(res, "query_time") <- query_time
 
   res
+}
+
+error_message <- function(code, details) {
+  msg <- sprintf("Openrouteservice API request failed\n[%s]", status_code(code))
+  if (!is.null(details) && nchar(details)!=0L)
+    msg <- paste(msg, details)
+  msg
 }
 
 #' @importFrom geojson as.geojson
