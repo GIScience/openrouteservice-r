@@ -110,9 +110,12 @@ api_call <- function(path, api_key, query = NULL, body = NULL, ...,
     query <- api_query(api_key, query, collapse = ",")
 
   ## extract base path from url in order to retain it in modify_url(), see #46
-  path <- paste0(parse_url(ors_url())$path, path, collapse="/")
+  basepath <- parse_url(ors_url())$path
+  basepath <- unlist(strsplit(basepath, split="/")) # removes trailing /
 
-  url <- modify_url(ors_url(), path = path, query = query)
+  fullpath <- paste(c(basepath, path), collapse="/")
+
+  url <- modify_url(ors_url(), path = fullpath, query = query)
 
   type <- sprintf("application/%s", switch(response_format, "json", geojson="geo+json", gpx="gpx+xml"))
 

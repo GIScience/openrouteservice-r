@@ -1,3 +1,9 @@
+# openrouteservice 0.3.3
+
+## BUG FIXES
+
+- Fixed resolving of URL paths to endpoints.
+
 # openrouteservice 0.3.2
 
 ## NEW FEATURES

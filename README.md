@@ -73,6 +73,12 @@ defaults are equivalent of having
 Package News
 ------------
 
+### version 0.3.3
+
+#### BUG FIXES
+
+-   Fixed resolving of URL paths to endpoints.
+
 ### version 0.3.2
 
 #### NEW FEATURES
@@ -85,14 +91,3 @@ Package News
 
 -   Arguments corresponding to array parameters don’t need to be wrapped
     in `I()`.
-
-### version 0.2.7
-
-#### NEW FEATURES
-
--   `ors_elevation()` now accepts point coordinates in matrix form.
-
-#### BUG FIXES
-
--   `ors_elevation()` does not issue a message on missing encoding
-    anymore.
