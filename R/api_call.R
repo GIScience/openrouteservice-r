@@ -180,10 +180,9 @@ error_message <- function(code, details) {
   msg
 }
 
-#' @importFrom geojson as.geojson
 #' @importFrom geojsonlint geojson_validate
 #' @importFrom geojsonsf geojson_sf
-#' @importFrom jsonlite fromJSON toJSON
+#' @importFrom jsonlite fromJSON toJSON validate
 #' @importFrom xml2 read_xml xml_validate
 parse_content <- function (content,
                            format = c("json", "xml"),
@@ -230,11 +229,8 @@ parse_content <- function (content,
 
   ## raw text output
   if (output=="text") {
-    if (format=="json") {
-      content <- structure(content, class = "json")
-      if (is_geojson)
-        content <- as.geojson(content)
-    }
+    if (format=="json" && validate(content))
+      content <- structure(content, class = c(if (is_geojson) "geojson","json"))
     return(content)
   }
 

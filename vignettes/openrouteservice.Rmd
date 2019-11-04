@@ -37,6 +37,7 @@ to painlessly consume the following services:
   - time-distance `r doc('matrix')`
   - `r doc('pois')` (points of interest)
   - SRTM `r doc('elevation')` for point and lines geometries
+  - routing `r doc('optimization')` based on [Vroom](http://vroom-project.org/)
 
 ### Disclaimer
 
@@ -420,3 +421,103 @@ x <- ors_geocode("Königstuhl", output = "sf")
 
 ors_elevation("point", st_coordinates(x))
 ```
+
+
+## Optimization 
+
+The optimization endpoint solves the [vehicle routing
+problem](https://en.wikipedia.org/wiki/Vehicle_routing_problem) (VRP) of finding
+an optimal set of routes for a fleet of vehicles to traverse in order to deliver
+to a given set of locations. The service is based on
+[Vroom](https://github.com/VROOM-Project/vroom) and can be used to schedule
+multiple vehicles and jobs respecting time windows, capacities and required
+skills. VRP generalizes the classic [traveling salesman
+problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem) of finding
+the fastest or shortest possible route that visits a given list of locations.  
+
+The following example involves a 2-vehicle fleet carrying out deliveries across
+6 locations.
+
+```{r vehicles}
+home_base <- data.frame(lon = 2.35044, lat = 48.71764)
+
+vehicles = vehicles(
+  id = 1:2,
+  profile = "driving-car",
+  start = home_base,
+  end = home_base,
+  capacity = 4,
+  skills = list(c(1, 14), c(2, 14)),
+  time_window = c(28800, 43200)
+)
+```
+ 
+Both `vehicles` share the `start`/`end` points and have the same `capacity`, but
+differ in the set of `skills` assigned. We are interested in using them to serve
+a number of `jobs` with certain `skills` requirements between `locations`. These
+skills are mandatory, which means a given job can only be served by a vehicle
+that has all its required skills.
+
+```{r jobs}
+locations <- list(
+  c(1.98935, 48.701),
+  c(2.03655, 48.61128),
+  c(2.39719, 49.07611),
+  c(2.41808, 49.22619),
+  c(2.28325, 48.5958),
+  c(2.89357, 48.90736)
+)
+
+jobs = jobs(
+  id = 1:6,
+  service = 300,
+  amount = 1,
+  location = locations,
+  skills = list(1, 1, 2, 2, 14, 14)
+)
+```
+
+The helper functions `vehicles` and `jobs` produce `data.frame`s which have the
+format appropriate for `ors_optimization`. Route geometries are enabled by
+setting the corresponding flag in `options`.
+
+```{r optimization}
+res <- ors_optimization(jobs, vehicles, options = list(g = TRUE))
+```
+
+The geometries are returned as [Google's encoded
+polylines](https://developers.google.com/maps/documentation/utilities/polylinealgorithm),
+so for visualization in leaflet they need to be decoded. Furthermore, we extract
+the job locations from the response such that we can label them in the order in
+which they are visited along the routes.
+
+```{r}
+lapply(res$routes, with, {
+  list(
+    geometry = googlePolylines::decode(geometry)[[1L]],
+    locations = lapply(steps, with, if (type=="job") location) %>%
+      do.call(rbind, .) %>% data.frame %>% setNames(c("lon", "lat"))
+  )
+  }) -> routes
+
+## Helper function to add a list of routes and their ordered waypoints
+addRoutes <- function(map, routes, colors) {
+  routes <- mapply(c, routes, color = colors, SIMPLIFY = FALSE)
+  f <- function (map, route) {
+    with(route, {
+      labels <- sprintf("<b>%s</b>", 1:nrow(locations))
+      markers <- awesomeIcons(markerColor = color, text = labels, fontFamily = "arial")
+      map %>%
+        addPolylines(data = geometry, lng = ~lon, lat = ~lat, col = ~color) %>%
+        addAwesomeMarkers(data = locations, lng = ~lon, lat = ~lat, icon = markers)
+    })
+  }
+  Reduce(f, routes, map)
+}
+
+leaflet() %>%
+  addTiles() %>%
+  addAwesomeMarkers(data = home_base, icon = awesomeIcons("home")) %>%
+  addRoutes(routes, c("purple", "green"))
+```
+ 

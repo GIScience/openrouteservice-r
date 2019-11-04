@@ -34,7 +34,6 @@
 #' ors_elevation("polyline", coordinates, format_out = "encodedpolyline")
 #'
 #' @template author
-#' @importFrom geojson as.geojson geo_type
 #' @importFrom httr add_headers
 #' @export
 ors_elevation <- function(format_in = c("geojson", "point", "polyline", "encodedpolyline", "encodedpolyline6"),

@@ -1,3 +1,9 @@
+# openrouteservice 0.4.0
+
+## NEW FEATURES
+
+- Enable optimization endpoint.
+
 # openrouteservice 0.3.3
 
 ## BUG FIXES

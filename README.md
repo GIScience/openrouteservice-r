@@ -26,6 +26,9 @@ allows you to painlessly consume the following services:
 -   SRTM
     [elevation](https://openrouteservice.org/dev/#/api-docs/elevation)
     for point and lines geometries
+-   routing
+    [optimization](https://openrouteservice.org/dev/#/api-docs/optimization)
+    based on [Vroom](http://vroom-project.org/)
 
 Disclaimer
 ----------
@@ -73,6 +76,12 @@ defaults are equivalent of having
 Package News
 ------------
 
+### version 0.4.0
+
+#### NEW FEATURES
+
+-   Enable optimization endpoint.
+
 ### version 0.3.3
 
 #### BUG FIXES
@@ -84,10 +93,3 @@ Package News
 #### NEW FEATURES
 
 -   More descriptive messages for API response errors.
-
-### version 0.3.1
-
-#### NEW FEATURES
-
--   Arguments corresponding to array parameters don’t need to be wrapped
-    in `I()`.
