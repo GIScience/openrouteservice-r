@@ -59,6 +59,7 @@ remotes::install_github("GIScience/openrouteservice-r")
 
 In order to start using ORS services you first need to set up your personal API
 key, which you can `r openrouteservice:::signup_url("get for free")`.
+Once you are signed up, go to https://openrouteservice.org/dev/#/home -> `TOKENS`. At the bottom of the page you can request a free token (name can be anything).
 
 ```{r api_key, eval=FALSE}
 library(openrouteservice)
