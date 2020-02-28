@@ -440,7 +440,7 @@ The following example involves a 2-vehicle fleet carrying out deliveries across
 6 locations.
 
 ```{r vehicles}
-home_base <- data.frame(lon = 2.35044, lat = 48.71764)
+home_base <- data.frame(lon = 2.370658, lat = 48.721666)
 
 vehicles = vehicles(
   id = 1:2,
@@ -461,7 +461,7 @@ that has all its required skills.
 
 ```{r jobs}
 locations <- list(
-  c(1.98935, 48.701),
+  c(1.98806, 48.705),
   c(2.03655, 48.61128),
   c(2.39719, 49.07611),
   c(2.41808, 49.22619),
