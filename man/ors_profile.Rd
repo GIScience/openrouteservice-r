@@ -4,8 +4,10 @@
 \alias{ors_profile}
 \title{Openrouteservice Profiles}
 \usage{
-ors_profile(mode = c("car", "hgv", "bike", "roadbike", "e-bike",
-  "walking", "hiking", "wheelchair"))
+ors_profile(
+  mode = c("car", "hgv", "bike", "roadbike", "e-bike", "walking", "hiking",
+    "wheelchair")
+)
 }
 \arguments{
 \item{mode}{Profile label.}

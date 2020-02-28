@@ -4,15 +4,19 @@
 \alias{ors_elevation}
 \title{Openrouteservice Elevation}
 \usage{
-ors_elevation(format_in = c("geojson", "point", "polyline",
-  "encodedpolyline", "encodedpolyline6"), geometry,
-  format_out = format_in, ..., api_key = ors_api_key(),
-  output = c("parsed", "text", "sf"))
+ors_elevation(
+  format_in = c("geojson", "point", "polyline", "encodedpolyline", "encodedpolyline6"),
+  geometry,
+  format_out = format_in,
+  ...,
+  api_key = ors_api_key(),
+  output = c("parsed", "text", "sf")
+)
 }
 \arguments{
 \item{format_in}{input format}
 
-\item{geometry}{\code{longitude, latitude} coordinate pairs}
+\item{geometry}{\verb{longitude, latitude} coordinate pairs}
 
 \item{format_out}{output format}
 

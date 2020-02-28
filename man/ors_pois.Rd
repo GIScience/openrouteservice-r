@@ -4,8 +4,13 @@
 \alias{ors_pois}
 \title{Openrouteservice POIs}
 \usage{
-ors_pois(request = c("pois", "stats", "list"), geometry, ...,
-  api_key = ors_api_key(), output = c("parsed", "text", "sf"))
+ors_pois(
+  request = c("pois", "stats", "list"),
+  geometry,
+  ...,
+  api_key = ors_api_key(),
+  output = c("parsed", "text", "sf")
+)
 }
 \arguments{
 \item{request}{One of the following: \code{"pois"}, \code{"stats"} or \code{"list"}}

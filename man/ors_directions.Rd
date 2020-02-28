@@ -4,12 +4,17 @@
 \alias{ors_directions}
 \title{Openrouteservice Directions}
 \usage{
-ors_directions(coordinates, profile = ors_profile(),
-  format = c("geojson", "json", "gpx"), ..., api_key = ors_api_key(),
-  output = c("parsed", "text", "sf"))
+ors_directions(
+  coordinates,
+  profile = ors_profile(),
+  format = c("geojson", "json", "gpx"),
+  ...,
+  api_key = ors_api_key(),
+  output = c("parsed", "text", "sf")
+)
 }
 \arguments{
-\item{coordinates}{List of \code{longitude, latitude} coordinate pairs visited in order, alternatively a two column \code{matrix} or \code{data.frame}.}
+\item{coordinates}{List of \verb{longitude, latitude} coordinate pairs visited in order, alternatively a two column \code{matrix} or \code{data.frame}.}
 
 \item{profile}{Route profile, defaults to \code{"driving-car"}.}
 

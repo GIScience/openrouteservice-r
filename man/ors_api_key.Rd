@@ -4,8 +4,7 @@
 \alias{ors_api_key}
 \title{API key management}
 \usage{
-ors_api_key(key, service = "openrouteservice", username = NULL,
-  keyring = NULL)
+ors_api_key(key, service = "openrouteservice", username = NULL, keyring = NULL)
 }
 \arguments{
 \item{key}{API key value provided as a character scalar}
@@ -17,7 +16,7 @@ is not associated with a username.}
 
 \item{keyring}{For systems that support multiple keyrings, specify
 the name of the keyring to use here. If \code{NULL}, then the default
-keyring is used. See also \code{\link[=has_keyring_support]{has_keyring_support()}}.}
+keyring is used. See also \code{\link[keyring:has_keyring_support]{has_keyring_support()}}.}
 }
 \value{
 API Key value when called without \code{key}.
@@ -33,8 +32,8 @@ Typically the key is saved in the system credential store. Once the key is
 defined, it persists in the keyring store of the operating system so it
 doesn't need to be set again in a new R session.
 
-Internally the function uses \code{\link[keyring]{key_set}} and
-\code{\link[keyring]{key_get}}. The use of keyring package can be bypassed by
+Internally the function uses \verb{\link[keyring]\{key_set\}} and
+\verb{\link[keyring]\{key_get\}}. The use of keyring package can be bypassed by
 providing the key in the environment variable ORS_API_KEY. The value from the
 environment variable takes precedence over the value stored in the system
 credential store. The default environment variable name used to retrieve the

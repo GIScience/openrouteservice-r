@@ -6,14 +6,37 @@
 \alias{vehicles}
 \title{Openrouteservice Optimization}
 \usage{
-ors_optimization(jobs, vehicles, matrix = NULL, ...,
-  api_key = ors_api_key(), output = c("parsed", "text"))
+ors_optimization(
+  jobs,
+  vehicles,
+  matrix = NULL,
+  ...,
+  api_key = ors_api_key(),
+  output = c("parsed", "text")
+)
 
-jobs(id, location, location_index, service, amount, skills, priority,
-  time_windows)
+jobs(
+  id,
+  location,
+  location_index,
+  service,
+  amount,
+  skills,
+  priority,
+  time_windows
+)
 
-vehicles(id, profile, start, start_index, end, end_index, capacity, skills,
-  time_window)
+vehicles(
+  id,
+  profile,
+  start,
+  start_index,
+  end,
+  end_index,
+  capacity,
+  skills,
+  time_window
+)
 }
 \arguments{
 \item{jobs}{\code{data.frame} describing the places to visit}

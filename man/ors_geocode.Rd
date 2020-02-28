@@ -4,8 +4,13 @@
 \alias{ors_geocode}
 \title{Openrouteservice Geocoding}
 \usage{
-ors_geocode(query, location, ..., api_key = ors_api_key(),
-  output = c("parsed", "text", "sf"))
+ors_geocode(
+  query,
+  location,
+  ...,
+  api_key = ors_api_key(),
+  output = c("parsed", "text", "sf")
+)
 }
 \arguments{
 \item{query}{Name of location, street address or postal code. For a

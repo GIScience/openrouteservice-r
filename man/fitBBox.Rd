@@ -7,7 +7,7 @@
 fitBBox(map, bbox)
 }
 \arguments{
-\item{map}{a map widget object created from \code{\link{leaflet}()}}
+\item{map}{a map widget object created from \code{\link[leaflet]{leaflet}()}}
 
 \item{bbox}{A vector \code{c(lng1, lat1, lng2, lat2)} specifying the bounding box
 coordinates}

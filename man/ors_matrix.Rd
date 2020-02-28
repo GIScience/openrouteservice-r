@@ -4,11 +4,16 @@
 \alias{ors_matrix}
 \title{Openrouteservice Matrix}
 \usage{
-ors_matrix(locations, profile = ors_profile(), ...,
-  api_key = ors_api_key(), output = c("parsed", "text"))
+ors_matrix(
+  locations,
+  profile = ors_profile(),
+  ...,
+  api_key = ors_api_key(),
+  output = c("parsed", "text")
+)
 }
 \arguments{
-\item{locations}{List of \code{longitude, latitude} coordinate pairs, alternatively a two column \code{matrix} or \code{data.frame}.}
+\item{locations}{List of \verb{longitude, latitude} coordinate pairs, alternatively a two column \code{matrix} or \code{data.frame}.}
 
 \item{profile}{Route profile, defaults to \code{"driving-car"}.}
 
