@@ -266,6 +266,9 @@ is similar as to `ors_directions()`.
 ```{r isochrones_ranges}
 library(mapview)
 
+# embed data in the output file
+mapviewOptions(fgb = FALSE)
+
 coordinates <- data.frame(lon = c(8.34234, 8.34234), lat = c(48.23424, 49.23424))
 
 ## 1 hour range split into 20 minute intervals
