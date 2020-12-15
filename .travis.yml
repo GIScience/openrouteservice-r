@@ -10,7 +10,9 @@ addons:
     sources:
       - sourceline: 'ppa:opencpu/jq'
     packages:
+      - libfribidi-dev
       - libgdal-dev
+      - libharfbuzz-dev
       - libjq-dev
       - libprotobuf-dev
       - libsecret-1-dev
