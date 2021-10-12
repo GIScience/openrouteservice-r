@@ -19,7 +19,7 @@ ors_pois(
 (GeoJSON Point, LineString or Polygon) or a \code{bbox}, optionally buffered by
 a value provided  \code{buffer}}
 
-\item{...}{Optional request attributes as described \href{https://openrouteservice.org/dev/#/api-docs/pois}{here}}
+\item{...}{Optional request attributes as described \href{https://openrouteservice.org/dev/#/api-docs/pois/post}{here}}
 
 \item{api_key}{Character scalar containing openrouteservice API key}
 
@@ -83,5 +83,5 @@ ors_pois(geometry = geometry,
 ors_pois("stats", geometry = geometry)
 }
 \author{
-Andrzej Oleś <\email{andrzej@openrouteservice.org}>
+Andrzej Oleś \href{mailto:andrzej@openrouteservice.org}{andrzej@openrouteservice.org}
 }

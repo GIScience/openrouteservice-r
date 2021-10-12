@@ -22,7 +22,7 @@ ors_isochrones(
 meters for distance. Alternatively a comma separated list of specific
 single range values.}
 
-\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/isochrones}{here}}
+\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/v2/isochrones/{profile}/post}{here}}
 
 \item{api_key}{Character scalar containing openrouteservice API key}
 
@@ -58,5 +58,5 @@ locations <- list(c(8.681495, 49.41461), c(8.686507,49.41943))
 ors_isochrones(locations, range=c(300, 200))
 }
 \author{
-Andrzej Oleś <\email{andrzej@openrouteservice.org}>
+Andrzej Oleś \href{mailto:andrzej@openrouteservice.org}{andrzej@openrouteservice.org}
 }

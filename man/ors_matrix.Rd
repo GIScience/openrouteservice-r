@@ -17,7 +17,7 @@ ors_matrix(
 
 \item{profile}{Route profile, defaults to \code{"driving-car"}.}
 
-\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/matrix}{here}}
+\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/v2/matrix/{profile}/post}{here}}
 
 \item{api_key}{Character scalar containing openrouteservice API key}
 
@@ -56,5 +56,5 @@ res$durations / 3600
 res$distances
 }
 \author{
-Andrzej Oleś <\email{andrzej@openrouteservice.org}>
+Andrzej Oleś \href{mailto:andrzej@openrouteservice.org}{andrzej@openrouteservice.org}
 }

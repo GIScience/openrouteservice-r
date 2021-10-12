@@ -4,7 +4,7 @@ Status](https://travis-ci.org/GIScience/openrouteservice-r.svg?branch=master)](h
 Status](https://ci.appveyor.com/api/projects/status/github/GIScience/openrouteservice-r?branch=master&svg=true)](https://ci.appveyor.com/project/aoles/openrouteservice-r)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/GIScience/openrouteservice-r/master.svg)](https://codecov.io/github/GIScience/openrouteservice-r?branch=master)
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 
 openrouteservice R client
 =========================
@@ -13,21 +13,21 @@ openrouteservice R client
 [openrouteservice](https://openrouteservice.org) (ORS) API from R. It
 allows you to painlessly consume the following services:
 
--   [directions](https://openrouteservice.org/dev/#/api-docs/directions)
+-   [directions](https://openrouteservice.org/dev/#/api-docs/v2/directions/%7Bprofile%7D/post)
     (routing)
 -   [geocode](https://openrouteservice.org/dev/#/api-docs/geocode)
     powered by [Pelias](https://pelias.io)
--   [isochrones](https://openrouteservice.org/dev/#/api-docs/isochrones)
+-   [isochrones](https://openrouteservice.org/dev/#/api-docs/v2/isochrones/%7Bprofile%7D/post)
     (accessibility)
 -   time-distance
-    [matrix](https://openrouteservice.org/dev/#/api-docs/matrix)
--   [pois](https://openrouteservice.org/dev/#/api-docs/pois) (points of
-    interest)
+    [matrix](https://openrouteservice.org/dev/#/api-docs/v2/matrix/%7Bprofile%7D/post)
+-   [pois](https://openrouteservice.org/dev/#/api-docs/pois/post)
+    (points of interest)
 -   SRTM
     [elevation](https://openrouteservice.org/dev/#/api-docs/elevation)
     for point and lines geometries
 -   routing
-    [optimization](https://openrouteservice.org/dev/#/api-docs/optimization)
+    [optimization](https://openrouteservice.org/dev/#/api-docs/optimization/post)
     based on [Vroom](http://vroom-project.org/)
 
 Disclaimer

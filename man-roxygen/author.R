@@ -1,1 +1,1 @@
-#' @author Andrzej Oleś <\email{andrzej@@openrouteservice.org}>
+#' @author Andrzej Oleś <andrzej@@openrouteservice.org>

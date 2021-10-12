@@ -46,7 +46,7 @@ vehicles(
 \item{matrix}{Optional two-dimensional array describing a custom travel-time
 matrix}
 
-\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/optimization}{here}}
+\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/optimization/post}{here}}
 
 \item{api_key}{Character scalar containing openrouteservice API key}
 
@@ -137,5 +137,5 @@ jobs = jobs(
 ors_optimization(jobs, vehicles)
 }
 \author{
-Andrzej Oleś <\email{andrzej@openrouteservice.org}>
+Andrzej Oleś \href{mailto:andrzej@openrouteservice.org}{andrzej@openrouteservice.org}
 }

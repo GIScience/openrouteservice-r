@@ -11,3 +11,5 @@
 ^\.covrignore$
 ^appveyor\.yml$
 ^inst/WORDLIST
+^articles$
+^resources$

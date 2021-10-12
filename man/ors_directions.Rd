@@ -20,7 +20,7 @@ ors_directions(
 
 \item{format}{Response format, defaults to \code{"geojson"}}
 
-\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/directions}{here}}
+\item{...}{Optional parameters as described \href{https://openrouteservice.org/dev/#/api-docs/v2/directions/{profile}/post}{here}}
 
 \item{api_key}{Character scalar containing openrouteservice API key}
 
@@ -59,5 +59,5 @@ locations <- data.frame(lng = c(8.34234, 8.327807, 8.34423),
 ors_directions(locations, output = "sf")
 }
 \author{
-Andrzej Oleś <\email{andrzej@openrouteservice.org}>
+Andrzej Oleś \href{mailto:andrzej@openrouteservice.org}{andrzej@openrouteservice.org}
 }
