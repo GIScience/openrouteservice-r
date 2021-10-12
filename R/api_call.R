@@ -225,7 +225,9 @@ parse_content <- function (content,
   }
 
   ## check for geojson as some endpoints respond with generic json content type
-  is_geojson <- format=="json" && isTRUE(geojson_validate(content))
+  ## until https://github.com/GIScience/openpoiservice/issues/111 is resolved
+  ## assume pois returns GeoJSON
+  is_geojson <- format=="json" && (endpoint=="pois" || isTRUE(geojson_validate(content)))
 
   ## raw text output
   if (output=="text") {
