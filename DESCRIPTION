@@ -8,7 +8,6 @@ URL: https://github.com/GIScience/openrouteservice-r
 BugReports: https://github.com/GIScience/openrouteservice-r/issues
 Imports: geojsonlint, geojsonsf, httr, jsonlite, keyring, leaflet, utils, xml2
 Suggests: covr, ggforce, ggplot2, googlePolylines, lwgeom, knitr, mapview, pkgdown, RColorBrewer, rmarkdown, roxygen2, sf, testthat, units
-Remotes: r-spatial/mapview
 License: Apache License 2.0 | file LICENSE
 Encoding: UTF-8
 LazyData: true
