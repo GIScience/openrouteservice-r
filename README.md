@@ -1,3 +1,4 @@
+[![R-CMD-check](https://github.com/GIScience/openrouteservice-r/workflows/R-CMD-check/badge.svg)](https://github.com/GIScience/openrouteservice-r/actions)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/GIScience/openrouteservice-r?branch=master&svg=true)](https://ci.appveyor.com/project/aoles/openrouteservice-r)
 [![Coverage

@@ -6,10 +6,10 @@
 ^pkgdown$
 ^docs$
 ^update_web\.sh$
-^\.travis\.yml$
 ^codecov\.yml$
 ^\.covrignore$
 ^appveyor\.yml$
 ^inst/WORDLIST
 ^articles$
 ^resources$
+^\.github$
