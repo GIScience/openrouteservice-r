@@ -1,5 +1,3 @@
-[![Travis-CI Build
-Status](https://travis-ci.org/GIScience/openrouteservice-r.svg?branch=master)](https://travis-ci.org/GIScience/openrouteservice-r)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/GIScience/openrouteservice-r?branch=master&svg=true)](https://ci.appveyor.com/project/aoles/openrouteservice-r)
 [![Coverage
