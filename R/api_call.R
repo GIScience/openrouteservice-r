@@ -237,7 +237,7 @@ parse_content <- function (content,
   }
 
   if (output=="sf" && is_geojson) {
-    res <- geojson_sf(content)
+    res <- tryCatch(geojson_sf(content), error = function(e) stop(e$message,": ", content, call. = FALSE))
 
     if (endpoint!="geocode") {
       ## convert parsed properties to sf compatible data.frame
