@@ -271,8 +271,8 @@ mapviewOptions(fgb = FALSE)
 
 coordinates <- data.frame(lon = c(8.34234, 8.34234), lat = c(48.23424, 49.23424))
 
-## 1 hour range split into 20 minute intervals
-res <- ors_isochrones(coordinates, range = 3600, interval = 1200, output = "sf")
+## 30 minutes range split into 10 minute intervals
+res <- ors_isochrones(coordinates, range = 1800, interval = 600, output = "sf")
 res
 
 values <- levels(factor(res$value))
