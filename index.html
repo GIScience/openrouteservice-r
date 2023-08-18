@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,18 +35,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">openrouteservice</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/openrouteservice.html">Get started</a>
 </li>
@@ -57,7 +53,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/GIScience/openrouteservice-r/">
+  <a href="https://github.com/GIScience/openrouteservice-r/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -76,88 +72,88 @@
   <div class="contents col-md-9">
 
 
-<div id="openrouteservice-r-client" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#openrouteservice-r-client" class="anchor"></a>openrouteservice R client</h1></div>
-<p><em>openrouteservice</em> R package provides easy access to the <a href="https://openrouteservice.org">openrouteservice</a> (ORS) API from R. It allows you to painlessly consume the following services:</p>
+<div class="section level1">
+<div class="page-header"><h1 id="openrouteservice-r-client">openrouteservice R client<a class="anchor" aria-label="anchor" href="#openrouteservice-r-client"></a>
+</h1></div>
+<p><em>openrouteservice</em> R package provides easy access to the <a href="https://openrouteservice.org" class="external-link">openrouteservice</a> (ORS) API from R. It allows you to painlessly consume the following services:</p>
 <ul>
 <li>
-<a href="https://openrouteservice.org/dev/#/api-docs/v2/directions/%7Bprofile%7D/post">directions</a> (routing)</li>
+<a href="https://openrouteservice.org/dev/#/api-docs/v2/directions/%7Bprofile%7D/post" class="external-link">directions</a> (routing)</li>
 <li>
-<a href="https://openrouteservice.org/dev/#/api-docs/geocode">geocode</a> powered by <a href="https://pelias.io">Pelias</a>
+<a href="https://openrouteservice.org/dev/#/api-docs/geocode" class="external-link">geocode</a> powered by <a href="https://pelias.io" class="external-link">Pelias</a>
 </li>
 <li>
-<a href="https://openrouteservice.org/dev/#/api-docs/v2/isochrones/%7Bprofile%7D/post">isochrones</a> (accessibility)</li>
-<li>time-distance <a href="https://openrouteservice.org/dev/#/api-docs/v2/matrix/%7Bprofile%7D/post">matrix</a>
+<a href="https://openrouteservice.org/dev/#/api-docs/v2/isochrones/%7Bprofile%7D/post" class="external-link">isochrones</a> (accessibility)</li>
+<li>time-distance <a href="https://openrouteservice.org/dev/#/api-docs/v2/matrix/%7Bprofile%7D/post" class="external-link">matrix</a>
 </li>
 <li>
-<a href="https://openrouteservice.org/dev/#/api-docs/pois/post">pois</a> (points of interest)</li>
-<li>SRTM <a href="https://openrouteservice.org/dev/#/api-docs/elevation">elevation</a> for point and lines geometries</li>
-<li>routing <a href="https://openrouteservice.org/dev/#/api-docs/optimization/post">optimization</a> based on <a href="http://vroom-project.org/">Vroom</a>
+<a href="https://openrouteservice.org/dev/#/api-docs/pois/post" class="external-link">pois</a> (points of interest)</li>
+<li>SRTM <a href="https://openrouteservice.org/dev/#/api-docs/elevation" class="external-link">elevation</a> for point and lines geometries</li>
+<li>routing <a href="https://openrouteservice.org/dev/#/api-docs/optimization/post" class="external-link">optimization</a> based on <a href="http://vroom-project.org/" class="external-link">Vroom</a>
 </li>
 </ul>
-<div id="disclaimer" class="section level2">
-<h2 class="hasAnchor">
-<a href="#disclaimer" class="anchor"></a>Disclaimer</h2>
-<p>By using this package, you agree to the ORS <a href="https://openrouteservice.org/terms-of-service/">terms and conditions</a>.</p>
+<div class="section level2">
+<h2 id="disclaimer">Disclaimer<a class="anchor" aria-label="anchor" href="#disclaimer"></a>
+</h2>
+<p>By using this package, you agree to the ORS <a href="https://openrouteservice.org/terms-of-service/" class="external-link">terms and conditions</a>.</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>The package is not yet available from CRAN, but you can install the development version directly from GitHub.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"GIScience/openrouteservice-r"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("remotes")</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"GIScience/openrouteservice-r"</span>)</span></code></pre></div>
 </div>
-<div id="get-started" class="section level2">
-<h2 class="hasAnchor">
-<a href="#get-started" class="anchor"></a>Get started</h2>
-<p>See the package <a href="https://giscience.github.io/openrouteservice-r/articles/openrouteservice.html">vignette</a> for an overview of the offered functionality.</p>
+<div class="section level2">
+<h2 id="get-started">Get started<a class="anchor" aria-label="anchor" href="#get-started"></a>
+</h2>
+<p>See the package <a href="https://giscience.github.io/openrouteservice-r/articles/openrouteservice.html" class="external-link">vignette</a> for an overview of the offered functionality.</p>
 </div>
-<div id="local-ors-instance" class="section level2">
-<h2 class="hasAnchor">
-<a href="#local-ors-instance" class="anchor"></a>Local ORS instance</h2>
+<div class="section level2">
+<h2 id="local-ors-instance">Local ORS instance<a class="anchor" aria-label="anchor" href="#local-ors-instance"></a>
+</h2>
 <p>The default is to fire any requests against the free public services at &lt;api.openrouteservice.org&gt;. In order to query a different openrouteservice instance, say a local one, set</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">openrouteservice.url =</span> <span class="st">"http://localhost:8080/ors"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">openrouteservice.url =</span> <span class="st">"http://localhost:8080/ors"</span>)</span></code></pre></div>
 <p>If necessary, endpoint configuration can be further customized through <code>openrouteservice.paths</code> which specifies a named list of paths. The defaults are equivalent of having</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">openrouteservice.paths =</span> <span class="kw">list</span>(<span class="dt">directions =</span> <span class="st">"v2/directions"</span>,</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">                                      <span class="dt">isochrones =</span> <span class="st">"v2/isochrones"</span>,</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">                                      <span class="dt">matrix =</span> <span class="st">"v2/matrix"</span>,</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">                                      <span class="dt">geocode =</span> <span class="st">"geocode"</span>,</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">                                      <span class="dt">pois =</span> <span class="st">"pois"</span>,</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">                                      <span class="dt">elevation =</span> <span class="st">"elevation"</span>,</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">                                      <span class="dt">optimization =</span> <span class="st">"optimization"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">openrouteservice.paths =</span> <span class="fu">list</span>(<span class="at">directions =</span> <span class="st">"v2/directions"</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">isochrones =</span> <span class="st">"v2/isochrones"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">matrix =</span> <span class="st">"v2/matrix"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">geocode =</span> <span class="st">"geocode"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">pois =</span> <span class="st">"pois"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">elevation =</span> <span class="st">"elevation"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">optimization =</span> <span class="st">"optimization"</span>))</span></code></pre></div>
 </div>
-<div id="package-news" class="section level2">
-<h2 class="hasAnchor">
-<a href="#package-news" class="anchor"></a>Package News</h2>
-<div id="version-0-4-0" class="section level3">
-<h3 class="hasAnchor">
-<a href="#version-0-4-0" class="anchor"></a>version 0.4.0</h3>
-<div id="new-features" class="section level4">
-<h4 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>NEW FEATURES</h4>
+<div class="section level2">
+<h2 id="package-news">Package News<a class="anchor" aria-label="anchor" href="#package-news"></a>
+</h2>
+<div class="section level3">
+<h3 id="version-040">version 0.4.0<a class="anchor" aria-label="anchor" href="#version-040"></a>
+</h3>
+<div class="section level4">
+<h4 id="new-features">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features"></a>
+</h4>
 <ul>
 <li>Enable optimization endpoint.</li>
 </ul>
 </div>
 </div>
-<div id="version-0-3-3" class="section level3">
-<h3 class="hasAnchor">
-<a href="#version-0-3-3" class="anchor"></a>version 0.3.3</h3>
-<div id="bug-fixes" class="section level4">
-<h4 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>BUG FIXES</h4>
+<div class="section level3">
+<h3 id="version-033">version 0.3.3<a class="anchor" aria-label="anchor" href="#version-033"></a>
+</h3>
+<div class="section level4">
+<h4 id="bug-fixes">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes"></a>
+</h4>
 <ul>
 <li>Fixed resolving of URL paths to endpoints.</li>
 </ul>
 </div>
 </div>
-<div id="version-0-3-2" class="section level3">
-<h3 class="hasAnchor">
-<a href="#version-0-3-2" class="anchor"></a>version 0.3.2</h3>
-<div id="new-features-1" class="section level4">
-<h4 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>NEW FEATURES</h4>
+<div class="section level3">
+<h3 id="version-032">version 0.3.2<a class="anchor" aria-label="anchor" href="#version-032"></a>
+</h3>
+<div class="section level4">
+<h4 id="new-features-1">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-1"></a>
+</h4>
 <ul>
 <li>More descriptive messages for API response errors.</li>
 </ul>
@@ -170,47 +166,57 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/GIScience/openrouteservice-r/">https://​github.com/​GIScience/​openrouteservice-r/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/GIScience/openrouteservice-r/issues">https://​github.com/​GIScience/​openrouteservice-r/​issues</a>
-</li>
+<li><a href="https://github.com/GIScience/openrouteservice-r/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/GIScience/openrouteservice-r/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>Apache License 2.0 | file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Andrzej Oleś <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-0285-2787" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing openrouteservice</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://travis-ci.org/GIScience/openrouteservice-r"><img src="https://travis-ci.org/GIScience/openrouteservice-r.svg?branch=master" alt="Travis-CI Build Status"></a></li>
-<li><a href="https://ci.appveyor.com/project/aoles/openrouteservice-r"><img src="https://ci.appveyor.com/api/projects/status/github/GIScience/openrouteservice-r?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
-<li><a href="https://codecov.io/github/GIScience/openrouteservice-r?branch=master"><img src="https://img.shields.io/codecov/c/github/GIScience/openrouteservice-r/master.svg" alt="Coverage Status"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg" alt="lifecycle"></a></li>
+<li>Andrzej Oleś <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-0285-2787" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/GIScience/openrouteservice-r/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/GIScience/openrouteservice-r/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://codecov.io/github/GIScience/openrouteservice-r?branch=master" class="external-link"><img src="https://img.shields.io/codecov/c/github/GIScience/openrouteservice-r/master.svg" alt="Coverage Status"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg" alt="lifecycle"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Andrzej Oleś.</p>
+  <p></p>
+<p>Developed by Andrzej Oleś.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -218,6 +224,8 @@
 
   
 
+
+  
 
   </body>
 </html>
