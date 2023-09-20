@@ -180,7 +180,6 @@ error_message <- function(code, details) {
   msg
 }
 
-#' @importFrom geojsonlint geojson_validate
 #' @importFrom geojsonsf geojson_sf
 #' @importFrom jsonlite fromJSON toJSON validate
 #' @importFrom xml2 read_xml xml_validate
@@ -224,10 +223,7 @@ parse_content <- function (content,
     }
   }
 
-  ## check for geojson as some endpoints respond with generic json content type
-  ## until https://github.com/GIScience/openpoiservice/issues/111 is resolved
-  ## assume pois returns GeoJSON
-  is_geojson <- format=="json" && (endpoint=="pois" || isTRUE(geojson_validate(content)))
+  is_geojson <- format=="json" && isTRUE(validate_geojson(content))
 
   ## raw text output
   if (output=="text") {
@@ -274,3 +270,7 @@ print.ors_api <- function(x, give.attr = FALSE, list.len = 6L, ...) {
   str(unclass(x), list.len = list.len, give.attr = give.attr, ...)
   invisible(x)
 }
+
+#' @importFrom jsonvalidate json_validator
+#' @importFrom V8 v8
+validate_geojson <- NULL

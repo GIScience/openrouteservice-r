@@ -16,13 +16,13 @@
 #' @seealso [ors_directions()], [ors_isochrones()], [ors_matrix()]
 #' @template author
 #' @export
-ors_profile <- function(mode = c("car", "hgv", "bike", "roadbike", "e-bike", "walking", "hiking", "wheelchair")) {
+ors_profile <- function(mode = c("car", "hgv", "bike", "roadbike", "mtb", "e-bike", "walking", "hiking", "wheelchair")) {
   profiles <- c(
     `car` = 'driving-car',
     `hgv` = 'driving-hgv',
     `bike` = 'cycling-regular',
     `roadbike` = 'cycling-road',
-    `mountainbike` = 'cycling-mountain',
+    `mtb` = 'cycling-mountain',
     `e-bike` = 'cycling-electric',
     `walking` = 'foot-walking',
     `hiking`= 'foot-hiking',

@@ -5,7 +5,7 @@
 \title{Openrouteservice Profiles}
 \usage{
 ors_profile(
-  mode = c("car", "hgv", "bike", "roadbike", "e-bike", "walking", "hiking",
+  mode = c("car", "hgv", "bike", "roadbike", "mtb", "e-bike", "walking", "hiking",
     "wheelchair")
 )
 }
