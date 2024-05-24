@@ -58,5 +58,5 @@ locations <- list(c(8.681495, 49.41461), c(8.686507,49.41943))
 ors_isochrones(locations, range=c(300, 200))
 }
 \author{
-Andrzej Oleś \href{mailto:andrzej@openrouteservice.org}{andrzej@openrouteservice.org}
+Andrzej Oleś \href{mailto:andrzej.oles@gmail.com}{andrzej.oles@gmail.com}
 }

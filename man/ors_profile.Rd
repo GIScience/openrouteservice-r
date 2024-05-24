@@ -33,5 +33,5 @@ ors_profile("car")
 \code{\link[=ors_directions]{ors_directions()}}, \code{\link[=ors_isochrones]{ors_isochrones()}}, \code{\link[=ors_matrix]{ors_matrix()}}
 }
 \author{
-Andrzej Oleś \href{mailto:andrzej@openrouteservice.org}{andrzej@openrouteservice.org}
+Andrzej Oleś \href{mailto:andrzej.oles@gmail.com}{andrzej.oles@gmail.com}
 }
