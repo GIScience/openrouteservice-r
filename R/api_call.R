@@ -236,7 +236,7 @@ parse_content <- function (content,
   if (output=="sf" && is_geojson) {
     res <- tryCatch(geojson_sf(content), error = function(e) stop(e$message,": ", content, call. = FALSE))
 
-    if (endpoint!="geocode") {
+    if (endpoint=="directions") {
       ## convert parsed properties to sf compatible data.frame
       properties <- lapply(parseJSON(content)$features, function(feature) {
         prop_list <- lapply(feature[['properties']],
@@ -247,6 +247,22 @@ parse_content <- function (content,
       properties = do.call(rbind, properties)
 
       res[names(properties)] <- properties
+    }
+    else if (endpoint!="geocode") {
+      for (i in 1:length(res)) {
+        # attempt to parse JSON strings to R objects
+        if (is.character(res[[i]])) {
+          res[[i]] <- lapply(res[[i]], function(x) {
+            if (is.na(x))
+              NA
+            else
+              parseJSON(x)
+          })
+        }
+      }
+      # use integer indices
+      if ("group_index" %in% names(res))
+        res$group_index <- type.convert(res$group_index, as.is = TRUE)
     }
 
     return(res)

@@ -1,3 +1,9 @@
+# openrouteservice 0.5.1
+
+## BUG FIXES
+
+- sf output for POIs endpoint (#81)
+
 # openrouteservice 0.5.0
 
 ## NEW FEATURES
