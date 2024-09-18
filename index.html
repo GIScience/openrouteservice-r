@@ -20,7 +20,7 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">openrouteservice</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.0</span>
       </span>
     </div>
 
@@ -54,7 +54,7 @@
 <li>
   <a href="https://github.com/GIScience/openrouteservice-r/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -65,7 +65,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="contents col-md-9">
@@ -79,12 +79,14 @@
 <li>
 <a href="https://openrouteservice.org/dev/#/api-docs/v2/directions/%7Bprofile%7D/post" class="external-link">directions</a> (routing)</li>
 <li>
-<a href="https://openrouteservice.org/dev/#/api-docs/geocode" class="external-link">geocode</a> powered by <a href="https://pelias.io" class="external-link">Pelias</a>
+<a href="https://openrouteservice.org/dev/#/api-docs/geocode" class="external-link">geocoding</a> powered by <a href="https://pelias.io" class="external-link">Pelias</a>
 </li>
 <li>
 <a href="https://openrouteservice.org/dev/#/api-docs/v2/isochrones/%7Bprofile%7D/post" class="external-link">isochrones</a> (accessibility)</li>
 <li>time-distance <a href="https://openrouteservice.org/dev/#/api-docs/v2/matrix/%7Bprofile%7D/post" class="external-link">matrix</a>
 </li>
+<li>
+<a href="https://openrouteservice.org/dev/#/api-docs/snap" class="external-link">snapping</a> to ways</li>
 <li>
 <a href="https://openrouteservice.org/dev/#/api-docs/pois/post" class="external-link">pois</a> (points of interest)</li>
 <li>SRTM <a href="https://openrouteservice.org/dev/#/api-docs/elevation" class="external-link">elevation</a> for point and lines geometries</li>
@@ -120,16 +122,28 @@
 <span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>                                      <span class="at">geocode =</span> <span class="st">"geocode"</span>,</span>
 <span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>                                      <span class="at">pois =</span> <span class="st">"pois"</span>,</span>
 <span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>                                      <span class="at">elevation =</span> <span class="st">"elevation"</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>                                      <span class="at">optimization =</span> <span class="st">"optimization"</span>))</span></code></pre></div>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>                                      <span class="at">optimization =</span> <span class="st">"optimization"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>                                      <span class="at">snap =</span> <span class="st">"v2/snap"</span>))</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="package-news">Package News<a class="anchor" aria-label="anchor" href="#package-news"></a>
 </h2>
 <div class="section level3">
-<h3 id="version-040">version 0.4.0<a class="anchor" aria-label="anchor" href="#version-040"></a>
+<h3 id="version-050">version 0.5.0<a class="anchor" aria-label="anchor" href="#version-050"></a>
 </h3>
 <div class="section level4">
 <h4 id="new-features">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features"></a>
+</h4>
+<ul>
+<li>Enable snap endpoint.</li>
+</ul>
+</div>
+</div>
+<div class="section level3">
+<h3 id="version-040">version 0.4.0<a class="anchor" aria-label="anchor" href="#version-040"></a>
+</h3>
+<div class="section level4">
+<h4 id="new-features-1">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-1"></a>
 </h4>
 <ul>
 <li>Enable optimization endpoint.</li>
@@ -144,17 +158,6 @@
 </h4>
 <ul>
 <li>Fixed resolving of URL paths to endpoints.</li>
-</ul>
-</div>
-</div>
-<div class="section level3">
-<h3 id="version-032">version 0.3.2<a class="anchor" aria-label="anchor" href="#version-032"></a>
-</h3>
-<div class="section level4">
-<h4 id="new-features-1">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-1"></a>
-</h4>
-<ul>
-<li>More descriptive messages for API response errors.</li>
 </ul>
 </div>
 </div>
@@ -215,16 +218,16 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
       </footer>
 </div>
 
-  
 
 
-  
+
+
 
   </body>
 </html>

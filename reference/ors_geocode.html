@@ -3,7 +3,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">openrouteservice</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.0</span>
       </span>
     </div>
 
@@ -34,20 +34,20 @@
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/GIScience/openrouteservice-r/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Openrouteservice Geocoding</h1>
-    <small class="dont-index">Source: <a href="https://github.com/GIScience/openrouteservice-r/blob/HEAD/R/geocode.R" class="external-link"><code>R/geocode.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/GIScience/openrouteservice-r/blob/main/R/geocode.R" class="external-link"><code>R/geocode.R</code></a></small>
     <div class="hidden name"><code>ors_geocode.Rd</code></div>
     </div>
 
@@ -67,32 +67,32 @@
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>query</dt>
+
+
+<dl><dt id="arg-query">query<a class="anchor" aria-label="anchor" href="#arg-query"></a></dt>
 <dd><p>Name of location, street address or postal code. For a
 structured geocoding request a named list of parameters.</p></dd>
 
 
-<dt>location</dt>
+<dt id="arg-location">location<a class="anchor" aria-label="anchor" href="#arg-location"></a></dt>
 <dd><p>Coordinates to be inquired provided in the form <code>c(longitude, latitude)</code></p></dd>
 
 
-<dt>...</dt>
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Optional parameters as described <a href="https://openrouteservice.org/dev/#/api-docs/geocode" class="external-link">here</a></p></dd>
 
 
-<dt>api_key</dt>
+<dt id="arg-api-key">api_key<a class="anchor" aria-label="anchor" href="#arg-api-key"></a></dt>
 <dd><p>Character scalar containing openrouteservice API key</p></dd>
 
 
-<dt>output</dt>
+<dt id="arg-output">output<a class="anchor" aria-label="anchor" href="#arg-output"></a></dt>
 <dd><p>Output format. By default the response is being parsed to a list-based R object</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>Geocoding: a JSON formatted list of objects corresponding to the
+    <p>Geocoding: a JSON formatted list of objects corresponding to the
 search input. Reverse geocoding: the next enclosing object with an address
 tag which surrounds the given coordinate.</p>
     </div>
@@ -105,7 +105,7 @@ location takes precedence.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
-    <p>Andrzej Oleś <a href="mailto:andrzej@openrouteservice.org">andrzej@openrouteservice.org</a></p>
+    <p>Andrzej Oleś <a href="mailto:andrzej.oles@gmail.com">andrzej.oles@gmail.com</a></p>
     </div>
 
     <div id="ref-examples">
@@ -143,7 +143,7 @@ location takes precedence.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ name   : chr "Pelias"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ author : chr "Mapzen"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ version: chr "1.0"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : num 1.72e+12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : num 1.73e+12</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ type     : chr "FeatureCollection"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ features :List of 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ :List of 4</span>
@@ -225,15 +225,15 @@ location takes precedence.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 

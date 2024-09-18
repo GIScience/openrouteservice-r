@@ -3,7 +3,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">openrouteservice</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.0</span>
       </span>
     </div>
 
@@ -34,20 +34,20 @@
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/GIScience/openrouteservice-r/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Openrouteservice POIs</h1>
-    <small class="dont-index">Source: <a href="https://github.com/GIScience/openrouteservice-r/blob/HEAD/R/pois.R" class="external-link"><code>R/pois.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/GIScience/openrouteservice-r/blob/main/R/pois.R" class="external-link"><code>R/pois.R</code></a></small>
     <div class="hidden name"><code>ors_pois.Rd</code></div>
     </div>
 
@@ -67,35 +67,33 @@
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>request</dt>
+
+
+<dl><dt id="arg-request">request<a class="anchor" aria-label="anchor" href="#arg-request"></a></dt>
 <dd><p>One of the following: <code>"pois"</code>, <code>"stats"</code> or <code>"list"</code></p></dd>
 
 
-<dt>geometry</dt>
+<dt id="arg-geometry">geometry<a class="anchor" aria-label="anchor" href="#arg-geometry"></a></dt>
 <dd><p>named list containing either a <code>geojson</code> geometry object
 (GeoJSON Point, LineString or Polygon) or a <code>bbox</code>, optionally buffered by
 a value provided  <code>buffer</code></p></dd>
 
 
-<dt>...</dt>
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Optional request attributes as described <a href="https://openrouteservice.org/dev/#/api-docs/pois/post" class="external-link">here</a></p></dd>
 
 
-<dt>api_key</dt>
+<dt id="arg-api-key">api_key<a class="anchor" aria-label="anchor" href="#arg-api-key"></a></dt>
 <dd><p>Character scalar containing openrouteservice API key</p></dd>
 
 
-<dt>output</dt>
+<dt id="arg-output">output<a class="anchor" aria-label="anchor" href="#arg-output"></a></dt>
 <dd><p>Output format. By default the response is being parsed to a list-based R object</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>A list of points of interest in the area specified in <code>geometry</code> structured according to <code>output</code>:</p>
-
-
+    <p>A list of points of interest in the area specified in <code>geometry</code> structured according to <code>output</code>:</p>
 <ul><li><p>for <code>"text"</code>, a character vector of length 1 re-encoded to UTF-8.</p></li>
 </ul><ul><li><p>for <code>"parsed"</code>, a parsed R object.</p></li>
 </ul></div>
@@ -110,7 +108,7 @@ with the absolute numbers of POIs of a certain group.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
-    <p>Andrzej Oleś <a href="mailto:andrzej@openrouteservice.org">andrzej@openrouteservice.org</a></p>
+    <p>Andrzej Oleś <a href="mailto:andrzej.oles@gmail.com">andrzej.oles@gmail.com</a></p>
     </div>
 
     <div id="ref-examples">
@@ -303,7 +301,7 @@ with the absolute numbers of POIs of a certain group.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ information:List of 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ attribution: chr "openrouteservice.org | OpenStreetMap contributors"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ version    : chr "0.1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1716585701</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1726651584</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ query      :List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ request : chr "pois"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ geometry:List of 2</span>
@@ -428,7 +426,7 @@ with the absolute numbers of POIs of a certain group.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ information:List of 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ attribution: chr "openrouteservice.org | OpenStreetMap contributors"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ version    : chr "0.1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1716585702</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1726651585</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ query      :List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ request : chr "pois"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ geometry:List of 2</span>
@@ -533,7 +531,7 @@ with the absolute numbers of POIs of a certain group.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ information:List of 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ attribution: chr "openrouteservice.org | OpenStreetMap contributors"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ version    : chr "0.1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1716585702</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1726651585</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ query      :List of 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ request : chr "pois"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ limit   : int 200</span>
@@ -640,7 +638,7 @@ with the absolute numbers of POIs of a certain group.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ information:List of 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ attribution: chr "openrouteservice.org | OpenStreetMap contributors"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ version    : chr "0.1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1716585702</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1726651585</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ query      :List of 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ request : chr "pois"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ limit   : int 200</span>
@@ -707,7 +705,7 @@ with the absolute numbers of POIs of a certain group.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ information:List of 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ attribution: chr "openrouteservice.org | OpenStreetMap contributors"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ version    : chr "0.1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1716585702</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1726651585</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ query      :List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ request : chr "stats"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ geometry:List of 2</span>
@@ -729,15 +727,15 @@ with the absolute numbers of POIs of a certain group.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 
