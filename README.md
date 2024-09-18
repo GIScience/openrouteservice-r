@@ -3,8 +3,7 @@
 Status](https://img.shields.io/codecov/c/github/GIScience/openrouteservice-r/master.svg)](https://app.codecov.io/github/GIScience/openrouteservice-r?branch=master)
 [![lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 
-openrouteservice R client
-=========================
+# openrouteservice R client
 
 *openrouteservice* R package provides easy access to the
 [openrouteservice](https://openrouteservice.org) (ORS) API from R. It
@@ -18,7 +17,8 @@ allows you to painlessly consume the following services:
     (accessibility)
 -   time-distance
     [matrix](https://openrouteservice.org/dev/#/api-docs/v2/matrix/%7Bprofile%7D/post)
--   [snapping](https://openrouteservice.org/dev/#/api-docs/snap) to ways
+-   [snapping](https://openrouteservice.org/dev/#/api-docs/v2/snap/%7Bprofile%7D/post)
+    to ways
 -   [pois](https://openrouteservice.org/dev/#/api-docs/pois/post)
     (points of interest)
 -   SRTM
@@ -28,14 +28,12 @@ allows you to painlessly consume the following services:
     [optimization](https://openrouteservice.org/dev/#/api-docs/optimization/post)
     based on [Vroom](http://vroom-project.org/)
 
-Disclaimer
-----------
+## Disclaimer
 
 By using this package, you agree to the ORS [terms and
 conditions](https://openrouteservice.org/terms-of-service/).
 
-Installation
-------------
+## Installation
 
 The package is not yet available from CRAN, but you can install the
 development version directly from GitHub.
@@ -43,15 +41,13 @@ development version directly from GitHub.
     # install.packages("remotes")
     remotes::install_github("GIScience/openrouteservice-r")
 
-Get started
------------
+## Get started
 
 See the package
 [vignette](https://giscience.github.io/openrouteservice-r/articles/openrouteservice.html)
 for an overview of the offered functionality.
 
-Local ORS instance
-------------------
+## Local ORS instance
 
 The default is to fire any requests against the free public services at
 &lt;api.openrouteservice.org&gt;. In order to query a different
@@ -72,8 +68,13 @@ defaults are equivalent of having
                                           optimization = "optimization",
                                           snap = "v2/snap"))
 
-Package News
-------------
+## Package News
+
+### version 0.5.1
+
+#### BUG FIXES
+
+-   sf output for POIs endpoint (#81)
 
 ### version 0.5.0
 
@@ -86,9 +87,3 @@ Package News
 #### NEW FEATURES
 
 -   Enable optimization endpoint.
-
-### version 0.3.3
-
-#### BUG FIXES
-
--   Fixed resolving of URL paths to endpoints.
