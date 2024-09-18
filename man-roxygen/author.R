@@ -1,1 +1,1 @@
-#' @author Andrzej Oleś <andrzej@@openrouteservice.org>
+#' @author Andrzej Oleś <andrzej.oles@@gmail.com>

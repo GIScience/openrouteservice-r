@@ -1,3 +1,9 @@
+# openrouteservice 0.5.0
+
+## NEW FEATURES
+
+- Enable snap endpoint.
+
 # openrouteservice 0.4.0
 
 ## NEW FEATURES

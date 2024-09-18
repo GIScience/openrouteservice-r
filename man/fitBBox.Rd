@@ -19,5 +19,5 @@ The modified map widget.
 Helper function to set the bounds of a leaflet map widget.
 }
 \author{
-Andrzej Oleś \href{mailto:andrzej@openrouteservice.org}{andrzej@openrouteservice.org}
+Andrzej Oleś \href{mailto:andrzej.oles@gmail.com}{andrzej.oles@gmail.com}
 }

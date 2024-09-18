@@ -67,5 +67,5 @@ ors_elevation("polyline", coordinates, format_out = "encodedpolyline")
 
 }
 \author{
-Andrzej Oleś \href{mailto:andrzej@openrouteservice.org}{andrzej@openrouteservice.org}
+Andrzej Oleś \href{mailto:andrzej.oles@gmail.com}{andrzej.oles@gmail.com}
 }

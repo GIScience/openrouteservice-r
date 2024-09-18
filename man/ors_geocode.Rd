@@ -59,5 +59,5 @@ y = ors_geocode(location = location, layers = "locality", size = 1)
 
 }
 \author{
-Andrzej Oleś \href{mailto:andrzej@openrouteservice.org}{andrzej@openrouteservice.org}
+Andrzej Oleś \href{mailto:andrzej.oles@gmail.com}{andrzej.oles@gmail.com}
 }

@@ -83,5 +83,5 @@ ors_pois(geometry = geometry,
 ors_pois("stats", geometry = geometry)
 }
 \author{
-Andrzej Oleś \href{mailto:andrzej@openrouteservice.org}{andrzej@openrouteservice.org}
+Andrzej Oleś \href{mailto:andrzej.oles@gmail.com}{andrzej.oles@gmail.com}
 }

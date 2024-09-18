@@ -12,12 +12,13 @@ allows you to painlessly consume the following services:
 
 -   [directions](https://openrouteservice.org/dev/#/api-docs/v2/directions/%7Bprofile%7D/post)
     (routing)
--   [geocode](https://openrouteservice.org/dev/#/api-docs/geocode)
+-   [geocoding](https://openrouteservice.org/dev/#/api-docs/geocode)
     powered by [Pelias](https://pelias.io)
 -   [isochrones](https://openrouteservice.org/dev/#/api-docs/v2/isochrones/%7Bprofile%7D/post)
     (accessibility)
 -   time-distance
     [matrix](https://openrouteservice.org/dev/#/api-docs/v2/matrix/%7Bprofile%7D/post)
+-   [snapping](https://openrouteservice.org/dev/#/api-docs/snap) to ways
 -   [pois](https://openrouteservice.org/dev/#/api-docs/pois/post)
     (points of interest)
 -   SRTM
@@ -68,10 +69,17 @@ defaults are equivalent of having
                                           geocode = "geocode",
                                           pois = "pois",
                                           elevation = "elevation",
-                                          optimization = "optimization"))
+                                          optimization = "optimization",
+                                          snap = "v2/snap"))
 
 Package News
 ------------
+
+### version 0.5.0
+
+#### NEW FEATURES
+
+-   Enable snap endpoint.
 
 ### version 0.4.0
 
@@ -84,9 +92,3 @@ Package News
 #### BUG FIXES
 
 -   Fixed resolving of URL paths to endpoints.
-
-### version 0.3.2
-
-#### NEW FEATURES
-
--   More descriptive messages for API response errors.

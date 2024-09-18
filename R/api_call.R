@@ -82,7 +82,8 @@ ors_path <- function(endpoint) {
     geocode = "geocode",
     pois = "pois",
     elevation = "elevation",
-    optimization = "optimization"
+    optimization = "optimization",
+    snap = "v2/snap"
   )
   if (missing(endpoint))
     return(default_paths)

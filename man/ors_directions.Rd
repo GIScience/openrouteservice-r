@@ -59,5 +59,5 @@ locations <- data.frame(lng = c(8.34234, 8.327807, 8.34423),
 ors_directions(locations, output = "sf")
 }
 \author{
-Andrzej Oleś \href{mailto:andrzej@openrouteservice.org}{andrzej@openrouteservice.org}
+Andrzej Oleś \href{mailto:andrzej.oles@gmail.com}{andrzej.oles@gmail.com}
 }
