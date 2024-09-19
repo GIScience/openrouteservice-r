@@ -35,6 +35,10 @@ A list of points of interest in the area specified in \code{geometry} structured
 \itemize{
 \item for \code{"parsed"}, a parsed R object.
 }
+
+\itemize{
+\item for \code{"sf"}, a simple features \code{\link[sf]{sf}} object. Valid only for argument \code{request = "pois"}.
+}
 }
 \description{
 Search for points of interest around points or in geometries.

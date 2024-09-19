@@ -21,6 +21,8 @@
 #' @templateVar return A list of points of interest in the area specified in `geometry`
 #' @template return-text
 #' @template return-parsed
+#' @template return-sf
+#' @templateVar valid_for `request = "pois"`
 #' @examples
 #' # POI categories list
 #' ors_pois('list')
