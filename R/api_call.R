@@ -183,6 +183,7 @@ error_message <- function(code, details) {
 
 #' @importFrom geojsonsf geojson_sf
 #' @importFrom jsonlite fromJSON toJSON validate
+#' @importFrom utils type.convert
 #' @importFrom xml2 read_xml xml_validate
 parse_content <- function (content,
                            format = c("json", "xml"),
