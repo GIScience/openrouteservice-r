@@ -38,8 +38,8 @@ conditions](https://openrouteservice.org/terms-of-service/).
 The package is not yet available from CRAN, but you can install the
 development version directly from GitHub.
 
-    # install.packages("remotes")
-    remotes::install_github("GIScience/openrouteservice-r")
+    # install.packages("pak")
+    pak::pak("GIScience/openrouteservice-r")
 
 ## Get started
 
