@@ -11,7 +11,7 @@ ors_snap(
   format = c("geojson", "json"),
   ...,
   api_key = ors_api_key(),
-  output = c("parsed", "text")
+  output = c("parsed", "text", "sf")
 )
 }
 \arguments{
@@ -38,6 +38,10 @@ Coordinates of snapped location(s) and distance to the original point(s) structu
 
 \itemize{
 \item for \code{"parsed"}, a parsed R object.
+}
+
+\itemize{
+\item for \code{"sf"}, a simple features \code{\link[sf]{sf}} object.
 }
 }
 \description{

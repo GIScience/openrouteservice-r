@@ -14,6 +14,7 @@
 #' @templateVar return Coordinates of snapped location(s) and distance to the original point(s)
 #' @template return-text
 #' @template return-parsed
+#' @template return-sf
 #' @examples
 #' locations = list(
 #'   c(8.669629, 49.413025),
@@ -32,7 +33,7 @@ ors_snap <- function(locations,
                      format = c('geojson', 'json'),
                      ...,
                      api_key = ors_api_key(),
-                     output = c("parsed", "text")) {
+                     output = c("parsed", "text", "sf")) {
   ## required arguments with no default value
   if (missing(locations))
     stop('Missing argument "locations"')

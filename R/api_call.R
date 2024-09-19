@@ -249,7 +249,7 @@ parse_content <- function (content,
 
       res[names(properties)] <- properties
     }
-    else if (endpoint!="geocode") {
+    else if (endpoint %in% c("isochrones", "pois")) {
       for (i in 1:length(res)) {
         # attempt to parse JSON strings to R objects
         if (is.character(res[[i]])) {
@@ -261,10 +261,13 @@ parse_content <- function (content,
           })
         }
       }
-      # use integer indices
-      if ("group_index" %in% names(res))
-        res$group_index <- type.convert(res$group_index, as.is = TRUE)
     }
+
+    # use integer indices
+    id_cols <- c("group_index", "source_id")
+    id_cols <- id_cols[id_cols %in% names(res)]
+    for (name in id_cols)
+      res[[name]] <- type.convert(res[[name]], as.is = TRUE)
 
     return(res)
   }

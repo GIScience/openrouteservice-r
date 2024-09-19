@@ -1,3 +1,9 @@
+# openrouteservice 0.5.2
+
+## NEW FEATURES
+
+- sf output for snapping.
+
 # openrouteservice 0.5.1
 
 ## BUG FIXES

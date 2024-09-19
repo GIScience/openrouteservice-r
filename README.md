@@ -70,6 +70,12 @@ defaults are equivalent of having
 
 ## Package News
 
+### version 0.5.2
+
+#### NEW FEATURES
+
+-   sf output for snapping.
+
 ### version 0.5.1
 
 #### BUG FIXES
@@ -81,9 +87,3 @@ defaults are equivalent of having
 #### NEW FEATURES
 
 -   Enable snap endpoint.
-
-### version 0.4.0
-
-#### NEW FEATURES
-
--   Enable optimization endpoint.
