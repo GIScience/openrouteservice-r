@@ -185,8 +185,8 @@ with the absolute numbers of POIs of a certain group.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [list output truncated]</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># POIs around a buffered point</span></span></span>
-<span class="r-in"><span><span class="va">geometry</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>geojson <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"Point"</span>,</span></span>
-<span class="r-in"><span>                               coordinates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">8.8034</span>, <span class="fl">53.0756</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span><span class="va">geometry</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>geojson <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"Point"</span>,</span></span>
+<span class="r-in"><span>                                coordinates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">8.8034</span>, <span class="fl">53.0756</span><span class="op">)</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>                buffer <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">ors_pois</span><span class="op">(</span>geometry <span class="op">=</span> <span class="va">geometry</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;ors_pois&gt;</span>
@@ -302,7 +302,7 @@ with the absolute numbers of POIs of a certain group.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ information:List of 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ attribution: chr "openrouteservice.org | OpenStreetMap contributors"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ version    : chr "0.1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1726860859</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1726863461</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ query      :List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ request : chr "pois"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ geometry:List of 2</span>
@@ -427,7 +427,7 @@ with the absolute numbers of POIs of a certain group.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ information:List of 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ attribution: chr "openrouteservice.org | OpenStreetMap contributors"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ version    : chr "0.1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1726860860</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1726863462</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ query      :List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ request : chr "pois"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ geometry:List of 2</span>
@@ -532,7 +532,7 @@ with the absolute numbers of POIs of a certain group.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ information:List of 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ attribution: chr "openrouteservice.org | OpenStreetMap contributors"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ version    : chr "0.1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1726860860</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1726863462</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ query      :List of 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ request : chr "pois"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ limit   : int 200</span>
@@ -639,7 +639,7 @@ with the absolute numbers of POIs of a certain group.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ information:List of 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ attribution: chr "openrouteservice.org | OpenStreetMap contributors"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ version    : chr "0.1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1726860860</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1726863462</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ query      :List of 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ request : chr "pois"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ limit   : int 200</span>
@@ -706,7 +706,7 @@ with the absolute numbers of POIs of a certain group.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ information:List of 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ attribution: chr "openrouteservice.org | OpenStreetMap contributors"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ version    : chr "0.1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1726860860</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : int 1726863462</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ query      :List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ request : chr "stats"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ geometry:List of 2</span>
