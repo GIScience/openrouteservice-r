@@ -39,7 +39,7 @@ Obtain one-to-many, many-to-one and many-to-many matrices for time and
 distance.
 }
 \examples{
-coordinates = list(
+coordinates <- list(
   c(9.970093, 48.477473),
   c(9.207916, 49.153868),
   c(37.573242, 55.801281),
@@ -47,7 +47,7 @@ coordinates = list(
 )
 
 # query for duration and distance in km
-res = ors_matrix(coordinates, metrics = c("duration", "distance"), units = "km")
+res <- ors_matrix(coordinates, metrics = c("duration", "distance"), units = "km")
 
 # duration in hours
 res$durations / 3600

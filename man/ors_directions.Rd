@@ -45,7 +45,7 @@ Route between two or more locations in the selected \code{format} structured acc
 Get directions for different modes of transport.
 }
 \examples{
-coordinates = list(c(8.34234, 48.23424), c(8.34423, 48.26424))
+coordinates <- list(c(8.34234, 48.23424), c(8.34423, 48.26424))
 
 # simple call
 ors_directions(coordinates, preference="fastest")

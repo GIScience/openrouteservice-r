@@ -39,24 +39,21 @@ to be specified for a valid request. If both parameters are specified
 location takes precedence.
 }
 \examples{
-
 ## locations of Heidelberg around the globe
-x = ors_geocode("Heidelberg")
+x <- ors_geocode("Heidelberg")
 
-## set the number of results returne
-
-x = ors_geocode("Heidelberg", size = 1)
+## set the number of results returned
+x <- ors_geocode("Heidelberg", size = 1)
 
 ## search within a particular country
 ors_geocode("Heidelberg", boundary.country = "DE")
 
 ## structured geocoding
-x = ors_geocode(list(locality="Heidelberg", county="Heidelberg"))
+x <- ors_geocode(list(locality="Heidelberg", county="Heidelberg"))
 
 ## reverse geocoding
-location = x$features[[1L]]$geometry$coordinates
-y = ors_geocode(location = location, layers = "locality", size = 1)
-
+location <- x$features[[1L]]$geometry$coordinates
+y <- ors_geocode(location = location, layers = "locality", size = 1)
 }
 \author{
 Andrzej Oleś \href{mailto:andrzej.oles@gmail.com}{andrzej.oles@gmail.com}

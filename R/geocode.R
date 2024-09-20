@@ -19,24 +19,21 @@
 #'   tag which surrounds the given coordinate.
 #' @template author
 #' @examples
-#'
 #' ## locations of Heidelberg around the globe
-#' x = ors_geocode("Heidelberg")
+#' x <- ors_geocode("Heidelberg")
 #'
-#' ## set the number of results returne
-#'
-#' x = ors_geocode("Heidelberg", size = 1)
+#' ## set the number of results returned
+#' x <- ors_geocode("Heidelberg", size = 1)
 #'
 #' ## search within a particular country
 #' ors_geocode("Heidelberg", boundary.country = "DE")
 #'
 #' ## structured geocoding
-#' x = ors_geocode(list(locality="Heidelberg", county="Heidelberg"))
+#' x <- ors_geocode(list(locality="Heidelberg", county="Heidelberg"))
 #'
 #' ## reverse geocoding
-#' location = x$features[[1L]]$geometry$coordinates
-#' y = ors_geocode(location = location, layers = "locality", size = 1)
-#'
+#' location <- x$features[[1L]]$geometry$coordinates
+#' y <- ors_geocode(location = location, layers = "locality", size = 1)
 #' @export
 ors_geocode <- function(query,
                         location,

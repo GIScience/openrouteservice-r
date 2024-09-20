@@ -34,7 +34,7 @@ to painlessly consume the following services:
   - `r doc('directions')` (routing)
   - `r doc('geocode', label='geocoding')` powered by [Pelias](https://pelias.io)
   - `r doc('isochrones')` (accessibility)
-  - time-distance `r doc('matrix')`
+  - time-distance `r doc('matrix', label='matrices')`
   - `r doc('snap', label='snapping')` to ways
   - `r doc('pois')` (points of interest)
   - SRTM `r doc('elevation')` for point and lines geometries

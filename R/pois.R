@@ -28,8 +28,8 @@
 #' ors_pois('list')
 #'
 #' # POIs around a buffered point
-#' geometry = list(geojson = list(type = "Point",
-#'                                coordinates = c(8.8034, 53.0756)),
+#' geometry <- list(geojson = list(type = "Point",
+#'                                 coordinates = c(8.8034, 53.0756)),
 #'                 buffer = 100)
 #' ors_pois(geometry = geometry)
 #'

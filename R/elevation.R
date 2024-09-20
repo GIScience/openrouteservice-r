@@ -17,7 +17,6 @@
 #' @template return-parsed
 #' @template return-sf
 #' @examples
-#'
 #' # point coordinates
 #' coordinates <- c(13.349762, 38.11295)
 #' ors_elevation("point", coordinates)
@@ -32,7 +31,6 @@
 #'   c(12.638397, 37.645772)
 #' )
 #' ors_elevation("polyline", coordinates, format_out = "encodedpolyline")
-#'
 #' @template author
 #' @importFrom httr add_headers
 #' @export

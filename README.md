@@ -16,7 +16,7 @@ allows you to painlessly consume the following services:
 -   [isochrones](https://openrouteservice.org/dev/#/api-docs/v2/isochrones/%7Bprofile%7D/post)
     (accessibility)
 -   time-distance
-    [matrix](https://openrouteservice.org/dev/#/api-docs/v2/matrix/%7Bprofile%7D/post)
+    [matrices](https://openrouteservice.org/dev/#/api-docs/v2/matrix/%7Bprofile%7D/post)
 -   [snapping](https://openrouteservice.org/dev/#/api-docs/v2/snap/%7Bprofile%7D/post)
     to ways
 -   [pois](https://openrouteservice.org/dev/#/api-docs/pois/post)

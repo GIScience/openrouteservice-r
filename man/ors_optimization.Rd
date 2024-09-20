@@ -107,7 +107,7 @@ data.frames which can be used as arguments to \code{ors_optimization()}.
 \examples{
 home_base <- c(2.35044, 48.71764)
 
-vehicles = vehicles(
+vehicles <- vehicles(
   id = 1:2,
   profile = "driving-car",
   start = home_base,
@@ -126,7 +126,7 @@ locations <- list(
   c(2.89357, 48.90736)
 )
 
-jobs = jobs(
+jobs <- jobs(
   id = 1:6,
   service = 300,
   amount = 1,
