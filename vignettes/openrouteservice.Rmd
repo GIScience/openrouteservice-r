@@ -187,12 +187,13 @@ steepness <- factor(steepness, -5:5)
 palette = setNames(rev(RColorBrewer::brewer.pal(11, "RdYlBu")), levels(steepness))
 ```
 
-For the final plot we use ggplot2 in combinations with ggforce which supports
-handling of length units associated with the data.
+For the final plot we use [ggplot2](https://CRAN.R-project.org/package=ggplot2)
+in combinations with [units](https://CRAN.R-project.org/package=units) which
+supports handling of length units associated with the data.
 
 ```{r elevation_profile, fig.dim=c(10, 5), message=FALSE, out.height='100%'}
 library("ggplot2")
-library("ggforce")
+#library("ggforce")
 library("units")
 
 units(height) <- as_units("m")
@@ -213,12 +214,12 @@ df2 = data.frame(x = c(df$x1, df$x2, df$x2, df$x1),
                  id = 1:n)
 
 ggplot() + theme_bw() +
-  geom_segment(data = df, aes(x1, y1, xend = x2, yend = y2), size = 1) +
+  geom_segment(data = df, aes(x1, y1, xend = x2, yend = y2), linewidth = 1) +
   geom_polygon(data = df2, aes(x, y, group = id), fill = "white") +
   geom_polygon(data = df2, aes(x, y , group = id, fill = steepness)) +
   scale_fill_manual(values = alpha(palette, 0.8), drop = FALSE) +
-  scale_x_unit(unit = "km", expand = c(0,0)) +
-  scale_y_unit(expand = c(0,0), limits = y_ran) +
+  scale_x_units(unit = "km", expand = c(0,0)) +
+  scale_y_units(expand = c(0,0), limits = y_ran) +
   labs(x = "Distance", y = "Height")
 ```
 
