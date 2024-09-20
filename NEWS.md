@@ -1,3 +1,9 @@
+# openrouteservice 0.6.0
+
+## NEW FEATURES
+
+- Enable export endpoint.
+
 # openrouteservice 0.5.2
 
 ## NEW FEATURES

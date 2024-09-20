@@ -28,7 +28,7 @@ The default is to fire any requests against the free public services at
 instance, say a local one, set
 
 ```{r openrouteservice.url, eval=FALSE}
-options(openrouteservice.url = "http://localhost:8080/ors")
+options(openrouteservice.url = "http://localhost:8082/ors")
 ```
 
 If necessary, endpoint configuration can be further customized through

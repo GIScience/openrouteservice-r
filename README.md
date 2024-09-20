@@ -18,7 +18,9 @@ allows you to painlessly consume the following services:
 -   time-distance
     [matrices](https://openrouteservice.org/dev/#/api-docs/v2/matrix/%7Bprofile%7D/post)
 -   [snapping](https://openrouteservice.org/dev/#/api-docs/v2/snap/%7Bprofile%7D/post)
-    to ways
+    to OpenStreetMap ways
+-   [exporting](https://openrouteservice.org/dev/#/api-docs/v2/export/%7Bprofile%7D/post)
+    the underlying routing graph structure
 -   [pois](https://openrouteservice.org/dev/#/api-docs/pois/post)
     (points of interest)
 -   SRTM
@@ -53,7 +55,7 @@ The default is to fire any requests against the free public services at
 &lt;api.openrouteservice.org&gt;. In order to query a different
 openrouteservice instance, say a local one, set
 
-    options(openrouteservice.url = "http://localhost:8080/ors")
+    options(openrouteservice.url = "http://localhost:8082/ors")
 
 If necessary, endpoint configuration can be further customized through
 `openrouteservice.paths` which specifies a named list of paths. The
@@ -66,9 +68,16 @@ defaults are equivalent of having
                                           pois = "pois",
                                           elevation = "elevation",
                                           optimization = "optimization",
-                                          snap = "v2/snap"))
+                                          snap = "v2/snap",
+                                          export = "v2/export"))
 
 ## Package News
+
+### version 0.6.0
+
+#### NEW FEATURES
+
+-   Enable export endpoint.
 
 ### version 0.5.2
 
@@ -81,9 +90,3 @@ defaults are equivalent of having
 #### BUG FIXES
 
 -   sf output for POIs endpoint (#81)
-
-### version 0.5.0
-
-#### NEW FEATURES
-
--   Enable snap endpoint.
