@@ -35,7 +35,8 @@ to painlessly consume the following services:
   - `r doc('geocode', label='geocoding')` powered by [Pelias](https://pelias.io)
   - `r doc('isochrones')` (accessibility)
   - time-distance `r doc('matrix', label='matrices')`
-  - `r doc('snap', label='snapping')` to ways
+  - `r doc('snap', label='snapping')` to OpenStreetMap ways
+  - `r doc('export', label='exporting')` the underlying routing graph structure
   - `r doc('pois')` (points of interest)
   - SRTM `r doc('elevation')` for point and lines geometries
   - routing `r doc('optimization')` based on [Vroom](http://vroom-project.org/)
