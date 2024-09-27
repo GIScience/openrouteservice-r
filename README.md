@@ -68,7 +68,7 @@ defaults are equivalent of having
                                           optimization = "optimization",
                                           snap = "v2/snap"))
 
-## Package News
+## Recent package news
 
 ### version 0.5.2
 
@@ -87,3 +87,30 @@ defaults are equivalent of having
 #### NEW FEATURES
 
 -   Enable snap endpoint.
+
+## Publications citing openrouteservice R package
+
+Please feel free to reach out if you would like to have your work added
+to the list below.
+
+1.  Baumer BS, Kaplan DT, Horton NJ. Modern data science with r.
+    Chapman; Hall/CRC; 2017.
+
+2.  Shields N, Willis C, Imms C, McKenzie G, Van Dorsselaer B, Bruder
+    AM, et al. Feasibility of scaling-up a community-based exercise
+    program for young people with disability. Disability and
+    Rehabilitation. 2022;44(9):1669–81.
+
+3.  Cubells J, Miralles-Guasch C, Marquet O. E-scooter and bike-share
+    route choice and detours: Modelling the influence of built
+    environment and sociodemographic factors. Journal of transport
+    geography. 2023;111:103664.
+
+4.  Bhowon Y, Prendergast LA, Taylor NF, Shields N. Using geospatial
+    analysis to determine the proximity of community gyms for a
+    population-based cohort of young people with cerebral palsy.
+    Physiotherapy Canada. 2023;e20220064.
+
+5.  Jain A, LaValley M, Dukes K, Lane K, Winter M, Spangler KR, et
+    al. Modeling health and well-being measures using ZIP code spatial
+    neighborhood patterns. Scientific Reports. 2024;14(1):9180.

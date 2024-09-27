@@ -7,7 +7,9 @@ RSCRIPT = Rscript --vanilla
 %.md: %.Rmd
 	${RSCRIPT} -e 'rmarkdown::render("$<")'
 
-README.md: vignettes/${PKGNAME}.Rmd NEWS.md
+README.md: vignettes/${PKGNAME}.Rmd NEWS.md references.md
+
+references.md: references.bib
 
 readme: README.md
 
