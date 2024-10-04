@@ -13,7 +13,6 @@ Imports: geojsonsf, httr, jsonlite, jsonvalidate, keyring, leaflet, utils, V8, x
 Suggests: covr, ggplot2, googlePolylines, lwgeom, knitr, mapview, pkgdown, RColorBrewer, rmarkdown, roxygen2, sf, testthat, units
 License: Apache License 2.0 | file LICENSE
 Encoding: UTF-8
-LazyData: true
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2

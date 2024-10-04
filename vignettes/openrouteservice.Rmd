@@ -13,16 +13,18 @@ vignette: >
 ---
 
 ```{r config, include=FALSE}
+NOT_CRAN <- identical(tolower(Sys.getenv("NOT_CRAN")), "true")
 ## increase width for code output
 options(width = 100)
 ## set up knitr defaults
-knitr::opts_chunk$set(eval = TRUE, out.width = '100%', out.height = '560px')
+knitr::opts_chunk$set(purl = NOT_CRAN, eval = NOT_CRAN,
+                      out.width = '100%', out.height = '560px')
 ```
 
 ## Get started
 
 <!-- README START -->
-```{r doc, include=FALSE}
+```{r doc, include=FALSE, eval=TRUE}
 ## create alias
 doc <- openrouteservice:::doc_link
 ```
@@ -84,7 +86,7 @@ former approach allowing to bypass the keyring infrastructure.
 `ors_directions()` interfaces the ORS directions service to compute routes
 between given `coordinates`.
 
-```{r directions, eval=TRUE}
+```{r directions}
 library(openrouteservice)
 
 coordinates <- list(c(8.34234, 48.23424), c(8.34423, 48.26424))

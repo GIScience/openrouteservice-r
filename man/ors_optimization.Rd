@@ -105,7 +105,7 @@ The helper functions \code{jobs()} and \code{vehicles()} create
 data.frames which can be used as arguments to \code{ors_optimization()}.
 }
 \examples{
-home_base <- c(2.35044, 48.71764)
+\donttest{home_base <- c(2.35044, 48.71764)
 
 vehicles <- vehicles(
   id = 1:2,
@@ -134,7 +134,7 @@ jobs <- jobs(
   skills = list(1, 1, 2, 2, 14, 14)
 )
 
-ors_optimization(jobs, vehicles)
+ors_optimization(jobs, vehicles)}
 }
 \author{
 Andrzej Oleś \href{mailto:andrzej.oles@gmail.com}{andrzej.oles@gmail.com}

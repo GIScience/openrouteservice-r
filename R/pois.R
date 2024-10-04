@@ -24,7 +24,7 @@
 #' @template return-sf
 #' @templateVar valid_for `request = "pois"`
 #' @examples
-#' # POI categories list
+#' \donttest{# POI categories list
 #' ors_pois('list')
 #'
 #' # POIs around a buffered point
@@ -54,7 +54,7 @@
 #'          ))
 #'
 #' # POI Statistics
-#' ors_pois("stats", geometry = geometry)
+#' ors_pois("stats", geometry = geometry)}
 #' @template author
 #' @export
 ors_pois <- function(request = c('pois', 'stats', 'list'),

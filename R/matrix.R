@@ -15,7 +15,7 @@
 #' @template return-text
 #' @template return-parsed
 #' @examples
-#' coordinates <- list(
+#' \donttest{coordinates <- list(
 #'   c(9.970093, 48.477473),
 #'   c(9.207916, 49.153868),
 #'   c(37.573242, 55.801281),
@@ -29,7 +29,7 @@
 #' res$durations / 3600
 #'
 #' # distance in km
-#' res$distances
+#' res$distances}
 #' @template author
 #' @export
 ors_matrix <- function(locations,

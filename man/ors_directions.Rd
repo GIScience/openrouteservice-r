@@ -45,7 +45,7 @@ Route between two or more locations in the selected \code{format} structured acc
 Get directions for different modes of transport.
 }
 \examples{
-coordinates <- list(c(8.34234, 48.23424), c(8.34423, 48.26424))
+\donttest{coordinates <- list(c(8.34234, 48.23424), c(8.34423, 48.26424))
 
 # simple call
 ors_directions(coordinates, preference="fastest")
@@ -56,7 +56,7 @@ ors_directions(coordinates, profile="cycling-mountain", elevation=TRUE)
 # list of locations as `data.frame` output as simple features `sf` object
 locations <- data.frame(lng = c(8.34234, 8.327807, 8.34423),
                         lat = c(48.23424, 48.239368, 48.26424))
-ors_directions(locations, output = "sf")
+ors_directions(locations, output = "sf")}
 }
 \author{
 Andrzej Oleś \href{mailto:andrzej.oles@gmail.com}{andrzej.oles@gmail.com}
