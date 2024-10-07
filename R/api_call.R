@@ -292,6 +292,10 @@ print.ors_api <- function(x, give.attr = FALSE, list.len = 6L, ...) {
   invisible(x)
 }
 
+validator <- new.env()
+
 #' @importFrom jsonvalidate json_validator
 #' @importFrom V8 v8
-validate_geojson <- NULL
+validate_geojson <- function(...) {
+  validator$instance(...)
+}

@@ -13,10 +13,10 @@ vignette: >
 ---
 
 ```{r config, include=FALSE}
-NOT_CRAN <- identical(tolower(Sys.getenv("NOT_CRAN")), "true")
 ## increase width for code output
-options(width = 100)
+.options_old <- options(width = 100)
 ## set up knitr defaults
+NOT_CRAN <- identical(tolower(Sys.getenv("NOT_CRAN")), "true")
 knitr::opts_chunk$set(purl = NOT_CRAN, eval = NOT_CRAN,
                       out.width = '100%', out.height = '560px')
 ```
@@ -528,4 +528,9 @@ leaflet() %>%
   addAwesomeMarkers(data = home_base, icon = awesomeIcons("home")) %>%
   addRoutes(routes, c("purple", "green"))
 ```
- 
+
+
+```{r cleanup, include=FALSE}
+## restore user's options
+options(.options_old)
+```
