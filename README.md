@@ -96,21 +96,46 @@ to the list below.
 1.  Baumer BS, Kaplan DT, Horton NJ. Modern data science with r.
     Chapman; Hall/CRC; 2017.
 
-2.  Shields N, Willis C, Imms C, McKenzie G, Van Dorsselaer B, Bruder
+2.  Cervigni E, Renton M, McKenzie FH, Hickling S, Olaru D. Describing
+    and mapping diversity and accessibility of the urban food
+    environment with open data and tools. Applied Geography.
+    2020;125:102352.
+
+3.  Petricola S, Reinmuth M, Lautenbach S, Hatfield C, Zipf A. Assessing
+    road criticality and loss of healthcare accessibility during floods:
+    The case of cyclone idai, mozambique 2019. International journal of
+    health geographics. 2022;21(1):14.
+
+4.  Weenink P. Overcoming the modifiable areal unit problem (MAUP) of
+    socio-economic variables in real estate modelling
+    *P**h**D**t**h**e**s**i**s*
+    . 2022.
+
+5.  Shields N, Willis C, Imms C, McKenzie G, Van Dorsselaer B, Bruder
     AM, et al. Feasibility of scaling-up a community-based exercise
     program for young people with disability. Disability and
     Rehabilitation. 2022;44(9):1669–81.
 
-3.  Cubells J, Miralles-Guasch C, Marquet O. E-scooter and bike-share
+6.  Veloso R, Cespedes J, Caunhye A, Alem D. Brazilian disaster datasets
+    and real-world instances for optimization and machine learning. Data
+    in brief. 2022;42:108012. </span>
+
+7.  Cubells J, Miralles-Guasch C, Marquet O. E-scooter and bike-share
     route choice and detours: Modelling the influence of built
     environment and sociodemographic factors. Journal of transport
     geography. 2023;111:103664.
 
-4.  Bhowon Y, Prendergast LA, Taylor NF, Shields N. Using geospatial
+8.  Bhowon Y, Prendergast LA, Taylor NF, Shields N. Using geospatial
     analysis to determine the proximity of community gyms for a
     population-based cohort of young people with cerebral palsy.
     Physiotherapy Canada. 2023;e20220064.
 
-5.  Jain A, LaValley M, Dukes K, Lane K, Winter M, Spangler KR, et
+9.  Amato S, Benson JS, Stewart B, Sarathy A, Osler T, Hosmer D, et
+    al. Current patterns of trauma center proliferation have not led to
+    proportionate improvements in access to care or mortality after
+    injury: An ecologic study. Journal of Trauma and Acute Care Surgery.
+    2023;94(6):755–64.
+
+10. Jain A, LaValley M, Dukes K, Lane K, Winter M, Spangler KR, et
     al. Modeling health and well-being measures using ZIP code spatial
     neighborhood patterns. Scientific Reports. 2024;14(1):9180.

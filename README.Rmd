@@ -59,7 +59,7 @@ news = gsub("^(#+)(.*)", "##\\1\\2", news)
 cat(paste(news, collapse = "\n"))
 ```
 
-## Publications citing openrouteservice R package
+## Publications which use openrouteservice R package
 
 Please feel free to reach out if you would like to have your work added to the list below.
 
