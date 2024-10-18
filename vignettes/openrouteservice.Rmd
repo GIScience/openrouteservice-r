@@ -49,8 +49,15 @@ conditions](https://openrouteservice.org/terms-of-service/).
 
 ### Installation
 
-The package is not yet available from CRAN, but you can install the
-development version directly from GitHub.
+The latest release version can be readily obtained from CRAN via a call to
+
+```{r cran, eval=FALSE}
+install.packages("openrouteservice")
+```
+
+For running the current development version from GitHub it is recommended to use
+[pak](https://CRAN.R-project.org/package=pak), as it handles the installation of
+all the necessary packages and their system dependencies automatically.
 
 ```{r installation, eval=FALSE}
 # install.packages("pak")
