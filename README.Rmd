@@ -1,9 +1,17 @@
 ---
 output: rmarkdown::md_document
 ---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+<!-- badges: start -->
 [![R-CMD-check](https://github.com/GIScience/openrouteservice-r/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/GIScience/openrouteservice-r/actions/workflows/R-CMD-check.yaml)
 [![Coverage Status](https://img.shields.io/codecov/c/github/GIScience/openrouteservice-r/master.svg)](https://app.codecov.io/github/GIScience/openrouteservice-r?branch=master)
-[![lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![CRAN checks](https://badges.cranchecks.info/summary/openrouteservice.svg)](https://cran.r-project.org/web/checks/check_results_openrouteservice.html)
+[![CRAN release](https://www.r-pkg.org/badges/version-ago/openrouteservice)](https://cran.r-project.org/package=openrouteservice)
+[![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/openrouteservice)](http://cranlogs.r-pkg.org/badges/grand-total/openrouteservice)
+<!-- badges: end -->
 
 # openrouteservice R client
 
@@ -44,7 +52,7 @@ cat(sprintf(opts_str, paste0(ors_paths, collapse = paste(",", indent, sep="\n"))
 options(openrouteservice.path = list(directions = "v2/directions"))
 ```
 
-## Package News
+## Recent package news
 
 ```{r news, echo = FALSE, results = 'asis'}
 lines = readLines("NEWS.md")
@@ -57,4 +65,16 @@ to = if (length(versions) > n) versions[n+1]-1 else length(lines)
 news = lines[from:to]
 news = gsub("^(#+)(.*)", "##\\1\\2", news)
 cat(paste(news, collapse = "\n"))
+```
+
+## Publications using openrouteservice R package
+
+Please feel free to reach out if you would like to have your work added to the list below.
+
+```{r references, echo = FALSE, results = 'asis'}
+lines = readLines("references.md")
+lines = gsub('^<span class="csl-left-margin">', '', lines)
+lines = gsub('^</span><span class="csl-right-inline">', '', lines)
+lines = gsub(' </span>$', '', lines)
+cat(paste(lines, collapse = "\n"))
 ```

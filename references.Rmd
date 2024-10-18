@@ -1,0 +1,6 @@
+---
+output: rmarkdown::md_document   
+bibliography: references.bib
+csl: references.csl
+nocite: '@*'
+---

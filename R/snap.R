@@ -16,14 +16,14 @@
 #' @template return-parsed
 #' @template return-sf
 #' @examples
-#' locations <- list(
+#' \donttest{locations <- list(
 #'   c(8.669629, 49.413025),
 #'   c(8.675841, 49.418532),
 #'   c(8.665144, 49.415594)
 #' )
 #'
 #' # query for locations snapped onto the OpenStreetMap road network
-#' res <- ors_snap(locations, radius = 350)
+#' res <- ors_snap(locations, radius = 350)}
 #' @template author
 #' @export
 ors_snap <- function(locations,
@@ -55,5 +55,4 @@ ors_snap <- function(locations,
     body = body,
     encode = "json",
     output = output
-  )
-}
+  )}

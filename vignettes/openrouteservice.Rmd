@@ -14,15 +14,17 @@ vignette: >
 
 ```{r config, include=FALSE}
 ## increase width for code output
-options(width = 100)
+.options_old <- options(width = 100)
 ## set up knitr defaults
-knitr::opts_chunk$set(eval = TRUE, out.width = '100%', out.height = '560px')
+NOT_CRAN <- identical(tolower(Sys.getenv("NOT_CRAN")), "true")
+knitr::opts_chunk$set(purl = NOT_CRAN, eval = NOT_CRAN,
+                      out.width = '100%', out.height = '560px')
 ```
 
 ## Get started
 
 <!-- README START -->
-```{r doc, include=FALSE}
+```{r doc, include=FALSE, eval=TRUE}
 ## create alias
 doc <- openrouteservice:::doc_link
 ```
@@ -48,8 +50,15 @@ conditions](https://openrouteservice.org/terms-of-service/).
 
 ### Installation
 
-The package is not yet available from CRAN, but you can install the
-development version directly from GitHub.
+The latest release version can be readily obtained from CRAN via a call to
+
+```{r cran, eval=FALSE}
+install.packages("openrouteservice")
+```
+
+For running the current development version from GitHub it is recommended to use
+[pak](https://CRAN.R-project.org/package=pak), as it handles the installation of
+all the necessary packages and their system dependencies automatically.
 
 ```{r installation, eval=FALSE}
 # install.packages("pak")
@@ -85,7 +94,7 @@ former approach allowing to bypass the keyring infrastructure.
 `ors_directions()` interfaces the ORS directions service to compute routes
 between given `coordinates`.
 
-```{r directions, eval=TRUE}
+```{r directions}
 library(openrouteservice)
 
 coordinates <- list(c(8.34234, 48.23424), c(8.34423, 48.26424))
@@ -527,4 +536,9 @@ leaflet() %>%
   addAwesomeMarkers(data = home_base, icon = awesomeIcons("home")) %>%
   addRoutes(routes, c("purple", "green"))
 ```
- 
+
+
+```{r cleanup, include=FALSE}
+## restore user's options
+options(.options_old)
+```

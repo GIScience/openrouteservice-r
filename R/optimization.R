@@ -16,7 +16,7 @@
 #' @template return-text
 #' @template return-parsed
 #' @examples
-#' home_base <- c(2.35044, 48.71764)
+#' \donttest{home_base <- c(2.35044, 48.71764)
 #'
 #' vehicles <- vehicles(
 #'   id = 1:2,
@@ -45,7 +45,7 @@
 #'   skills = list(1, 1, 2, 2, 14, 14)
 #' )
 #'
-#' ors_optimization(jobs, vehicles)
+#' ors_optimization(jobs, vehicles)}
 #' @template author
 #' @export
 ors_optimization <- function(jobs,

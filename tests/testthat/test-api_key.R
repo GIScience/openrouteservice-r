@@ -13,18 +13,15 @@ on.exit({
 Sys.unsetenv("ORS_API_KEY")
 api_key_val <- "key_stored_in_keyring"
 
-skip_on_linux <- function() {
-  if (on_os("linux")) skip("Linux")
-  invisible(TRUE)
-}
-
 test_that("Set key in keyring", {
-  skip_on_linux()
+  skip_on_cran()
+  skip_on_os("linux")
   expect_silent(ors_api_key(api_key_val))
 })
 
 test_that("Get key from keyring", {
-  skip_on_linux()
+  skip_on_cran()
+  skip_on_os("linux")
   expect_identical(ors_api_key(), api_key_val)
 })
 
