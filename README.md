@@ -1,7 +1,17 @@
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- badges: start -->
+
 [![R-CMD-check](https://github.com/GIScience/openrouteservice-r/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/GIScience/openrouteservice-r/actions/workflows/R-CMD-check.yaml)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/GIScience/openrouteservice-r/master.svg)](https://app.codecov.io/github/GIScience/openrouteservice-r?branch=master)
-[![lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![CRAN
+checks](https://badges.cranchecks.info/summary/openrouteservice.svg)](https://cran.r-project.org/web/checks/check_results_openrouteservice.html)
+[![CRAN
+release](https://www.r-pkg.org/badges/version-ago/openrouteservice)](https://cran.r-project.org/package=openrouteservice)
+[![CRAN
+downloads](http://cranlogs.r-pkg.org/badges/grand-total/openrouteservice)](http://cranlogs.r-pkg.org/badges/grand-total/openrouteservice)
+<!-- badges: end -->
 
 # openrouteservice R client
 
@@ -88,7 +98,7 @@ defaults are equivalent of having
 
 -   Enable snap endpoint.
 
-## Publications citing openrouteservice R package
+## Publications using openrouteservice R package
 
 Please feel free to reach out if you would like to have your work added
 to the list below.
