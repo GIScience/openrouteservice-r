@@ -86,7 +86,9 @@
 <li>time-distance <a href="https://openrouteservice.org/dev/#/api-docs/v2/matrix/%7Bprofile%7D/post" class="external-link">matrices</a>
 </li>
 <li>
-<a href="https://openrouteservice.org/dev/#/api-docs/v2/snap/%7Bprofile%7D/post" class="external-link">snapping</a> to ways</li>
+<a href="https://openrouteservice.org/dev/#/api-docs/v2/snap/%7Bprofile%7D/post" class="external-link">snapping</a> to OpenStreetMap ways</li>
+<li>
+<a href="https://openrouteservice.org/dev/#/api-docs/v2/export/%7Bprofile%7D/post" class="external-link">exporting</a> the underlying routing graph structure</li>
 <li>
 <a href="https://openrouteservice.org/dev/#/api-docs/pois/post" class="external-link">pois</a> (points of interest)</li>
 <li>SRTM <a href="https://openrouteservice.org/dev/#/api-docs/elevation" class="external-link">elevation</a> for point and lines geometries</li>
@@ -116,7 +118,7 @@
 <h2 id="local-ors-instance">Local ORS instance<a class="anchor" aria-label="anchor" href="#local-ors-instance"></a>
 </h2>
 <p>The default is to fire any requests against the free public services at &lt;api.openrouteservice.org&gt;. In order to query a different openrouteservice instance, say a local one, set</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">options</span>(<span class="at">openrouteservice.url =</span> <span class="st">"http://localhost:8080/ors"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">options</span>(<span class="at">openrouteservice.url =</span> <span class="st">"http://localhost:8082/ors"</span>)</span></code></pre></div>
 <p>If necessary, endpoint configuration can be further customized through <code>openrouteservice.paths</code> which specifies a named list of paths. The defaults are equivalent of having</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">options</span>(<span class="at">openrouteservice.paths =</span> <span class="fu">list</span>(<span class="at">directions =</span> <span class="st">"v2/directions"</span>,</span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>                                      <span class="at">isochrones =</span> <span class="st">"v2/isochrones"</span>,</span>
@@ -125,16 +127,28 @@
 <span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>                                      <span class="at">pois =</span> <span class="st">"pois"</span>,</span>
 <span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>                                      <span class="at">elevation =</span> <span class="st">"elevation"</span>,</span>
 <span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>                                      <span class="at">optimization =</span> <span class="st">"optimization"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>                                      <span class="at">snap =</span> <span class="st">"v2/snap"</span>))</span></code></pre></div>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>                                      <span class="at">snap =</span> <span class="st">"v2/snap"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>                                      <span class="at">export =</span> <span class="st">"v2/export"</span>))</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="recent-package-news">Recent package news<a class="anchor" aria-label="anchor" href="#recent-package-news"></a>
 </h2>
 <div class="section level3">
-<h3 id="version-052">version 0.5.2<a class="anchor" aria-label="anchor" href="#version-052"></a>
+<h3 id="version-060">version 0.6.0<a class="anchor" aria-label="anchor" href="#version-060"></a>
 </h3>
 <div class="section level4">
 <h4 id="new-features">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features"></a>
+</h4>
+<ul>
+<li>Enable export endpoint.</li>
+</ul>
+</div>
+</div>
+<div class="section level3">
+<h3 id="version-052">version 0.5.2<a class="anchor" aria-label="anchor" href="#version-052"></a>
+</h3>
+<div class="section level4">
+<h4 id="new-features-1">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-1"></a>
 </h4>
 <ul>
 <li>sf output for snapping.</li>
@@ -156,7 +170,7 @@
 <h3 id="version-050">version 0.5.0<a class="anchor" aria-label="anchor" href="#version-050"></a>
 </h3>
 <div class="section level4">
-<h4 id="new-features-1">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-1"></a>
+<h4 id="new-features-2">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-2"></a>
 </h4>
 <ul>
 <li>Enable snap endpoint.</li>
