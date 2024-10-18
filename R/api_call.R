@@ -83,7 +83,8 @@ ors_path <- function(endpoint) {
     pois = "pois",
     elevation = "elevation",
     optimization = "optimization",
-    snap = "v2/snap"
+    snap = "v2/snap",
+    export = "v2/export"
   )
   if (missing(endpoint))
     return(default_paths)
