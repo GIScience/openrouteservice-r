@@ -10,7 +10,7 @@ output: rmarkdown::md_document
 [![lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![CRAN checks](https://badges.cranchecks.info/summary/openrouteservice.svg)](https://cran.r-project.org/web/checks/check_results_openrouteservice.html)
 [![CRAN release](https://www.r-pkg.org/badges/version-ago/openrouteservice)](https://cran.r-project.org/package=openrouteservice)
-[![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/openrouteservice)](http://cranlogs.r-pkg.org/badges/grand-total/openrouteservice)
+[![CRAN downloads](https://cranlogs.r-pkg.org:443/badges/openrouteservice)](https://cran.r-project.org/package=openrouteservice)
 <!-- badges: end -->
 
 # openrouteservice R client
@@ -52,14 +52,14 @@ cat(sprintf(opts_str, paste0(ors_paths, collapse = paste(",", indent, sep="\n"))
 options(openrouteservice.path = list(directions = "v2/directions"))
 ```
 
-## Recent package news
+## Package news
 
 ```{r news, echo = FALSE, results = 'asis'}
 lines = readLines("NEWS.md")
 lines = gsub("^# openrouteservice (.*)", "# version \\1", lines)
 versions = grep("^# ", lines)
 ## select only n latest news
-n = 3
+n = 4
 from = 1
 to = if (length(versions) > n) versions[n+1]-1 else length(lines)
 news = lines[from:to]

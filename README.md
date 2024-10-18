@@ -10,7 +10,7 @@ checks](https://badges.cranchecks.info/summary/openrouteservice.svg)](https://cr
 [![CRAN
 release](https://www.r-pkg.org/badges/version-ago/openrouteservice)](https://cran.r-project.org/package=openrouteservice)
 [![CRAN
-downloads](http://cranlogs.r-pkg.org/badges/grand-total/openrouteservice)](http://cranlogs.r-pkg.org/badges/grand-total/openrouteservice)
+downloads](https://cranlogs.r-pkg.org:443/badges/openrouteservice)](https://cran.r-project.org/package=openrouteservice)
 <!-- badges: end -->
 
 # openrouteservice R client
@@ -88,7 +88,7 @@ defaults are equivalent of having
                                           snap = "v2/snap",
                                           export = "v2/export"))
 
-## Recent package news
+## Package news
 
 ### version 0.6.0
 
