@@ -1,6 +1,6 @@
 Package: openrouteservice
 Title: An 'openrouteservice' API Client
-Version: 0.6.0
+Version: 0.6.1
 Authors@R: c(
     person("Heidelberg Institute for Geoinformation Technology (HeiGIT) gGmbH", role = "cph"),
     person(c("Andrzej", "K."), "Oleś", email = "andrzej.oles@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-0285-2787"))

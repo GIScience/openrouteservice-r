@@ -1,8 +1,12 @@
 context("Key management")
 
+on_cran <- function() {
+  !interactive() && !isTRUE(as.logical(Sys.getenv("NOT_CRAN", "false")))
+}
+
 ## record current state before starting any tests
 env <- Sys.getenv("ORS_API_KEY", NA);
-key <- tryCatch(keyring::key_get("openrouteservice"), error = function(e) NA)
+key <- tryCatch(if (on_cran()) NA else keyring::key_get("openrouteservice"), error = function(e) NA)
 
 ## restore initial state
 on.exit({
