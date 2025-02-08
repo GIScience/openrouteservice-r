@@ -24,7 +24,10 @@
 #' @template return-sf
 #' @templateVar valid_for `request = "pois"`
 #' @examples
-#' \donttest{# POI categories list
+#' # These examples might require interaction to query the local keyring, or
+#' # might fail due to network issues, so they are not run by default
+#' \dontrun{
+#' # POI categories list
 #' ors_pois('list')
 #'
 #' # POIs around a buffered point
@@ -54,7 +57,8 @@
 #'          ))
 #'
 #' # POI Statistics
-#' ors_pois("stats", geometry = geometry)}
+#' ors_pois("stats", geometry = geometry)
+#' }
 #' @template author
 #' @export
 ors_pois <- function(request = c('pois', 'stats', 'list'),

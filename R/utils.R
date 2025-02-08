@@ -66,3 +66,7 @@ compact <- function (x) {
 is_empty <- function(x) {
   length(x) == 0
 }
+
+on_cran <- function() {
+  !interactive() && !isTRUE(as.logical(Sys.getenv("NOT_CRAN", "false")))
+}

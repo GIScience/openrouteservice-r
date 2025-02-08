@@ -49,20 +49,24 @@ A GeoJSON based service to query SRTM elevation for Point or LineString 2D
 geometries and return 3D geometries in various formats.
 }
 \examples{
-\donttest{# point coordinates
+# These examples might require interaction to query the local keyring, or
+# might fail due to network issues, so they are not run by default
+\dontrun{
+# point coordinates
 coordinates <- c(13.349762, 38.11295)
-ors_elevation("point", coordinates)
+try( ors_elevation("point", coordinates) )
 
 # geojson as input
 point <- '{ "type": "Point", "coordinates": [13.349762, 38.11295] }'
-ors_elevation("geojson", point)
+try( ors_elevation("geojson", point) )
 
 # line geometry returned as encoded polyline
 coordinates <- list(
   c(13.349762, 38.11295),
   c(12.638397, 37.645772)
 )
-ors_elevation("polyline", coordinates, format_out = "encodedpolyline")}
+try( ors_elevation("polyline", coordinates, format_out = "encodedpolyline") )
+}
 }
 \author{
 Andrzej Oleś \href{mailto:andrzej.oles@gmail.com}{andrzej.oles@gmail.com}

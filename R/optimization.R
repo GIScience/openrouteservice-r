@@ -16,7 +16,10 @@
 #' @template return-text
 #' @template return-parsed
 #' @examples
-#' \donttest{home_base <- c(2.35044, 48.71764)
+#' # These examples might require interaction to query the local keyring, or
+#' # might fail due to network issues, so they are not run by default
+#' \dontrun{
+#' home_base <- c(2.35044, 48.71764)
 #'
 #' vehicles <- vehicles(
 #'   id = 1:2,
@@ -45,7 +48,8 @@
 #'   skills = list(1, 1, 2, 2, 14, 14)
 #' )
 #'
-#' ors_optimization(jobs, vehicles)}
+#' try( ors_optimization(jobs, vehicles) )
+#' }
 #' @template author
 #' @export
 ors_optimization <- function(jobs,

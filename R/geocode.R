@@ -19,7 +19,10 @@
 #'   tag which surrounds the given coordinate.
 #' @template author
 #' @examples
-#' \donttest{## locations of Heidelberg around the globe
+#' # These examples might require interaction to query the local keyring, or
+#' # might fail due to network issues, so they are not run by default
+#' \dontrun{
+#' ## locations of Heidelberg around the globe
 #' x <- ors_geocode("Heidelberg")
 #'
 #' ## set the number of results returned
@@ -33,7 +36,8 @@
 #'
 #' ## reverse geocoding
 #' location <- x$features[[1L]]$geometry$coordinates
-#' y <- ors_geocode(location = location, layers = "locality", size = 1)}
+#' y <- ors_geocode(location = location, layers = "locality", size = 1)
+#' }
 #' @export
 ors_geocode <- function(query,
                         location,

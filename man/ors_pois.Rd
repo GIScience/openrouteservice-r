@@ -54,7 +54,10 @@ with the absolute numbers of POIs of a certain group.
 \code{list} returns a list of category groups and their ids.
 }
 \examples{
-\donttest{# POI categories list
+# These examples might require interaction to query the local keyring, or
+# might fail due to network issues, so they are not run by default
+\dontrun{
+# POI categories list
 ors_pois('list')
 
 # POIs around a buffered point
@@ -84,7 +87,8 @@ ors_pois(geometry = geometry,
          ))
 
 # POI Statistics
-ors_pois("stats", geometry = geometry)}
+ors_pois("stats", geometry = geometry)
+}
 }
 \author{
 Andrzej Oleś \href{mailto:andrzej.oles@gmail.com}{andrzej.oles@gmail.com}

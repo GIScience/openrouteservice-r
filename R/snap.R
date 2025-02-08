@@ -16,14 +16,18 @@
 #' @template return-parsed
 #' @template return-sf
 #' @examples
-#' \donttest{locations <- list(
+#' # These examples might require interaction to query the local keyring, or
+#' # might fail due to network issues, so they are not run by default
+#' \dontrun{
+#' locations <- list(
 #'   c(8.669629, 49.413025),
 #'   c(8.675841, 49.418532),
 #'   c(8.665144, 49.415594)
 #' )
 #'
 #' # query for locations snapped onto the OpenStreetMap road network
-#' res <- ors_snap(locations, radius = 350)}
+#' res <- ors_snap(locations, radius = 350)
+#' }
 #' @template author
 #' @export
 ors_snap <- function(locations,

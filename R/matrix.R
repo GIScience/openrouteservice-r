@@ -15,7 +15,10 @@
 #' @template return-text
 #' @template return-parsed
 #' @examples
-#' \donttest{coordinates <- list(
+#' # These examples might require interaction to query the local keyring, or
+#' # might fail due to network issues, so they are not run by default
+#' \dontrun{
+#' coordinates <- list(
 #'   c(9.970093, 48.477473),
 #'   c(9.207916, 49.153868),
 #'   c(37.573242, 55.801281),
@@ -29,7 +32,8 @@
 #' res$durations / 3600
 #'
 #' # distance in km
-#' res$distances}
+#' res$distances
+#' }
 #' @template author
 #' @export
 ors_matrix <- function(locations,

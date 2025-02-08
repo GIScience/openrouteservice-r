@@ -52,10 +52,14 @@ multiple locations. You may also specify the isochrone interval or provide
 multiple exact isochrone range values.
 }
 \examples{
-\donttest{ors_isochrones(c(8.34234, 48.23424), interval=20)
+# These examples might require interaction to query the local keyring, or
+# might fail due to network issues, so they are not run by default
+\dontrun{
+ors_isochrones(c(8.34234, 48.23424), interval=20)
 
 locations <- list(c(8.681495, 49.41461), c(8.686507,49.41943))
-ors_isochrones(locations, range=c(300, 200))}
+ors_isochrones(locations, range=c(300, 200))
+}
 }
 \author{
 Andrzej Oleś \href{mailto:andrzej.oles@gmail.com}{andrzej.oles@gmail.com}

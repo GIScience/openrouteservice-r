@@ -39,7 +39,10 @@ to be specified for a valid request. If both parameters are specified
 location takes precedence.
 }
 \examples{
-\donttest{## locations of Heidelberg around the globe
+# These examples might require interaction to query the local keyring, or
+# might fail due to network issues, so they are not run by default
+\dontrun{
+## locations of Heidelberg around the globe
 x <- ors_geocode("Heidelberg")
 
 ## set the number of results returned
@@ -53,7 +56,8 @@ x <- ors_geocode(list(locality="Heidelberg", county="Heidelberg"))
 
 ## reverse geocoding
 location <- x$features[[1L]]$geometry$coordinates
-y <- ors_geocode(location = location, layers = "locality", size = 1)}
+y <- ors_geocode(location = location, layers = "locality", size = 1)
+}
 }
 \author{
 Andrzej Oleś \href{mailto:andrzej.oles@gmail.com}{andrzej.oles@gmail.com}
