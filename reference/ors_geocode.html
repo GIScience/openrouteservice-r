@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">openrouteservice</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.2</span>
       </span>
     </div>
 
@@ -110,7 +110,10 @@ location takes precedence.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## locations of Heidelberg around the globe</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># These examples might require interaction to query the local keyring, or</span></span></span>
+<span class="r-in"><span><span class="co"># might fail due to network issues, so they are not run by default</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+<span class="r-in"><span><span class="co">## locations of Heidelberg around the globe</span></span></span>
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">ors_geocode</span><span class="op">(</span><span class="st">"Heidelberg"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## set the number of results returned</span></span></span>
@@ -118,89 +121,6 @@ location takes precedence.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## search within a particular country</span></span></span>
 <span class="r-in"><span><span class="fu">ors_geocode</span><span class="op">(</span><span class="st">"Heidelberg"</span>, boundary.country <span class="op">=</span> <span class="st">"DE"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;ors_geocode&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> List of 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ geocoding:List of 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ version    : chr "0.2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ attribution: chr "https://openrouteservice.org/terms-of-service/#attribution-geocode"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ query      :List of 9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ text            : chr "Heidelberg"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ size            : int 10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ layers          : chr [1:20] "venue" "street" "country" "macroregion" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ private         : logi FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ boundary.country: chr "DEU"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ lang            :List of 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ name     : chr "English"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ iso6391  : chr "en"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ iso6393  : chr "eng"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ via      : chr "default"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ defaulted: logi TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. [list output truncated]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ warnings   : chr "performance optimization: excluding 'address' layer"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ engine     :List of 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ name   : chr "Pelias"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ author : chr "Mapzen"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ version: chr "1.0"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ timestamp  : num 1.73e+12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ type     : chr "FeatureCollection"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ features :List of 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ :List of 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ type      : chr "Feature"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ geometry  :List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ type       : chr "Point"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ coordinates: num [1:2] 8.77 49.38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ properties:List of 27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ id             : chr "101906011"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ gid            : chr "whosonfirst:locality:101906011"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ layer          : chr "locality"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ source         : chr "whosonfirst"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ source_id      : chr "101906011"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ name           : chr "Heidelberg"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. .. [list output truncated]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ bbox      : num [1:4] 8.57 49.35 8.79 49.46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ :List of 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ type      : chr "Feature"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ geometry  :List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ type       : chr "Point"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ coordinates: num [1:2] 8.69 49.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ properties:List of 25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ id             : chr "1377688433"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ gid            : chr "whosonfirst:localadmin:1377688433"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ layer          : chr "localadmin"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ source         : chr "whosonfirst"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ source_id      : chr "1377688433"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ name           : chr "Heidelberg"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. .. [list output truncated]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ bbox      : num [1:4] 8.57 49.35 8.79 49.46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ :List of 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ type      : chr "Feature"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ geometry  :List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ type       : chr "Point"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ coordinates: num [1:2] 12.3 53.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ properties:List of 27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ id               : chr "1393562915"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ gid              : chr "whosonfirst:neighbourhood:1393562915"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ layer            : chr "neighbourhood"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ source           : chr "whosonfirst"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ source_id        : chr "1393562915"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ name             : chr "Heidelberg"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. .. [list output truncated]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ bbox      : num [1:4] 12.3 53.1 12.3 53.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ :List of 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ type      : chr "Feature"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ geometry  :List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ type       : chr "Point"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ coordinates: num [1:2] 13.5 50.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ properties:List of 27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ id               : chr "1393558913"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ gid              : chr "whosonfirst:neighbourhood:1393558913"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ layer            : chr "neighbourhood"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ source           : chr "whosonfirst"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ source_id        : chr "1393558913"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ name             : chr "Heidelberg"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. .. [list output truncated]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ bbox      : num [1:4] 13.5 50.6 13.5 50.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ bbox     : num [1:4] 8.57 49.35 13.48 53.1</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## structured geocoding</span></span></span>
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">ors_geocode</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>locality<span class="op">=</span><span class="st">"Heidelberg"</span>, county<span class="op">=</span><span class="st">"Heidelberg"</span><span class="op">)</span><span class="op">)</span></span></span>
@@ -208,6 +128,7 @@ location takes precedence.</p>
 <span class="r-in"><span><span class="co">## reverse geocoding</span></span></span>
 <span class="r-in"><span><span class="va">location</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">$</span><span class="va">features</span><span class="op">[[</span><span class="fl">1L</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">geometry</span><span class="op">$</span><span class="va">coordinates</span></span></span>
 <span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">ors_geocode</span><span class="op">(</span>location <span class="op">=</span> <span class="va">location</span>, layers <span class="op">=</span> <span class="st">"locality"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>

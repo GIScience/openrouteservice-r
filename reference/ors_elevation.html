@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">openrouteservice</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.2</span>
       </span>
     </div>
 
@@ -113,28 +113,24 @@ geometries and return 3D geometries in various formats.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># point coordinates</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># These examples might require interaction to query the local keyring, or</span></span></span>
+<span class="r-in"><span><span class="co"># might fail due to network issues, so they are not run by default</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+<span class="r-in"><span><span class="co"># point coordinates</span></span></span>
 <span class="r-in"><span><span class="va">coordinates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">13.349762</span>, <span class="fl">38.11295</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">ors_elevation</span><span class="op">(</span><span class="st">"point"</span>, <span class="va">coordinates</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;ors_elevation&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  num [1:3] 13.3 38.1 38</span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span> <span class="fu">ors_elevation</span><span class="op">(</span><span class="st">"point"</span>, <span class="va">coordinates</span><span class="op">)</span> <span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># geojson as input</span></span></span>
 <span class="r-in"><span><span class="va">point</span> <span class="op">&lt;-</span> <span class="st">'{ "type": "Point", "coordinates": [13.349762, 38.11295] }'</span></span></span>
-<span class="r-in"><span><span class="fu">ors_elevation</span><span class="op">(</span><span class="st">"geojson"</span>, <span class="va">point</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;ors_elevation&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ coordinates: num [1:3] 13.3 38.1 38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ type       : chr "Point"</span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span> <span class="fu">ors_elevation</span><span class="op">(</span><span class="st">"geojson"</span>, <span class="va">point</span><span class="op">)</span> <span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># line geometry returned as encoded polyline</span></span></span>
 <span class="r-in"><span><span class="va">coordinates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">13.349762</span>, <span class="fl">38.11295</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12.638397</span>, <span class="fl">37.645772</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">ors_elevation</span><span class="op">(</span><span class="st">"polyline"</span>, <span class="va">coordinates</span>, format_out <span class="op">=</span> <span class="st">"encodedpolyline"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;ors_elevation&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  chr "}|rgF_knpAolFzfzA~|iCf{C"</span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span> <span class="fu">ors_elevation</span><span class="op">(</span><span class="st">"polyline"</span>, <span class="va">coordinates</span>, format_out <span class="op">=</span> <span class="st">"encodedpolyline"</span><span class="op">)</span> <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>

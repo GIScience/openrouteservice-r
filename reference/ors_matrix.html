@@ -18,7 +18,7 @@ distance."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/m
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">openrouteservice</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.2</span>
       </span>
     </div>
 
@@ -104,7 +104,10 @@ distance.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">coordinates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># These examples might require interaction to query the local keyring, or</span></span></span>
+<span class="r-in"><span><span class="co"># might fail due to network issues, so they are not run by default</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+<span class="r-in"><span><span class="va">coordinates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">9.970093</span>, <span class="fl">48.477473</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">9.207916</span>, <span class="fl">49.153868</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">37.573242</span>, <span class="fl">55.801281</span><span class="op">)</span>,</span></span>
@@ -116,19 +119,10 @@ distance.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># duration in hours</span></span></span>
 <span class="r-in"><span><span class="va">res</span><span class="op">$</span><span class="va">durations</span> <span class="op">/</span> <span class="fl">3600</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            [,1]       [,2]     [,3]      [,4]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]   0.000000   1.588661 25.41464 109.66200</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]   1.574931   0.000000 25.33264 109.58000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]  25.255472  25.112483  0.00000  84.71728</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4,] 109.501128 109.358133 84.64216   0.00000</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># distance in km</span></span></span>
 <span class="r-in"><span><span class="va">res</span><span class="op">$</span><span class="va">distances</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         [,1]    [,2]    [,3]    [,4]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    0.00  153.50 2413.19 9780.31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]  153.80    0.00 2387.60 9754.72</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] 2361.93 2337.78    0.00 7328.38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4,] 9714.39 9690.24 7312.83    0.00</span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>

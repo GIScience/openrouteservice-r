@@ -22,7 +22,7 @@ data.frames which can be used as arguments to ors_optimization()."><!-- mathjax 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">openrouteservice</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.2</span>
       </span>
     </div>
 
@@ -203,7 +203,10 @@ for job service start</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">home_base</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.35044</span>, <span class="fl">48.71764</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># These examples might require interaction to query the local keyring, or</span></span></span>
+<span class="r-in"><span><span class="co"># might fail due to network issues, so they are not run by default</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+<span class="r-in"><span><span class="va">home_base</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.35044</span>, <span class="fl">48.71764</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">vehicles</span> <span class="op">&lt;-</span> <span class="fu">vehicles</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,</span></span>
@@ -232,36 +235,8 @@ for job service start</p></dd>
 <span class="r-in"><span>  skills <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">14</span>, <span class="fl">14</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">ors_optimization</span><span class="op">(</span><span class="va">jobs</span>, <span class="va">vehicles</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;ors_optimization&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> List of 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ code      : int 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ summary   :List of 13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ cost           : int 20526</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ routes         : int 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unassigned     : int 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ delivery       : int 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ amount         : int 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ pickup         : int 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. [list output truncated]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ unassigned: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ routes    :List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ :List of 12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ vehicle     : int 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ cost        : int 7726</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ delivery    : int 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ amount      : int 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ pickup      : int 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ setup       : int 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. [list output truncated]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ :List of 12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ vehicle     : int 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ cost        : int 12800</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ delivery    : int 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ amount      : int 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ pickup      : int 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ setup       : int 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. [list output truncated]</span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span> <span class="fu">ors_optimization</span><span class="op">(</span><span class="va">jobs</span>, <span class="va">vehicles</span><span class="op">)</span> <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
